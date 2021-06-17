@@ -1,6 +1,6 @@
 package com.example.umgcteam3;
 
-package com.example.workout_volt_emulator;
+
 
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import android.content.Context;
 
-import com.bugfender.sdk.Bugfender;
+
 
 public class LoadWorkoutsActivity extends AppCompatActivity{
 
@@ -27,35 +27,36 @@ public class LoadWorkoutsActivity extends AppCompatActivity{
     }
 
     public void day_1_workout_generator(View view) {
-        Intent getDay1Overview = new Intent(this, day1_Overview_Activity.class);
+        Intent getDay1Overview = new Intent(this, OverviewActivity.class);
         getDay1Overview.putExtra("day_number", 1);
         final int result = 1;
         startActivity(getDay1Overview);
     }
     public void day_2_workout_generator(View view) {
-        Intent getDay2Overview = new Intent(this, day1_Overview_Activity.class);
+        Intent getDay2Overview = new Intent(this, OverviewActivity.class);
         getDay2Overview.putExtra("day_number", 2);
         final int result = 1;
         startActivity(getDay2Overview);
     }
     public void day_3_workout_generator(View view) {
-        Intent getDay3Overview = new Intent(this, day1_Overview_Activity.class);
+        Intent getDay3Overview = new Intent(this, OverviewActivity.class);
         getDay3Overview.putExtra("day_number", 3);
         final int result = 1;
         startActivity(getDay3Overview);
     }
     public void day_4_workout_generator(View view) {
-        Intent getDay4Overview = new Intent(this, day4_Overview_Activity.class);
+        Intent getDay4Overview = new Intent(this, OverviewActivity.class);
         getDay4Overview.putExtra("day_number", 4);
         final int result = 1;
         startActivity(getDay4Overview);
     }
 
     public void circuit_day_generator(View view) {
-        Intent getCircuitOverview = new Intent(this, circuit_Overview_Activity.class);
-        final int result = 1;
-
-        startActivity(getCircuitOverview);
+        // TODO
+//        Intent getCircuitOverview = new Intent(this, circuit_Overview_Activity.class);
+//        final int result = 1;
+//
+//        startActivity(getCircuitOverview);
 
     }
 
@@ -64,17 +65,17 @@ public class LoadWorkoutsActivity extends AppCompatActivity{
         //Build Workouts button
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute();
-        BackgroundWorkerCircuit circuit = new BackgroundWorkerCircuit(this);
-        circuit.execute();
+//        BackgroundWorkerCircuit circuit = new BackgroundWorkerCircuit(this);
+//        circuit.execute();
 
     }
     public void onLogin () {
         //Build Workouts button
-        LoginActivity loginActivity = new LoginActivity(this);
+        LoginActivity loginActivity = new LoginActivity();
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute();
-        BackgroundWorkerCircuit circuit = new BackgroundWorkerCircuit(this);
-        circuit.execute();
+//        BackgroundWorkerCircuit circuit = new BackgroundWorkerCircuit(this);
+//        circuit.execute();
     }
 
 

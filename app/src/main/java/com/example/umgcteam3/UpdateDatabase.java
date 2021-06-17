@@ -31,7 +31,7 @@ public class UpdateDatabase extends AsyncTask<Void, Void, String> {
     String exDate;
     String setNumber;
     boolean readyToIncrease = false;
-    public UpdateDatabase(Context context, int set, int reps, int rpe, int weight, int day_number,  String exercise_name, String exDate, boolean readyToIncrease) {
+    public UpdateDatabase(Context context, int set, int reps, int rpe, int weight, int day_number,  String exercise_name, boolean readyToIncrease) {
         this.context = context;
         this.set = set;
         this.reps = reps;
