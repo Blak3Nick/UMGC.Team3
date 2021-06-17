@@ -140,12 +140,12 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-//        mLoginBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getApplicationContext(),Login.class));
-//            }
-//        });
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+            }
+        });
 
     }
 }

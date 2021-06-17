@@ -1,10 +1,8 @@
 package com.example.umgcteam3;
 
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.provider.Settings;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
