@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "749798274410",
+    "firebase_url": "https://workout-builder-3207b.firebaseio.com",
+    "project_id": "workout-builder-3207b",
+    "storage_bucket": "workout-builder-3207b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749798274410:android:5a3a6c5bf962e37e7da113",
+        "android_client_info": {
+          "package_name": "com.example.umgcteam3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749798274410-kggkht155v41m6esfoebkckvqrovca5u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2pnN-GTLvRQExh0sg2dMj7Qkphh8lKGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749798274410-kggkht155v41m6esfoebkckvqrovca5u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749798274410:android:a08f294213af92767da113",
+        "android_client_info": {
+          "package_name": "com.example.workout_volt_emulator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749798274410-kggkht155v41m6esfoebkckvqrovca5u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2pnN-GTLvRQExh0sg2dMj7Qkphh8lKGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749798274410-kggkht155v41m6esfoebkckvqrovca5u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
