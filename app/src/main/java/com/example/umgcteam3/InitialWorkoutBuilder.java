@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
-    String[] allExercises = {"squat", "bench", "deadlift", "pushup", "situp"};
+    String[] allExercises = {"squat", "bench", "deadlift", "curl", "leg press"};
 
     String user_id;
 
@@ -36,23 +36,27 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
         newWorkout.put("TargetReps", 8);
         newWorkout.put("WeightUsed", 135);
 
-        for (int i = 1; i < 6; i++) {
-            db.collection("users").document(user_id).collection("CurrentWorkoutPlan").document("Day_1").collection("Exercise_1_All_Sets")
-                    .document("Ex_1_All_Sets").collection("AllSets")
-                    .document("Set"+i).set(newWorkout, SetOptions.merge())
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+        for (int k = 1; k < 4; k++) {
+            for (int j = 1; j < allExercises.length+1; j++) {
+                newWorkout.put("ExerciseName", allExercises[j-1]);
+                for (int i = 1; i < 6; i++) {
+                    db.collection("users").document(user_id).collection("CurrentWorkoutPlan").document("Day_"+k).collection("Exercise_"+j+"_All_Sets")
+                            .document("Ex_"+j+"_All_Sets").collection("AllSets")
+                            .document("Set"+i).set(newWorkout, SetOptions.merge())
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d("SUCCESS", "Written to the database");
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
                         @Override
-                        public void onSuccess(Void aVoid) {
-                            Log.d("SUCCESS", "Written to the database");
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("FAILURE", e.getMessage() );
                         }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.w("FAILURE", e.getMessage() );
+                    });
                 }
-            });
+            }
         }
-
         return null;
     }
 }
