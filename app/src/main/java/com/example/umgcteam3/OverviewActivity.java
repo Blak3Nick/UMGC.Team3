@@ -18,6 +18,7 @@ public class OverviewActivity extends Activity {
     private static Workout WorkoutDay1;
     private static Workout WorkoutDay2;
     private static Workout WorkoutDay3;
+    HashMap<Integer, Exercise> allExercises;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -27,6 +28,7 @@ public class OverviewActivity extends Activity {
         WorkoutDay1 = new Workout();
         WorkoutDay2 = new Workout();
         WorkoutDay3 = new Workout();
+        allExercises =  WorkoutDay1.getAllExercises();
         for (Exercise ex: BackgroundWorker.day1Exercises
         ) {
             WorkoutDay1.addExercise(ex);
@@ -114,7 +116,11 @@ public class OverviewActivity extends Activity {
         startDay1.putExtra("exerciseNumber", 1);
         int dayNum = extras.getInt("day_number");
         startDay1.putExtra("day_number", dayNum);
+        startDay1.putExtra("count", 0);
+        startDay1.putExtra("all_exercises", allExercises);
+        startDay1.putExtra("exercise_count", 0);
         startActivity(startDay1);
+
         finish();
     }
 }

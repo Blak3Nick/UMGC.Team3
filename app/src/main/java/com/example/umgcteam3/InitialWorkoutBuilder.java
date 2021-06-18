@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
-    String[] allExercises = {"squat", "bench", "deadlift", "curl", "leg press"};
+    String[] allExercises = {"squat", "bench", "deadlift", "curl", "leg press", "shoulder press", "barbell row"};
 
     String user_id;
 
@@ -36,7 +36,7 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
         newWorkout.put("TargetReps", 8);
         newWorkout.put("WeightUsed", 135);
 
-        for (int k = 1; k < 4; k++) {
+        for (int k = 1; k < 5; k++) {
             for (int j = 1; j < allExercises.length+1; j++) {
                 newWorkout.put("ExerciseName", allExercises[j-1]);
                 for (int i = 1; i < 6; i++) {

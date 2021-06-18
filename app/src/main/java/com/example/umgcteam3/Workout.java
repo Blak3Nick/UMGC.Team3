@@ -1,9 +1,10 @@
 package com.example.umgcteam3;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Workout {
+public class Workout implements Serializable {
 
     private HashMap<Integer, Exercise> allExercises;
     public Workout() {

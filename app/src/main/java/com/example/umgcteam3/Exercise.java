@@ -1,8 +1,9 @@
 package com.example.umgcteam3;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Exercise {
+public class Exercise implements Serializable {
     private ArrayList<Set> allSets;
     public int exerciseNumber;
     public Exercise(int exerciseNumber) {

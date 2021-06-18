@@ -31,7 +31,7 @@ public class UpdateDatabase extends AsyncTask<Void, Void, String> {
     String exDate;
     String setNumber;
     boolean readyToIncrease = false;
-    public UpdateDatabase(Context context, int set, int reps, int rpe, int weight, int day_number,  String exercise_name, boolean readyToIncrease) {
+    public UpdateDatabase(Context context, int set, int reps, int rpe, int weight, int day_number,  String exercise_name, String exDate, boolean readyToIncrease) {
         this.context = context;
         this.set = set;
         this.reps = reps;
@@ -49,6 +49,7 @@ public class UpdateDatabase extends AsyncTask<Void, Void, String> {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
+        System.out.println(user_id);
         Map<String, Object> completedSet = new HashMap<>();
         String date = FieldValue.serverTimestamp().toString();
         System.out.println(date);
@@ -60,7 +61,7 @@ public class UpdateDatabase extends AsyncTask<Void, Void, String> {
         completedSet.put("DayNumber", day_number);
         completedSet.put("Increase?", readyToIncrease);
 
-        db.collection("users").document(user_id).collection("CompletedWorkoutsRevised").document(exercise_name).collection("AllSets").document(exDate).collection(setNumber)
+        db.collection("users").document(user_id).collection("CompletedWorkouts").document(exercise_name).collection("AllSets").document(exDate).collection(setNumber)
                 .document(setNumber+"Details").set(completedSet, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

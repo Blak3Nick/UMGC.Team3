@@ -1,7 +1,9 @@
 package com.example.umgcteam3;
 
 
-public class Set {
+import java.io.Serializable;
+
+public class Set implements Serializable {
     private String ExerciseCategory;
     private String ExerciseName;
     private int Precedence;

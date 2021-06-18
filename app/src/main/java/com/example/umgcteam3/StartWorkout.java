@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 public class StartWorkout extends AppCompatActivity {
     private volatile boolean stopThread = false;
@@ -34,17 +35,20 @@ public class StartWorkout extends AppCompatActivity {
     TextView rpeNumber;
     Integer day_number;
     boolean increaseWeight = false;
+    int exercise_count;
 
     private ProgressBar progressBar;
     private int progressStatus = 0;
     private TextView textView;
     private Handler handler = new Handler();
+    Workout workout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Bundle extras = getIntent().getExtras();
+        exercise_count = extras.getInt("exercise_count");
         try {
             increaseWeight = extras.getBoolean("increaseWeight");
             System.out.println("Assigned the boolean " + increaseWeight);
@@ -56,6 +60,7 @@ public class StartWorkout extends AppCompatActivity {
         System.out.println(day_number + " Is the day number");
         setContentView(R.layout.start_workout_layout);
         count = extras.getInt("count");
+        System.out.println("The count is " +count);
         exercise_name = extras.getStringArrayList("exercise_name");
         set_number = extras.getStringArrayList("set");
         System.out.println(set_number);
@@ -64,21 +69,25 @@ public class StartWorkout extends AppCompatActivity {
         weight = extras.getStringArrayList("weight");
 
         exercise1 = (TextView) findViewById(R.id.exercise_name);
-        exercise1.setText(exercise_name.get(count));
+        HashMap<Integer, Exercise> all_exercises = (HashMap<Integer, Exercise>) extras.get("all_exercises");
+        Exercise exercise = BackgroundWorker.day2Exercises[exercise_count];
+
+        Set set = exercise.getSet(count);
+        //exercise1.setText(exercise_name.get(count));
+        exercise1.setText(set.getExerciseName());
 
         setNumberTextDesc = (TextView) findViewById(R.id.actualSetNumber);
-        Integer setNum = Integer.parseInt(set_number.get(count));
-        System.out.println(setNum + " IS the set number");
-        setNumberTextDesc.setText(set_number.get(count));
+
+        setNumberTextDesc.setText(Integer.toString(count+1));
 
         weightNumber = findViewById(R.id.weight_number);
-        weightNumber.setText(weight.get(count));
+        weightNumber.setText(Integer.toString(set.getWeightUsed()));
 
         repNumber = findViewById(R.id.rep_number);
-        repNumber.setText(reps.get(count));
+        repNumber.setText(Integer.toString(set.getTargetReps()));
 
         rpeNumber = findViewById(R.id.actualRPENumber);
-        rpeNumber.setText(rpe.get(count));
+        rpeNumber.setText(Integer.toString(set.getTargetRPE()));
 
 
         count++;
@@ -128,7 +137,11 @@ public class StartWorkout extends AppCompatActivity {
     }
     public void updateWorkoutPage(View view) {
         Intent reloadPage = new Intent(this, StartWorkout.class);
-        int last_exercise = exercise_name.size() -1;
+        int last_exercise = 6;
+        if(count == 5 ) {
+            exercise_count++;
+            count =0;
+        }
 
 
         reloadPage.putExtra("day_number", 1);
@@ -138,6 +151,7 @@ public class StartWorkout extends AppCompatActivity {
         reloadPage.putExtra("rpe", rpe);
         reloadPage.putExtra("weight", weight);
         reloadPage.putExtra("count", count);
+        reloadPage.putExtra("exercise_count", exercise_count);
         sendData();
         reloadPage.putExtra("increaseWeight", increaseWeight);
         stopThread = true;
@@ -174,7 +188,7 @@ public class StartWorkout extends AppCompatActivity {
 //            updateDatabaseExerciseWeightIncrease update = new updateDatabaseExerciseWeightIncrease(this, weight, ex_name);
 //            update.execute();
         }
-        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, day_number, ex_name, false);
+        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, day_number, ex_name, "TODAYDATE", false);
         updateDatabase.execute();
     }
     public void endWorkout(View view) {
