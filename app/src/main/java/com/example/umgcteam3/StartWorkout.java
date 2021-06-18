@@ -155,7 +155,7 @@ public class StartWorkout extends AppCompatActivity {
         sendData();
         reloadPage.putExtra("increaseWeight", increaseWeight);
         stopThread = true;
-        if (count == last_exercise) {
+        if (exercise_count == last_exercise) {
             Intent loadCompleted = new Intent(this, CompletedWorkoutWorker.class);
             startActivity(loadCompleted);
 
@@ -192,12 +192,7 @@ public class StartWorkout extends AppCompatActivity {
         updateDatabase.execute();
     }
     public void endWorkout(View view) {
-//        BackgroundWorkerGetExercisesToIncrease getExercisesToIncrease = new BackgroundWorkerGetExercisesToIncrease(this);
-//        getExercisesToIncrease.execute();
         Intent loadCompleted = new Intent(this, CompletedWorkoutWorker.class);
-        loadCompleted.putExtra("increaseWeight", increaseWeight);
-
-        //TO DO if true get data on the exercises needed to increase and offer user ability to review an increase if they want to
         startActivity(loadCompleted);
     }
 }
