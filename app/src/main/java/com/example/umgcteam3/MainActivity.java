@@ -162,6 +162,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    public void buildInitialWorkouts(View view){
+        InitialWorkoutBuilder workoutBuilder = new InitialWorkoutBuilder();
+        workoutBuilder.doInBackground();
+    }
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();//logout
