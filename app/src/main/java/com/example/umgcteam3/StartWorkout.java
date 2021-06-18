@@ -15,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -188,7 +190,12 @@ public class StartWorkout extends AppCompatActivity {
 //            updateDatabaseExerciseWeightIncrease update = new updateDatabaseExerciseWeightIncrease(this, weight, ex_name);
 //            update.execute();
         }
-        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, day_number, ex_name, "TODAYDATE", false);
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate = dateFormat.format(date);
+        System.out.println("Date = " + strDate);
+
+        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, day_number, ex_name, strDate, false);
         updateDatabase.execute();
     }
     public void endWorkout(View view) {
