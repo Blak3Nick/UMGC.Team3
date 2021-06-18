@@ -51,22 +51,13 @@ public class LoadWorkoutsActivity extends AppCompatActivity{
         startActivity(getDay4Overview);
     }
 
-    public void circuit_day_generator(View view) {
-        // TODO
-//        Intent getCircuitOverview = new Intent(this, circuit_Overview_Activity.class);
-//        final int result = 1;
-//
-//        startActivity(getCircuitOverview);
-
-    }
 
 
     public void onLogin (View view) {
         //Build Workouts button
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute();
-//        BackgroundWorkerCircuit circuit = new BackgroundWorkerCircuit(this);
-//        circuit.execute();
+
 
     }
     public void onLogin () {
@@ -74,8 +65,7 @@ public class LoadWorkoutsActivity extends AppCompatActivity{
         LoginActivity loginActivity = new LoginActivity();
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute();
-//        BackgroundWorkerCircuit circuit = new BackgroundWorkerCircuit(this);
-//        circuit.execute();
+
     }
 
 

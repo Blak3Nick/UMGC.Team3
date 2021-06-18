@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity" />
+        <activity android:name=".LoadWorkoutsActivity" />
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
