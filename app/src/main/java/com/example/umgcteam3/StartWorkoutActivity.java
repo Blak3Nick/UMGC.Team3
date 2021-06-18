@@ -1,11 +1,8 @@
 package com.example.umgcteam3;
 
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -13,7 +10,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,7 +18,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
-public class StartWorkout extends AppCompatActivity {
+public class StartWorkoutActivity extends AppCompatActivity {
     private volatile boolean stopThread = false;
     ArrayList<String> exercise_name = new ArrayList<>();
     ArrayList<String> set_number = new ArrayList<>();
@@ -138,7 +134,7 @@ public class StartWorkout extends AppCompatActivity {
         startActivity(loadHomePage);
     }
     public void updateWorkoutPage(View view) {
-        Intent reloadPage = new Intent(this, StartWorkout.class);
+        Intent reloadPage = new Intent(this, StartWorkoutActivity.class);
         int last_exercise = 6;
         if(count == 5 ) {
             exercise_count++;

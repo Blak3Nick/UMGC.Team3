@@ -12,7 +12,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".LoadWorkoutsActivity" />
         <activity android:name=".OverviewActivity" />
-        <activity android:name=".StartWorkout" />
+        <activity android:name=".StartWorkoutActivity" />
         <activity android:name=".CompletedWorkoutWorker" />
         <activity
             android:name=".RegisterActivity"

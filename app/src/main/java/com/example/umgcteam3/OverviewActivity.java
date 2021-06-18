@@ -111,7 +111,7 @@ public class OverviewActivity extends Activity {
     }
 
     public void startWorkout(View view) {
-        Intent startDay1 = new Intent(this, StartWorkout.class);
+        Intent startDay1 = new Intent(this, StartWorkoutActivity.class);
         startDay1.putExtra("setNumber", 0);
         startDay1.putExtra("exerciseNumber", 1);
         int dayNum = extras.getInt("day_number");
