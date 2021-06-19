@@ -173,7 +173,6 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
     public void proceedToWorkout(View view) {
-        System.out.println("The user id is:   " + userId);
         startActivity(new Intent(getApplicationContext(), LoadWorkoutsActivity.class));
         finish();
     }
