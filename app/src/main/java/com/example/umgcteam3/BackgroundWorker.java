@@ -1,24 +1,20 @@
 package com.example.umgcteam3;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.HashMap;
 
+// Gets the workout data from the Firestore Database
 public class BackgroundWorker extends AsyncTask<Void, Void, String> {
     Context context;
-    AlertDialog alertDialog;
     BackgroundWorker (Context ctx) {
         context = ctx;
     }
@@ -28,6 +24,7 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
     public static Exercise[] day1Exercises = new Exercise[7];
     public static Exercise[] day2Exercises = new Exercise[7];
     public static Exercise[] day3Exercises = new Exercise[7];
+
     @Override
     protected String doInBackground(Void... voids) {
         userID = fAuth.getCurrentUser().getUid();
@@ -44,6 +41,7 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
         }
         return null;
     }
+
     private void getWorkoutData(int dayNum) {
         int dayTracker = dayNum;
         db = FirebaseFirestore.getInstance();
@@ -51,7 +49,6 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
         for(int j=1; j<8; j++) {
             String firstExPath = "Exercise_" + j + "_All_Sets";
             final String secondExPath = "Ex_" + j + "_All_Sets";
-            final HashMap<String, String[]> allSets = new HashMap<>();
             final int finalJ = j -1;
             db.collection("users").document(userID).collection("CurrentWorkoutPlan").document(day).collection(firstExPath)
                     .document(secondExPath).collection("AllSets").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -69,6 +66,7 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
             });
         }
     }
+
     private void getWorkoutData2(int dayNum) {
         int dayTracker = dayNum;
         db = FirebaseFirestore.getInstance();
@@ -76,7 +74,6 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
         for(int j=1; j<8; j++) {
             String firstExPath = "Exercise_" + j + "_All_Sets";
             final String secondExPath = "Ex_" + j + "_All_Sets";
-            final HashMap<String, String[]> allSets = new HashMap<>();
             final int finalJ = j -1;
             db.collection("users").document(userID).collection("CurrentWorkoutPlan").document(day).collection(firstExPath)
                     .document(secondExPath).collection("AllSets").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -94,6 +91,7 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
             });
         }
     }
+
     private void getWorkoutData3(int dayNum) {
         int dayTracker = dayNum;
         db = FirebaseFirestore.getInstance();
@@ -101,7 +99,6 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
         for(int j=1; j<8; j++) {
             String firstExPath = "Exercise_" + j + "_All_Sets";
             final String secondExPath = "Ex_" + j + "_All_Sets";
-            final HashMap<String, String[]> allSets = new HashMap<>();
             final int finalJ = j -1;
             db.collection("users").document(userID).collection("CurrentWorkoutPlan").document(day).collection(firstExPath)
                     .document(secondExPath).collection("AllSets").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -121,9 +118,7 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
     }
 
     @Override
-    protected void onPreExecute() {
-
-    }
+    protected void onPreExecute() {}
 
     @Override
     protected void onPostExecute(String result) {
