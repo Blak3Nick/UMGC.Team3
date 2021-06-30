@@ -3,6 +3,7 @@ package com.example.umgcteam3;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+// Defines what an exercise is in the scope of this program
 public class Exercise implements Serializable {
     private ArrayList<Set> allSets;
     public int exerciseNumber;

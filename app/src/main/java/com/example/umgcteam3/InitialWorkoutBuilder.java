@@ -3,23 +3,28 @@ package com.example.umgcteam3;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
-
 import java.util.HashMap;
 import java.util.Map;
-
+//Assigns a group of exercises to the user initially
 public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
-    String[] allExercises = {"squat", "bench", "deadlift", "curl", "leg press", "shoulder press", "barbell row"};
 
+    String[] allExercises = new String[7];
     String user_id;
+    public InitialWorkoutBuilder() {
+       int i =0;
+        for (ExerciseNames a: ExerciseNames.values()) {
+            allExercises[i++] = a.toString();
+        }
+    }
+
+
 
 
     @Override
