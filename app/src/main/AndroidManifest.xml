@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- This document is the "driver" for the app which essential replaces a Java program's main method/class -->
+
+<!--
+Root element "manifest" that builds the manifest file and contains attributes for the app
+xmlns defines the application's namespace
+package defines the package name; any classes built under the package name will follow "com.example.umgcteam3.<CLASS>"
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.umgcteam3">
 
+<!--
+application element; declaration of the application and its components
+the attributes within application set values for components within the application
+    allowBackup - allows a system backup for restoring infrastructure
+    icon - icon displayed for the application
+    label - application name/label
+    supportsRtl - if the application accepts right-to-left layouts
+    theme - links to /values/styles.xml to set applications theme
+
+-->
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--
+            activity element declares an activity of Activity sublass for the app's UI
+            all activities must be declared in this manifest or else it will not be seen by the system
+        -->
         <activity android:name=".LoginActivity" />
         <activity android:name=".LoadWorkoutsActivity" />
         <activity android:name=".OverviewActivity" />
@@ -18,11 +41,20 @@
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar">
+            <!--
+                an intent-filter specifies the types of intents an activity can respond to
+                action - action name for an intent
+                    main entry point of application
+                category - category name for
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--
+            activity element for the main page
+        -->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
