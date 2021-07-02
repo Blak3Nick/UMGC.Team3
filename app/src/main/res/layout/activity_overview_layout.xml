@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorBackground"
     android:orientation="vertical">
 
     <TextView
@@ -19,7 +19,7 @@
         android:gravity="center"
         android:paddingBottom="8dp"
         android:text="Exercise 1"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorBackground"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -39,7 +39,7 @@
         android:gravity="center"
         android:paddingBottom="8dp"
         android:text="Exercise 2"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorBackground"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -59,7 +59,7 @@
         android:gravity="center"
         android:paddingBottom="8dp"
         android:text="Exercise 3"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorBackground"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -79,7 +79,7 @@
         android:gravity="center"
         android:paddingBottom="8dp"
         android:text="Exercise  4"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorBackground"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -99,7 +99,7 @@
         android:gravity="center"
         android:paddingBottom="8dp"
         android:text="Exercise 5"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorBackground"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -119,7 +119,7 @@
         android:gravity="center"
         android:paddingBottom="8dp"
         android:text="Exercise  6"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorBackground"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -139,7 +139,7 @@
         android:gravity="center"
         android:paddingBottom="8dp"
         android:text="Exercise 7"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorBackground"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -156,7 +156,7 @@
         android:id="@+id/start_day1_workout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorBackground"
         android:onClick="startWorkout"
         android:text="Start Workout"
         android:textColor="#fff" />
@@ -165,7 +165,7 @@
         android:id="@+id/home_button_day1_overview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorBackground"
         android:onClick="goHome"
         android:text="HOME"
         android:textColor="#fff" />

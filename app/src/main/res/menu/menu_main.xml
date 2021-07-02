@@ -2,9 +2,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.umgcteam3.MainActivity">
+
+    <!-- Added the back icon on right corner
+         TODO - change to left corner instead of right.
+         -->
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
+        android:icon="@drawable/backicon"
+        android:drawableLeft="@drawable/backicon"
         android:title="@string/action_settings"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom"/>
+
+
+    -->
 </menu>
