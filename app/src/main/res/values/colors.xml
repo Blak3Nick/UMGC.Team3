@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--This file contains colors for the app
+#E44454  => colorAccent      (MAMEY)
+#000000  => colorBackground  (BLACK)
+#FFFFFF  => colorText        (WHITE)
+#707070	 => colorTextBackground (GRAY)
+-->
+
+
+
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorBackground">#000000</color>
+    <color name="colorTextBackground">#707070</color>
+    <color name="colorAccent">#F44336</color>
+    <color name="colorText">#ffffff</color>
 </resources>
