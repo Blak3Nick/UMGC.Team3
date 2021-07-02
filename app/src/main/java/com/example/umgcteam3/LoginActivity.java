@@ -1,6 +1,15 @@
 package com.example.umgcteam3;
 
 
+/*
+
+TODO: Add imageView as background
+
+*/
+
+
+
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -37,6 +46,8 @@ public class LoginActivity extends AppCompatActivity {
     TextView mCreateBtn,forgotTextLink;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
+
+
     public static String userID;
     private static Workout WorkoutDay1;
     private static Workout WorkoutDay2;
