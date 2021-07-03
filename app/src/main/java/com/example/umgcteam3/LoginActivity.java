@@ -15,19 +15,15 @@ TODO: Add imageView as background
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -39,24 +35,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 //import com.google.firebase.iid.FirebaseInstanceId;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String TAG = "Cloud Messaging";
     EditText mEmail,mPassword;
     Button mLoginBtn;
     TextView mCreateBtn,forgotTextLink;
-    ProgressBar progressBar;
     FirebaseAuth fAuth;
-
-
     public static String userID;
-    private static Workout WorkoutDay1;
-    private static Workout WorkoutDay2;
-    private static Workout WorkoutDay3;
-    private static HashMap<Integer, String> circuitWorkout = new HashMap<>();
-    public static HashMap<Integer, ArrayList<String>> circuitCategories = new HashMap<>();
+    private static Workout UpperBodyWorkout;
+    private static Workout LowerBodyWorkout;
+    private static Workout AbdominalWorkout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,28 +140,28 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public static Workout getWorkoutDay1() {
-        return WorkoutDay1;
+    public static Workout getUpperBodyWorkout() {
+        return UpperBodyWorkout;
     }
 
-    public static void setWorkoutDay1(Workout workoutDay1) {
-        WorkoutDay1 = workoutDay1;
+    public static void setUpperBodyWorkout(Workout upperBodyWorkout) {
+        UpperBodyWorkout = upperBodyWorkout;
     }
 
-    public static Workout getWorkoutDay2() {
-        return WorkoutDay2;
+    public static Workout getLowerBodyWorkout() {
+        return LowerBodyWorkout;
     }
 
-    public static void setWorkoutDay2(Workout workoutDay2) {
-        WorkoutDay2 = workoutDay2;
+    public static void setLowerBodyWorkout(Workout lowerBodyWorkout) {
+        LowerBodyWorkout = lowerBodyWorkout;
     }
 
-    public static Workout getWorkoutDay3() {
-        return WorkoutDay3;
+    public static Workout getAbdominalWorkout() {
+        return AbdominalWorkout;
     }
 
-    public static void setWorkoutDay3(Workout workoutDay3) {
-        WorkoutDay3 = workoutDay3;
+    public static void setAbdominalWorkout(Workout abdominalWorkout) {
+        AbdominalWorkout = abdominalWorkout;
     }
 
 

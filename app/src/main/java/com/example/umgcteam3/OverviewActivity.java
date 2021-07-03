@@ -41,9 +41,9 @@ public class OverviewActivity extends Activity {
         ) {
             WorkoutDay3.addExercise(ex);
         }
-        LoginActivity.setWorkoutDay1(WorkoutDay1);
-        LoginActivity.setWorkoutDay2(WorkoutDay2);
-        LoginActivity.setWorkoutDay3(WorkoutDay3);
+        LoginActivity.setUpperBodyWorkout(WorkoutDay1);
+        LoginActivity.setLowerBodyWorkout(WorkoutDay2);
+        LoginActivity.setAbdominalWorkout(WorkoutDay3);
         Integer day_number = extras.getInt("day_number");
         HashMap<Integer, Exercise> allExercises =  WorkoutDay1.getAllExercises();
         setContentView(R.layout.activity_overview_layout);
