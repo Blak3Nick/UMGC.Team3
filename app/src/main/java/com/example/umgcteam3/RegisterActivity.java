@@ -2,6 +2,7 @@ package com.example.umgcteam3;
 
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,9 +37,9 @@ public class RegisterActivity extends AppCompatActivity {
     Button mRegisterBtn;
     TextView mLoginBtn;
     FirebaseAuth fAuth;
-    ProgressBar progressBar;
     FirebaseFirestore fStore;
     public static String userID;
+    AlertDialog.Builder dialogBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +55,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        progressBar = findViewById(R.id.progressBar);
 
         if(fAuth.getCurrentUser() != null){
             userID = fAuth.getCurrentUser().getUid();
@@ -65,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("Creating account...");;
                 final String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
                 final String fullName = mFullName.getText().toString();
@@ -85,17 +87,14 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                //progressBar.setVisibility(View.VISIBLE);
-
                 // register the user in firebase
 
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        System.out.println("Creating user...");
                         if(task.isSuccessful()){
-
                             // send verification link
-
                             FirebaseUser fuser = fAuth.getCurrentUser();
                             fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -125,20 +124,30 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Log.d(TAG, "onFailure: " + e.toString());
+
                                 }
                             });
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
-                        }else {
-                            Toast.makeText(RegisterActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
+                        }if(!task.isSuccessful()) {
+                            dialogBuilder = new AlertDialog.Builder(RegisterActivity.this);
+                            dialogBuilder.setMessage("Email already in use...")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Toast.makeText(getApplicationContext(),"Please use another email or login",
+                                                    Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                            AlertDialog alert = dialogBuilder.create();
+                            alert.setTitle("Email already used");
+                            alert.show();
+                            System.out.println("Error creating account");
                         }
                     }
                 });
             }
         });
-
-
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

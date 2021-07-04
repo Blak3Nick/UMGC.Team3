@@ -28,6 +28,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageException;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
@@ -65,7 +66,12 @@ public class MainActivity extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference();
+        try {
+            storageReference = FirebaseStorage.getInstance().getReference();
+        } catch (Exception e) {
+            System.out.println("No storage for this user.");
+        }
+
 
         try {
             StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
@@ -128,7 +134,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-        } catch (NullPointerException e) {
+        } catch (Exception storageException) {
+            System.out.println(storageException.getMessage());
+            System.out.println("Storage Exception");
             finish();
         }
 
