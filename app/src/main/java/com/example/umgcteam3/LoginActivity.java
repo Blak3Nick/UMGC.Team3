@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mEmail = findViewById(R.id.Email);
         mPassword = findViewById(R.id.password);
-        //progressBar = findViewById(R.id.progressBar);
         fAuth = FirebaseAuth.getInstance();
         mLoginBtn = findViewById(R.id.loginBtn);
         mCreateBtn = findViewById(R.id.createText);
@@ -73,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
                     mPassword.setError("Password Must be >= 6 Characters");
                     return;
                 }
-                //progressBar.setVisibility(View.VISIBLE);
                 // authenticate the user
                 fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -117,7 +115,6 @@ public class LoginActivity extends AppCompatActivity {
                 passwordResetDialog.setTitle("Reset Password ?");
                 passwordResetDialog.setMessage("Enter Your Email To Received Reset Link.");
                 passwordResetDialog.setView(resetMail);
-
                 passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
