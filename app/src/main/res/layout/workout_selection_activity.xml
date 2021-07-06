@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorBackground"
-        android:onClick="goHome"
+        android:onClick="returnToDashboard"
         android:text="HOME"
         android:textColor="#fff" />
 

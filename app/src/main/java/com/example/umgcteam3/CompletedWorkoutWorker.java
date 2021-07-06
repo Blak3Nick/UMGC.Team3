@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
 //Could be used to overview progress from the completed workout
-public class CompletedWorkoutWorker extends Activity {
+public class CompletedWorkoutWorker extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -18,9 +20,8 @@ public class CompletedWorkoutWorker extends Activity {
         setContentView(R.layout.completed_workout_layout);
     }
 
-    public void goHome(View view) {
-        Intent loadHomePage = new Intent(this, MainActivity.class);
-        final int result = 1;
-        startActivity(loadHomePage);
+    public void returnToDashboard(View view) {
+        Intent dashboard = new Intent(this, DashboardActivity.class);
+        startActivity(dashboard);
     }
 }
