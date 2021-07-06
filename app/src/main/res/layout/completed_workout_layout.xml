@@ -3,119 +3,53 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <!-- Commented out for testing purposes
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="85sp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="Congratulations!"
-        android:textSize="50sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="match_parent"
-        android:layout_height="122dp"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="Workout complete"
-        android:textSize="28sp" />
-
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:onClick="goHome"
-        android:text="Home"
-
-    <TextView
-        android:id="@+id/infoTextIncrease"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="You are ready to increase weight. Hit the button below to review."
-        android:textSize="14sp"
-        android:visibility="invisible" />
-
-    <Button
-        android:id="@+id/reviewButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:onClick="assignExercises"
-        android:text="Review"
-        android:visibility="invisible" />
-
-
-        -->
 
     <!-- running logo (same as splash screen) -->
 
-<ImageView
-    android:id="@+id/imageView5"
-    android:layout_width="143dp"
-    android:layout_height="138dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.448"
-    app:srcCompat="@drawable/runningmanlogo" />
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="143dp"
+        android:layout_height="138dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.448"
+        app:srcCompat="@drawable/runningmanlogo" />
 
     <!-- "woohoo workout complete sign -->
-<ImageView
-    android:id="@+id/imageView6"
-    android:layout_width="171dp"
-    android:layout_height="89dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.253"
-    app:srcCompat="@drawable/completebanner" />
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="171dp"
+        android:layout_height="89dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.253"
+        app:srcCompat="@drawable/completebanner" />
 
     <!--action button for dashboard -->
-<Button
-    android:id="@+id/button3"
-    android:layout_width="166dp"
-    android:layout_height="34dp"
-    android:visibility="invisible"
-    android:onClick="goHome"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.652" />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:onClick="returnToDashboard"
+        android:text="DASHBOARD"
+        android:textColor="@color/colorText"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.652" />
 
     <!-- graphic for dashboard button -->
-<ImageView
-    android:id="@+id/imageView7"
-    android:layout_width="173dp"
-    android:layout_height="43dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.504"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.655"
-    app:srcCompat="@drawable/dashboardbutton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
