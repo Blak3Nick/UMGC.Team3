@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     private static Workout UpperBodyWorkout;
     private static Workout LowerBodyWorkout;
     private static Workout AbdominalWorkout;
+    AlertDialog.Builder dialogBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +83,19 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         }else {
-                            Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            System.out.println("Incorrect password...");
+                            dialogBuilder = new AlertDialog.Builder(LoginActivity.this);
+                            dialogBuilder.setMessage("Please input the correct password or select the forgotten password link to have it reset.")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Toast.makeText(getApplicationContext(),"Try again",
+                                                    Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                            AlertDialog alert = dialogBuilder.create();
+                            alert.setTitle("Incorrect Password");
+                            alert.show();
+                            System.out.println("Wrong password...");
                         }
                     }
                 });
