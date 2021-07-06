@@ -20,11 +20,6 @@ import java.util.HashMap;
 
 public class StartWorkoutActivity extends AppCompatActivity {
     private volatile boolean stopThread = false;
-    ArrayList<String> exercise_name = new ArrayList<>();
-    ArrayList<String> set_number = new ArrayList<>();
-    ArrayList<String> reps = new ArrayList<>();
-    ArrayList<String> weight = new ArrayList<>();
-    ArrayList<String> rpe = new ArrayList<>();
     int count;
     TextView exercise1;
     TextView weightNumber;
@@ -32,46 +27,26 @@ public class StartWorkoutActivity extends AppCompatActivity {
     TextView repNumber;
     TextView rpeNumber;
     Integer day_number;
-    boolean increaseWeight = false;
+    Exercise[] allExercises;
     int exercise_count;
-
     private ProgressBar progressBar;
     private int progressStatus = 0;
     private TextView textView;
     private Handler handler = new Handler();
-    Workout workout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Bundle extras = getIntent().getExtras();
-        exercise_count = extras.getInt("exercise_count");
-        try {
-            increaseWeight = extras.getBoolean("increaseWeight");
-            System.out.println("Assigned the boolean " + increaseWeight);
-        }catch (Exception ex) {
-            System.out.println("Could not assign boolean");
-        }
-        Calendar calendar = Calendar.getInstance();
-        day_number = extras.getInt("day_number");
-        System.out.println(day_number + " Is the day number");
         setContentView(R.layout.start_workout_layout);
         count = extras.getInt("count");
-        System.out.println("The count is " +count);
-        exercise_name = extras.getStringArrayList("exercise_name");
-        set_number = extras.getStringArrayList("set");
-        System.out.println(set_number);
-        reps = extras.getStringArrayList("exercise_category_name");
-        rpe = extras.getStringArrayList("rpe");
-        weight = extras.getStringArrayList("weight");
-
+        exercise_count = extras.getInt("exercise_count");
         exercise1 = (TextView) findViewById(R.id.exercise_name);
-        HashMap<Integer, Exercise> all_exercises = (HashMap<Integer, Exercise>) extras.get("all_exercises");
-        Exercise exercise = BackgroundWorker.day2Exercises[exercise_count];
+        allExercises = (Exercise[]) extras.get("AllExercises");
+        Exercise exercise = allExercises[exercise_count];
 
         Set set = exercise.getSet(count);
-        //exercise1.setText(exercise_name.get(count));
         exercise1.setText(set.getExerciseName());
 
         setNumberTextDesc = (TextView) findViewById(R.id.actualSetNumber);
@@ -86,14 +61,9 @@ public class StartWorkoutActivity extends AppCompatActivity {
 
         rpeNumber = findViewById(R.id.actualRPENumber);
         rpeNumber.setText(Integer.toString(set.getTargetRPE()));
-
-
         count++;
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.textViewProgress);
-
-
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -107,7 +77,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
                         stopThread = false;
                         return;
                     }
-                    System.out.println("Progess:"   + progressStatus) ;
+                    System.out.println("Progress:"   + progressStatus) ;
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -140,18 +110,10 @@ public class StartWorkoutActivity extends AppCompatActivity {
             exercise_count++;
             count =0;
         }
-
-
-        reloadPage.putExtra("day_number", 1);
-        reloadPage.putExtra("exercise_name", exercise_name);
-        reloadPage.putExtra("set", set_number);
-        reloadPage.putExtra("exercise_category_name", reps);
-        reloadPage.putExtra("rpe", rpe);
-        reloadPage.putExtra("weight", weight);
         reloadPage.putExtra("count", count);
         reloadPage.putExtra("exercise_count", exercise_count);
+        reloadPage.putExtra("AllExercises", allExercises);
         sendData();
-        reloadPage.putExtra("increaseWeight", increaseWeight);
         stopThread = true;
         if (exercise_count == last_exercise) {
             Intent loadCompleted = new Intent(this, CompletedWorkoutWorker.class);
@@ -181,17 +143,12 @@ public class StartWorkoutActivity extends AppCompatActivity {
         } catch (Exception ex) {
             System.out.println("COULD NOT get one of the numbers from get text");
         }
-        if (set == 5 && rpe <= 5) {
-//            increaseWeight = true;
-//            updateDatabaseExerciseWeightIncrease update = new updateDatabaseExerciseWeightIncrease(this, weight, ex_name);
-//            update.execute();
-        }
         Date date = Calendar.getInstance().getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = dateFormat.format(date);
         System.out.println("Date = " + strDate);
 
-        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, day_number, ex_name, strDate, false);
+        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, 1, ex_name, strDate, false);
         updateDatabase.execute();
     }
     public void endWorkout(View view) {

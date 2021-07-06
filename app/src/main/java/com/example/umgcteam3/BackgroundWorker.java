@@ -21,93 +21,44 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
     FirebaseFirestore db;
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
     String userID;
-    public static Exercise[] day1Exercises = new Exercise[7];
-    public static Exercise[] day2Exercises = new Exercise[7];
-    public static Exercise[] day3Exercises = new Exercise[7];
+    public static Exercise[] upperBodyExercises = new Exercise[UpperBodyExercise.values().length];
+    public static Exercise[] lowerBodyExercises = new Exercise[LowerBodyExercise.values().length];
+    public static Exercise[] abdominalExercises = new Exercise[AbdominalExercises.values().length];
 
     @Override
     protected String doInBackground(Void... voids) {
         userID = fAuth.getCurrentUser().getUid();
-        getWorkoutData(1);
-        getWorkoutData2(2);
-        getWorkoutData3(3);
-        for (int i = 0; i < day1Exercises.length; i++) {
+        for (int i = 0; i < upperBodyExercises.length; i++) {
             Exercise exercise = new Exercise(i+1);
-            day1Exercises[i] = exercise;
-            Exercise exercise2 = new Exercise(i+1);
-            day2Exercises[i] = exercise2;
-            Exercise exercise3 = new Exercise(i+1);
-            day3Exercises[i] = exercise3;
+            upperBodyExercises[i] = exercise;
         }
+        for (int i = 0; i < lowerBodyExercises.length; i++) {
+            Exercise exercise = new Exercise(i+1);
+            lowerBodyExercises[i] = exercise;
+        }
+        for (int i = 0; i < abdominalExercises.length; i++) {
+            Exercise exercise = new Exercise(i+1);
+            abdominalExercises[i] = exercise;
+        }
+        getWorkout("UpperBody", upperBodyExercises.length, upperBodyExercises);
+        getWorkout("Abdominals", abdominalExercises.length, abdominalExercises);
+        getWorkout("LowerBody", lowerBodyExercises.length, lowerBodyExercises);
         return null;
     }
-
-    private void getWorkoutData(int dayNum) {
-        int dayTracker = dayNum;
+    private void getWorkout(String workoutType, int numberOfExercises, Exercise[] workout) {
         db = FirebaseFirestore.getInstance();
-        String day = "Day_" + dayTracker;
-        for(int j=1; j<8; j++) {
+        for(int j=1; j<numberOfExercises; j++) {
             String firstExPath = "Exercise_" + j + "_All_Sets";
             final String secondExPath = "Ex_" + j + "_All_Sets";
             final int finalJ = j -1;
-            db.collection("users").document(userID).collection("CurrentWorkoutPlan").document(day).collection(firstExPath)
+            db.collection("users").document(userID).collection("CurrentWorkoutPlan").document(workoutType).collection(firstExPath)
                     .document(secondExPath).collection("AllSets").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if (task.isSuccessful()){
                         for (QueryDocumentSnapshot document: task.getResult()) {
                             Set set = document.toObject(Set.class);
-                            day1Exercises[finalJ].addSet(set);
-                        }
-                    } else {
-                        Log.d("ERROR", "Error getting documents", task.getException());
-                    }
-                }
-            });
-        }
-    }
-
-    private void getWorkoutData2(int dayNum) {
-        int dayTracker = dayNum;
-        db = FirebaseFirestore.getInstance();
-        String day = "Day_" + dayTracker;
-        for(int j=1; j<8; j++) {
-            String firstExPath = "Exercise_" + j + "_All_Sets";
-            final String secondExPath = "Ex_" + j + "_All_Sets";
-            final int finalJ = j -1;
-            db.collection("users").document(userID).collection("CurrentWorkoutPlan").document(day).collection(firstExPath)
-                    .document(secondExPath).collection("AllSets").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()){
-                        for (QueryDocumentSnapshot document: task.getResult()) {
-                            Set set = document.toObject(Set.class);
-                            day2Exercises[finalJ].addSet(set);
-                        }
-                    } else {
-                        Log.d("ERROR", "Error getting documents", task.getException());
-                    }
-                }
-            });
-        }
-    }
-
-    private void getWorkoutData3(int dayNum) {
-        int dayTracker = dayNum;
-        db = FirebaseFirestore.getInstance();
-        String day = "Day_" + dayTracker;
-        for(int j=1; j<8; j++) {
-            String firstExPath = "Exercise_" + j + "_All_Sets";
-            final String secondExPath = "Ex_" + j + "_All_Sets";
-            final int finalJ = j -1;
-            db.collection("users").document(userID).collection("CurrentWorkoutPlan").document(day).collection(firstExPath)
-                    .document(secondExPath).collection("AllSets").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()){
-                        for (QueryDocumentSnapshot document: task.getResult()) {
-                            Set set = document.toObject(Set.class);
-                            day3Exercises[finalJ].addSet(set);
+                            workout[finalJ].addSet(set);
                         }
                     } else {
                         Log.d("ERROR", "Error getting documents", task.getException());

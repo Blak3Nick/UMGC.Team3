@@ -33,8 +33,8 @@ the attributes within application set values for components within the applicati
             all activities must be declared in this manifest or else it will not be seen by the system
         -->
         <activity android:name=".LoginActivity" />
-        <activity android:name=".LoadWorkoutsActivity" />
-        <activity android:name=".OverviewActivity" />
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".WorkoutSelectionActivity" />
         <activity android:name=".StartWorkoutActivity" />
         <activity android:name=".CompletedWorkoutWorker" />
         <activity

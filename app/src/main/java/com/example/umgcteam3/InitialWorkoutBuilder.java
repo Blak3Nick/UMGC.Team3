@@ -53,7 +53,7 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
          for (int j = 1; j < upperExercises.length+1; j++) {
             newWorkout.put("ExerciseName", upperExercises[j-1]);
             for (int i = 1; i < 6; i++) {
-                newWorkout.put("setNumber", i);
+                newWorkout.put("SetNumber", i);
                 db.collection("users").document(user_id).collection("CurrentWorkoutPlan").document("UpperBody").collection("Exercise_"+j+"_All_Sets")
                         .document("Ex_"+j+"_All_Sets").collection("AllSets")
                         .document("Set"+i).set(newWorkout, SetOptions.merge())
@@ -83,7 +83,7 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
         for (int j = 1; j < lowerExercises.length+1; j++) {
             newWorkout.put("ExerciseName", lowerExercises[j-1]);
             for (int i = 1; i < 6; i++) {
-                newWorkout.put("setNumber", i);
+                newWorkout.put("SetNumber", i);
                 db.collection("users").document(user_id).collection("CurrentWorkoutPlan").document("LowerBody")
                         .collection("Exercise_"+j+"_All_Sets")
                         .document("Ex_"+j+"_All_Sets").collection("AllSets")
@@ -114,7 +114,7 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
         for (int j = 1; j < absExercises.length+1; j++) {
             newWorkout.put("ExerciseName", absExercises[j-1]);
             for (int i = 1; i < 6; i++) {
-                newWorkout.put("setNumber", i);
+                newWorkout.put("SetNumber", i);
                 db.collection("users").document(user_id).collection("CurrentWorkoutPlan").document("Abdominals").collection("Exercise_"+j+"_All_Sets")
                         .document("Ex_"+j+"_All_Sets").collection("AllSets")
                         .document("Set"+i).set(newWorkout, SetOptions.merge())
