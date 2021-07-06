@@ -9,60 +9,46 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import android.content.Context;
 
 
 
-public class LoadWorkoutsActivity extends AppCompatActivity{
+public class DashboardActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.loaded_workout_activity);
-        onLogin();
+        setContentView(R.layout.dashboard_activity);
+        buildWorkouts();
     }
 
-    public void day_1_workout_generator(View view) {
-        Intent getDay1Overview = new Intent(this, OverviewActivity.class);
-        getDay1Overview.putExtra("day_number", 1);
-        final int result = 1;
-        startActivity(getDay1Overview);
+    public void workoutSelection(View view) {
+        Intent workoutSelectionPage = new Intent(this, WorkoutSelectionActivity.class);
+        startActivity(workoutSelectionPage);
     }
-    public void day_2_workout_generator(View view) {
-        Intent getDay2Overview = new Intent(this, OverviewActivity.class);
-        getDay2Overview.putExtra("day_number", 2);
-        final int result = 1;
+    public void mantraView(View view) {
+        Intent getDay2Overview = new Intent(this, WorkoutSelectionActivity.class);
         startActivity(getDay2Overview);
     }
-    public void day_3_workout_generator(View view) {
-        Intent getDay3Overview = new Intent(this, OverviewActivity.class);
-        getDay3Overview.putExtra("day_number", 3);
-        final int result = 1;
+    public void progressView(View view) {
+        Intent getDay3Overview = new Intent(this, WorkoutSelectionActivity.class);
         startActivity(getDay3Overview);
     }
-    public void day_4_workout_generator(View view) {
-        Intent getDay4Overview = new Intent(this, OverviewActivity.class);
-        getDay4Overview.putExtra("day_number", 4);
-        final int result = 1;
-        startActivity(getDay4Overview);
-    }
 
 
 
-    public void onLogin (View view) {
+    public void buildWorkouts(View view) {
         //Build Workouts button
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute();
 
 
     }
-    public void onLogin () {
+    public void buildWorkouts() {
         //Build Workouts button
-        LoginActivity loginActivity = new LoginActivity();
+        //LoginActivity loginActivity = new LoginActivity();
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute();
 
