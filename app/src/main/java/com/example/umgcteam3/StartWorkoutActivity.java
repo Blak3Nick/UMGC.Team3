@@ -77,7 +77,6 @@ public class StartWorkoutActivity extends AppCompatActivity {
                         stopThread = false;
                         return;
                     }
-                    System.out.println("Progress:"   + progressStatus) ;
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
