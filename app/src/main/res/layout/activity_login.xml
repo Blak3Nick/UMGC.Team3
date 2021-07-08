@@ -94,14 +94,6 @@
          password, it also handles the login, forgot password and sign up
          events     -->
 
-
-    <!-- Login Button [image] -->
-
-    <!-- sign up [action] -->
-
-    <!-- FORGOT PASSWORD Button  [action field] -->
-
-    <!-- BACKGROUND IMAGE  -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="406dp"
@@ -114,7 +106,7 @@
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/mainbackground" />
 
-    <!-- EMAIL Button  [action] -->
+
     <!--
 <TextView
     android:id="@+id/emailText"
@@ -150,9 +142,7 @@
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintVertical_bias="0.603" />
 
-       <!-- Login Button [action] -->
 
-    <!-- PASSWORD Field -->
 
     <!--
 <TextView
@@ -174,7 +164,7 @@
     app:layout_constraintVertical_bias="0.686" />
 -->
 
-<!-- GUIDELINES FOR OBJECT CONSTRAINS -->
+
       <EditText
           android:id="@+id/password"
           android:layout_width="292dp"
