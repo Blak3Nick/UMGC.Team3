@@ -11,11 +11,13 @@ public class Set implements Serializable {
     private int TargetRPE;
     private int TargetReps;
     private int WeightUsed;
+    private int SetNumber;
+    private int TotalSets;
 
     public Set() {
     }
 
-    public Set(String exerciseCategory, String exerciseName, int precedence, int restPeriod, int targetRPE, int targetReps, int weightUsed) {
+    public Set(String exerciseCategory, String exerciseName, int precedence, int restPeriod, int targetRPE, int targetReps, int weightUsed, int setNumber, int totalSets) {
         ExerciseCategory = exerciseCategory;
         ExerciseName = exerciseName;
         Precedence = precedence;
@@ -23,6 +25,8 @@ public class Set implements Serializable {
         TargetRPE = targetRPE;
         TargetReps = targetReps;
         WeightUsed = weightUsed;
+        SetNumber = setNumber;
+        TotalSets = totalSets;
     }
 
     public String getExerciseCategory() {
@@ -79,6 +83,22 @@ public class Set implements Serializable {
 
     public void setWeightUsed(int weightUsed) {
         WeightUsed = weightUsed;
+    }
+
+    public int getSetNumber() {
+        return SetNumber;
+    }
+
+    public void setSetNumber(int setNumber) {
+        SetNumber = setNumber;
+    }
+
+    public int getTotalSets() {
+        return TotalSets;
+    }
+
+    public void setTotalSets(int totalSets) {
+        TotalSets = totalSets;
     }
 }
 

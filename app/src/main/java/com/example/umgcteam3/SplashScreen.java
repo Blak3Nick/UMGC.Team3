@@ -7,6 +7,7 @@ package com.example.umgcteam3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,10 +28,6 @@ public class SplashScreen extends AppCompatActivity {
                 finish();   //this is so the user can't return to the splash screen.
             }
         }, 3000);    //1000 milliseconds = 1 second, thus it'll delay 3 seconds.
-
-
-
-
-
     }
+
 }

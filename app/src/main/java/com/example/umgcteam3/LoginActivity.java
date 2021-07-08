@@ -15,22 +15,16 @@ TODO: Add imageView as background
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,31 +33,24 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 //import com.google.firebase.iid.FirebaseInstanceId;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String TAG = "Cloud Messaging";
     EditText mEmail,mPassword;
     Button mLoginBtn;
     TextView mCreateBtn,forgotTextLink;
-    ProgressBar progressBar;
     FirebaseAuth fAuth;
-
-
     public static String userID;
-    private static Workout WorkoutDay1;
-    private static Workout WorkoutDay2;
-    private static Workout WorkoutDay3;
-    private static HashMap<Integer, String> circuitWorkout = new HashMap<>();
-    public static HashMap<Integer, ArrayList<String>> circuitCategories = new HashMap<>();
+    private static Workout UpperBodyWorkout;
+    private static Workout LowerBodyWorkout;
+    private static Workout AbdominalWorkout;
+    AlertDialog.Builder dialogBuilder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mEmail = findViewById(R.id.Email);
         mPassword = findViewById(R.id.password);
-        progressBar = findViewById(R.id.progressBar);
         fAuth = FirebaseAuth.getInstance();
         mLoginBtn = findViewById(R.id.loginBtn);
         mCreateBtn = findViewById(R.id.createText);
@@ -85,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
                     mPassword.setError("Password Must be >= 6 Characters");
                     return;
                 }
-                //progressBar.setVisibility(View.VISIBLE);
                 // authenticate the user
                 fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -95,8 +81,19 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         }else {
-                            Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
+                            dialogBuilder = new AlertDialog.Builder(LoginActivity.this);
+                            dialogBuilder.setMessage("Please input the correct password or select the forgotten password link to have it reset.")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Toast.makeText(getApplicationContext(),"Try again",
+                                                    Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                            AlertDialog alert = dialogBuilder.create();
+                            alert.setTitle("Incorrect Password");
+                            alert.show();
+                            System.out.println("Wrong password...");
                         }
                     }
                 });
@@ -118,7 +115,6 @@ public class LoginActivity extends AppCompatActivity {
                 passwordResetDialog.setTitle("Reset Password ?");
                 passwordResetDialog.setMessage("Enter Your Email To Received Reset Link.");
                 passwordResetDialog.setView(resetMail);
-
                 passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -151,28 +147,28 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public static Workout getWorkoutDay1() {
-        return WorkoutDay1;
+    public static Workout getUpperBodyWorkout() {
+        return UpperBodyWorkout;
     }
 
-    public static void setWorkoutDay1(Workout workoutDay1) {
-        WorkoutDay1 = workoutDay1;
+    public static void setUpperBodyWorkout(Workout upperBodyWorkout) {
+        UpperBodyWorkout = upperBodyWorkout;
     }
 
-    public static Workout getWorkoutDay2() {
-        return WorkoutDay2;
+    public static Workout getLowerBodyWorkout() {
+        return LowerBodyWorkout;
     }
 
-    public static void setWorkoutDay2(Workout workoutDay2) {
-        WorkoutDay2 = workoutDay2;
+    public static void setLowerBodyWorkout(Workout lowerBodyWorkout) {
+        LowerBodyWorkout = lowerBodyWorkout;
     }
 
-    public static Workout getWorkoutDay3() {
-        return WorkoutDay3;
+    public static Workout getAbdominalWorkout() {
+        return AbdominalWorkout;
     }
 
-    public static void setWorkoutDay3(Workout workoutDay3) {
-        WorkoutDay3 = workoutDay3;
+    public static void setAbdominalWorkout(Workout abdominalWorkout) {
+        AbdominalWorkout = abdominalWorkout;
     }
 
 
