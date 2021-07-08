@@ -185,18 +185,18 @@
 
     <TextView
         android:id="@+id/createText"
-        android:layout_width="281dp"
-        android:layout_height="29dp"
+        android:layout_width="293dp"
+        android:layout_height="23dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/haveaccount"
         android:drawablePadding="-15sp"
         android:ems="14"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.892" />
+        app:layout_constraintVertical_bias="0.872" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
