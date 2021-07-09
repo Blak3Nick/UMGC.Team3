@@ -46,12 +46,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        phone = findViewById(R.id.profilePhone);
-        fullName = findViewById(R.id.profileName);
-        email    = findViewById(R.id.profileEmail);
-        resetPassLocal = findViewById(R.id.resetPasswordLocal);
-
-        profileImage = findViewById(R.id.profileImage);
+//        phone = findViewById(R.id.profilePhone);
+//        fullName = findViewById(R.id.profileName);
+//        email    = findViewById(R.id.profileEmail);
+        resetPassLocal = findViewById(R.id.change_banner);
+//
+//        profileImage = findViewById(R.id.profileImage);
         changeProfileImage = findViewById(R.id.changeProfile);
 
 
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri).into(profileImage);
+//                    Picasso.get().load(uri).into(profileImage);
                 }
             });
         }catch (Exception e){
@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        resendCode = findViewById(R.id.resendCode);
-        verifyMsg = findViewById(R.id.verifyMsg);
+//        resendCode = findViewById(R.id.resendCode);
+//        verifyMsg = findViewById(R.id.verifyMsg);
 
         try{
             userId = fAuth.getCurrentUser().getUid();
@@ -117,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                     if (documentSnapshot != null && documentSnapshot.exists()) {
-                        phone.setText(documentSnapshot.getString("phone"));
-                        fullName.setText(documentSnapshot.getString("fName"));
-                        email.setText(documentSnapshot.getString("email"));
+//                        phone.setText(documentSnapshot.getString("phone"));
+//                        fullName.setText(documentSnapshot.getString("fName"));
+//                        email.setText(documentSnapshot.getString("email"));
                     } else {
                         Log.d("tag", "onEvent: Document do not exists");
                     }
