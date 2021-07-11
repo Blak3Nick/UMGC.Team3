@@ -1,6 +1,8 @@
 package com.example.umgcteam3;
 
-
+/*
+This class "RegisterClass" is initially run from the AndroidManifest.xml document with an intent filter.
+ */
 
 import android.content.DialogInterface;
 import android.content.Intent;
