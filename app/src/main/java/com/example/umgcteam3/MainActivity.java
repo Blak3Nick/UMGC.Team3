@@ -28,6 +28,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageException;
 import com.google.firebase.storage.StorageReference;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser user;
     ImageView profileImage;
     StorageReference storageReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,13 +91,15 @@ public class MainActivity extends AppCompatActivity {
         try{
             userId = fAuth.getCurrentUser().getUid();
             user = fAuth.getCurrentUser();
-
         } catch (Exception e){
             finish();
         }
         try {
             fullName.setText(user.getDisplayName());
             System.out.println(user.getDisplayName());
+            if(user.getDisplayName()== null){
+                updateDisplayName();
+            }
         } catch (Exception storageException) {
 
         }
@@ -123,25 +128,7 @@ public class MainActivity extends AppCompatActivity {
 //            });
         }
 
-        try{
-            DocumentReference documentReference = fStore.collection("users").document(userId);
-            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                    if (documentSnapshot != null && documentSnapshot.exists()) {
-//                        phone.setText(documentSnapshot.getString("phone"));
-//                        fullName.setText(documentSnapshot.getString("fName"));
-//                        email.setText(documentSnapshot.getString("email"));
-                    } else {
-                        Log.d("tag", "onEvent: Document do not exists");
-                    }
-                }
-            });
-        } catch (Exception storageException) {
-            System.out.println(storageException.getMessage());
-            System.out.println("Storage Exception");
-            finish();
-        }
+
 
         resetPassLocal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         changeProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,6 +186,38 @@ public class MainActivity extends AppCompatActivity {
     public void buildInitialWorkouts(View view){
         InitialWorkoutBuilder workoutBuilder = new InitialWorkoutBuilder();
         workoutBuilder.doInBackground();
+    }
+    private void updateDisplayName() {
+        try{
+            DocumentReference documentReference = fStore.collection("users").document(userId);
+            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                    if (documentSnapshot != null && documentSnapshot.exists()) {
+                        String fullName = documentSnapshot.getString("fName");
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(fullName)
+                                .build();
+                        user.updateProfile(profileUpdates)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    private static final String TAG = "PROFILE";
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Log.d(TAG, "User profile updated.");
+                                        }
+                                    }
+                                });
+                    } else {
+                        Log.d("tag", "onEvent: Document do not exists");
+                    }
+                }
+            });
+        } catch (Exception storageException) {
+            System.out.println(storageException.getMessage());
+            System.out.println("Storage Exception");
+        }
+
     }
 
     public void logout(View view) {
