@@ -12,7 +12,7 @@
         android:id="@+id/history_button"
         android:layout_width="76dp"
         android:layout_height="27dp"
-        android:background="@drawable/historybutton"
+        android:background="@drawable/colorhistorybutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.169"
@@ -35,7 +35,7 @@
         android:id="@+id/account_button"
         android:layout_width="76dp"
         android:layout_height="27dp"
-        android:background="@drawable/coloraccounticon"
+        android:background="@drawable/accountbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.813"
@@ -45,7 +45,7 @@
 
 
     <TextView
-        android:id="@+id/fullName"
+        android:id="@+id/textView3"
         android:layout_width="215dp"
         android:layout_height="23dp"
         android:layout_marginStart="8dp"
@@ -59,75 +59,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.21" />
 
-    <Button
-        android:id="@+id/changeProfile"
-        android:layout_width="299dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/changeprofile"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.548" />
-
-    <Button
-        android:id="@+id/change_banner"
-        android:layout_width="299dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/changepassbanner"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeProfile"
-        app:layout_constraintVertical_bias="0.194" />
-
-    <Button
-        android:id="@+id/resetPasswordLocal"
-        android:layout_width="299dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/deactivate"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeProfile"
-        app:layout_constraintVertical_bias="0.814" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="299dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/logout"
-        android:onClick="logout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.773" />
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="354dp"
-        android:layout_height="54dp"
+        android:layout_width="363dp"
+        android:layout_height="56dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.973"
+        app:layout_constraintVertical_bias="0.948"
         app:srcCompat="@drawable/whitebackground" />
-
 
     <Button
         android:id="@+id/button3"
@@ -136,22 +79,21 @@
         android:background="@drawable/homeicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.952" />
+        app:layout_constraintVertical_bias="0.921" />
 
-         <Button
+    <Button
         android:id="@+id/button4"
         android:layout_width="68dp"
         android:layout_height="42dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/colorgearicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.673" />
+        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button5"
@@ -160,12 +102,13 @@
         android:background="@drawable/workoutlogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.952" />
+        app:layout_constraintVertical_bias="0.921" />
 
     <ImageView
-        android:id="@+id/profileImage"
+        android:id="@+id/imageView15"
         android:layout_width="73dp"
         android:layout_height="65dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -187,6 +130,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.138"
         app:srcCompat="@drawable/edit" />
+
+    <ImageView
+        android:id="@+id/imageView31"
+        android:layout_width="304dp"
+        android:layout_height="268dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.688"
+        app:srcCompat="@drawable/historygroup" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -58,11 +59,11 @@ public class RegisterActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
-        if(fAuth.getCurrentUser() != null){
-            userID = fAuth.getCurrentUser().getUid();
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
-        }
+//        if(fAuth.getCurrentUser() != null){
+//            userID = fAuth.getCurrentUser().getUid();
+//            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//            finish();
+//        }
 
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +82,11 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(password)){
                     mPassword.setError("Password is Required.");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(fullName)){
+                    mFullName.setError("Name is required.");
                     return;
                 }
 
@@ -129,6 +135,20 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 }
                             });
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(fullName)
+                                    .build();
+
+                            fuser.updateProfile(profileUpdates)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        private static final String TAG = "PROFILE";
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d(TAG, "User profile updated.");
+                                            }
+                                        }
+                                    });
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                         }if(!task.isSuccessful()) {

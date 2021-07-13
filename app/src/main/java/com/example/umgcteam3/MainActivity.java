@@ -15,16 +15,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageException;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
@@ -32,7 +39,7 @@ import javax.annotation.Nullable;
 
 public class MainActivity extends AppCompatActivity {
     private static final int GALLERY_INTENT_CODE = 1023 ;
-    TextView fullName,email,phone,verifyMsg;
+    TextView fullName,email,phone;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     public String userId;
@@ -42,16 +49,17 @@ public class MainActivity extends AppCompatActivity {
     ImageView profileImage;
     StorageReference storageReference;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        phone = findViewById(R.id.profilePhone);
-//        fullName = findViewById(R.id.profileName);
+        fullName = findViewById(R.id.fullName);
 //        email    = findViewById(R.id.profileEmail);
         resetPassLocal = findViewById(R.id.change_banner);
 //
-//        profileImage = findViewById(R.id.profileImage);
+        profileImage = findViewById(R.id.profileImage);
         changeProfileImage = findViewById(R.id.changeProfile);
 
 
@@ -69,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-//                    Picasso.get().load(uri).into(profileImage);
+                    Picasso.get().load(uri).into(profileImage);
                 }
             });
         }catch (Exception e){
@@ -83,53 +91,44 @@ public class MainActivity extends AppCompatActivity {
         try{
             userId = fAuth.getCurrentUser().getUid();
             user = fAuth.getCurrentUser();
-        } catch (NullPointerException e){
+        } catch (Exception e){
             finish();
         }
+        try {
+            fullName.setText(user.getDisplayName());
+            System.out.println(user.getDisplayName());
+            if(user.getDisplayName()== null){
+                updateDisplayName();
+            }
+        } catch (Exception storageException) {
+
+        }
+
 
 
         if(!user.isEmailVerified()){
-            verifyMsg.setVisibility(View.VISIBLE);
-            resendCode.setVisibility(View.VISIBLE);
+            //resendCode.setVisibility(View.VISIBLE);
 
-            resendCode.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(final View v) {
-
-                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(v.getContext(), "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("tag", "onFailure: Email not sent " + e.getMessage());
-                        }
-                    });
-                }
-            });
+//            resendCode.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(final View v) {
+//
+//                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                        @Override
+//                        public void onSuccess(Void aVoid) {
+//                            Toast.makeText(v.getContext(), "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }).addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            Log.d("tag", "onFailure: Email not sent " + e.getMessage());
+//                        }
+//                    });
+//                }
+//            });
         }
 
-        try{
-            DocumentReference documentReference = fStore.collection("users").document(userId);
-            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                    if (documentSnapshot != null && documentSnapshot.exists()) {
-//                        phone.setText(documentSnapshot.getString("phone"));
-//                        fullName.setText(documentSnapshot.getString("fName"));
-//                        email.setText(documentSnapshot.getString("email"));
-                    } else {
-                        Log.d("tag", "onEvent: Document do not exists");
-                    }
-                }
-            });
-        } catch (Exception storageException) {
-            System.out.println(storageException.getMessage());
-            System.out.println("Storage Exception");
-            finish();
-        }
+
 
         resetPassLocal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         changeProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,6 +186,38 @@ public class MainActivity extends AppCompatActivity {
     public void buildInitialWorkouts(View view){
         InitialWorkoutBuilder workoutBuilder = new InitialWorkoutBuilder();
         workoutBuilder.doInBackground();
+    }
+    private void updateDisplayName() {
+        try{
+            DocumentReference documentReference = fStore.collection("users").document(userId);
+            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                    if (documentSnapshot != null && documentSnapshot.exists()) {
+                        String fullName = documentSnapshot.getString("fName");
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(fullName)
+                                .build();
+                        user.updateProfile(profileUpdates)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    private static final String TAG = "PROFILE";
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Log.d(TAG, "User profile updated.");
+                                        }
+                                    }
+                                });
+                    } else {
+                        Log.d("tag", "onEvent: Document do not exists");
+                    }
+                }
+            });
+        } catch (Exception storageException) {
+            System.out.println(storageException.getMessage());
+            System.out.println("Storage Exception");
+        }
+
     }
 
     public void logout(View view) {
