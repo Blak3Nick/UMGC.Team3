@@ -30,10 +30,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageException;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             userId = fAuth.getCurrentUser().getUid();
             user = fAuth.getCurrentUser();
+            checkUserInfo();
         } catch (Exception e){
             finish();
         }
@@ -181,9 +186,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void buildInitialWorkouts(View view){
+    public void buildInitialWorkouts(){
         InitialWorkoutBuilder workoutBuilder = new InitialWorkoutBuilder();
         workoutBuilder.doInBackground();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Boolean> workout = new HashMap<>();
+        workout.put("workoutsBuilt", true);
+        db.collection("users").document(userId).set(workout, SetOptions.merge())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("SUCCESS", "Written to the database");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w("FAILURE", e.getMessage() );
+            }
+        });
     }
     private void updateDisplayName() {
         try{
@@ -221,7 +241,36 @@ public class MainActivity extends AppCompatActivity {
         if(user.getDisplayName()== null){
             updateDisplayName();
         }
+        try{
+            DocumentReference documentReference = fStore.collection("users").document(userId);
+            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                    if (documentSnapshot != null && documentSnapshot.exists()) {
+                        try {
+                            boolean workoutsBuilt = documentSnapshot.getBoolean("workoutsBuilt");
+                            if(!workoutsBuilt){
+                                buildInitialWorkouts();
+                            }
+                            else{
+                                System.out.println("The user has workouts?  " + workoutsBuilt);
+                            }
+                        } catch (NullPointerException exception){
+                            buildInitialWorkouts();
+                        }
+
+                    } else {
+                        Log.d("tag", "onEvent: Document does not exist");
+                    }
+                }
+            });
+        } catch (Exception storageException) {
+            System.out.println(storageException.getMessage());
+            System.out.println("Storage Exception");
+        }
+
     }
+
 
 
     public void logout(View view) {
