@@ -15,16 +15,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageException;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
@@ -32,7 +37,7 @@ import javax.annotation.Nullable;
 
 public class MainActivity extends AppCompatActivity {
     private static final int GALLERY_INTENT_CODE = 1023 ;
-    TextView fullName,email,phone,verifyMsg;
+    TextView fullName,email,phone;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     public String userId;
@@ -47,11 +52,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        phone = findViewById(R.id.profilePhone);
-//        fullName = findViewById(R.id.profileName);
+        fullName = findViewById(R.id.fullName);
 //        email    = findViewById(R.id.profileEmail);
         resetPassLocal = findViewById(R.id.change_banner);
 //
-//        profileImage = findViewById(R.id.profileImage);
+        profileImage = findViewById(R.id.profileImage);
         changeProfileImage = findViewById(R.id.changeProfile);
 
 
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-//                    Picasso.get().load(uri).into(profileImage);
+                    Picasso.get().load(uri).into(profileImage);
                 }
             });
         }catch (Exception e){
@@ -83,32 +88,39 @@ public class MainActivity extends AppCompatActivity {
         try{
             userId = fAuth.getCurrentUser().getUid();
             user = fAuth.getCurrentUser();
-        } catch (NullPointerException e){
+
+        } catch (Exception e){
             finish();
+        }
+        try {
+            fullName.setText(user.getDisplayName());
+            System.out.println(user.getDisplayName());
+        } catch (Exception storageException) {
+
         }
 
 
+
         if(!user.isEmailVerified()){
-            verifyMsg.setVisibility(View.VISIBLE);
-            resendCode.setVisibility(View.VISIBLE);
+            //resendCode.setVisibility(View.VISIBLE);
 
-            resendCode.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(final View v) {
-
-                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(v.getContext(), "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("tag", "onFailure: Email not sent " + e.getMessage());
-                        }
-                    });
-                }
-            });
+//            resendCode.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(final View v) {
+//
+//                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                        @Override
+//                        public void onSuccess(Void aVoid) {
+//                            Toast.makeText(v.getContext(), "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }).addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            Log.d("tag", "onFailure: Email not sent " + e.getMessage());
+//                        }
+//                    });
+//                }
+//            });
         }
 
         try{
