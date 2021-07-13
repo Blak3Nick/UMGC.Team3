@@ -97,9 +97,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             fullName.setText(user.getDisplayName());
             System.out.println(user.getDisplayName());
-            if(user.getDisplayName()== null){
-                updateDisplayName();
-            }
+
         } catch (Exception storageException) {
 
         }
@@ -219,6 +217,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    public void checkUserInfo() {
+        if(user.getDisplayName()== null){
+            updateDisplayName();
+        }
+    }
+
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();//logout
