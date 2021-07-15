@@ -47,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     public String userId;
-    Button resendCode;
-    Button resetPassLocal, changeProfile, changProfileImage;
+    Button resendCode, resetPassLocal, changeProfile, changProfileImage;
     FirebaseUser user;
     ImageView profileImage;
     StorageReference storageReference;
@@ -74,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         try {
@@ -82,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             System.out.println("No storage for this user.");
         }
-
 
         try {
             StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
@@ -93,9 +90,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }catch (Exception e){
-            System.out.println("\n\n\nCould not get Profile pic\n\n\n");
+            Log.d("TrytoGetProfilePic: ", "\n\n\nCould not get Profile pic\n\n\n");
         }
-
 
 //        resendCode = findViewById(R.id.resendCode);
 //        verifyMsg = findViewById(R.id.verifyMsg);
@@ -105,14 +101,16 @@ public class MainActivity extends AppCompatActivity {
             user = fAuth.getCurrentUser();
             checkUserInfo();
         } catch (Exception e){
+            Log.d("TrytoGetUser: ", e.getMessage());
             finish();
         }
+
         try {
             fullName.setText(user.getDisplayName());
             System.out.println(user.getDisplayName());
-
-        } catch (Exception storageException) {
-
+        } catch (Exception e) {
+            Log.d("TrytoDisplayName: ", e.getMessage());
+            finish();
         }
 
 
@@ -138,8 +136,6 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            });
         }
-
-
 
         resetPassLocal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,12 +171,9 @@ public class MainActivity extends AppCompatActivity {
                         // close
                     }
                 });
-
                 passwordResetDialog.create().show();
-
             }
         });
-
 
         changeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public void buildInitialWorkouts(){
         InitialWorkoutBuilder workoutBuilder = new InitialWorkoutBuilder();
         workoutBuilder.doInBackground();
@@ -213,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void updateDisplayName() {
         try{
             DocumentReference documentReference = fStore.collection("users").document(userId);
@@ -239,47 +234,43 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-        } catch (Exception storageException) {
-            System.out.println(storageException.getMessage());
-            System.out.println("Storage Exception");
+        } catch (Exception e) {
+            Log.d("MainActivityProfilePic", e.getMessage());
         }
-
     }
+
     public void checkUserInfo() {
         if(user.getDisplayName()== null){
             updateDisplayName();
         }
-        try{
-            DocumentReference documentReference = fStore.collection("users").document(userId);
-            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                    if (documentSnapshot != null && documentSnapshot.exists()) {
-                        try {
-                            boolean workoutsBuilt = documentSnapshot.getBoolean("workoutsBuilt");
-                            if(!workoutsBuilt){
-                                buildInitialWorkouts();
-                            }
-                            else{
-                                System.out.println("The user has workouts?  " + workoutsBuilt);
-                            }
-                        } catch (NullPointerException exception){
+        DocumentReference documentReference = fStore.collection("users").document(userId);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot != null && documentSnapshot.exists()) {
+                    try {
+                        boolean workoutsBuilt = documentSnapshot.getBoolean("workoutsBuilt");
+                        if(!workoutsBuilt){
                             buildInitialWorkouts();
                         }
-
-                    } else {
-                        Log.d("tag", "onEvent: Document does not exist");
+                        else{
+                            System.out.println("The user has workouts?  " + workoutsBuilt);
+                        }
+                    } catch (NullPointerException exception){
+                        buildInitialWorkouts();
                     }
-                }
-            });
-        } catch (Exception storageException) {
-            System.out.println(storageException.getMessage());
-            System.out.println("Storage Exception");
-        }
 
+                } else {
+                    Log.d("tag", "onEvent: Document does not exist");
+                }
+            }
+        });
     }
 
-
+    public void viewStatistics(View view){
+        startActivity(new Intent(getApplicationContext(),StatisticsActivity.class));
+        finish();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data) {
@@ -290,7 +281,6 @@ public class MainActivity extends AppCompatActivity {
                 uploadImageToFirebase(imageUri);
             }
         }
-
     }
 
     private void uploadImageToFirebase(Uri imageUri) {
@@ -312,19 +302,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Failed.", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
-
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();//logout
         startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         finish();
     }
+
     public void proceedToWorkout(View view) {
         startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
         finish();
     }
-
-
 }
