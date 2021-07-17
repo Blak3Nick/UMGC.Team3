@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--This file contains the xml code for the screen when the user finishes
+    their workout.
 
+    using this custom settings
+
+        android:fontFamily="@font/circular"
+        android:textColorHint="#FFFFFF"
+        android:background="@drawable/ic_button_background"
+
+      All objects have been constrained to top/bottom of the screen
+
+
+  -->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,35 +33,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.448"
-        app:srcCompat="@drawable/runningmanlogo" />
+        app:srcCompat="@drawable/ic_vector_object" />
 
-    <!-- "woohoo workout complete sign -->
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="171dp"
-        android:layout_height="89dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253"
-        app:srcCompat="@drawable/completebanner" />
+
 
     <!--action button for dashboard -->
     <Button
         android:id="@+id/button3"
         android:layout_width="166dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:onClick="returnToDashboard"
+        android:background="@drawable/ic_button_background"
+        android:padding="8dp"
         android:text="DASHBOARD"
         android:textColor="@color/colorText"
-        android:visibility="visible"
+        android:textColorHint="#FFFFFF"
+        android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.652" />
+
+
+
+    <TextView
+        android:id="@+id/woohoo_words"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="WOOHOOO!!"
+        android:textColor="@color/colorText"
+        android:textSize="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.197" />
+
+    <TextView
+        android:id="@+id/workout_complete_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:gravity="center"
+        android:text="Workout Complete"
+        android:textColor="@color/colorTextBackground"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.268" />
 
     <!-- graphic for dashboard button -->
 
