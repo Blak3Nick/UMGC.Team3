@@ -80,9 +80,8 @@
 
     <ImageView
         android:id="@+id/white_background"
-        android:layout_width="354dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="37dp"
+        android:layout_width="361dp"
+        android:layout_height="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,29 +90,28 @@
         app:srcCompat="@drawable/ic_bg" />
 
     <Button
-        android:id="@+id/homeButton"
-        android:layout_width="40dp"
+        android:id="@+id/home_button"
+        android:layout_width="47dp"
         android:layout_height="33dp"
-        android:layout_marginTop="44dp"
         android:background="@drawable/ic_browser"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintVertical_bias="0.949" />
 
     <Button
         android:id="@+id/settingsButton"
-        android:layout_width="67dp"
-        android:layout_height="47dp"
-        android:background="@drawable/ic_gear"
+        android:layout_width="46dp"
+        android:layout_height="58dp"
+        android:background="@drawable/ic_colorgearicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintHorizontal_bias="0.684"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948" />
+        app:layout_constraintVertical_bias="0.947" />
 
     <TextView
         android:id="@+id/settings_words"
@@ -124,10 +122,10 @@
         android:text="Settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.801"
+        app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946" />
+        app:layout_constraintVertical_bias="0.935"/>
 
     <Button
         android:id="@+id/workoutButton"
@@ -137,10 +135,10 @@
         android:background="@drawable/ic_gym__3_"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintVertical_bias="0.946"  />
 
     <ImageView
         android:id="@+id/photo"
