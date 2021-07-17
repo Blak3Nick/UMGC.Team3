@@ -54,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
         mPassword   = findViewById(R.id.password);
         mPhone      = findViewById(R.id.phone);
         mRegisterBtn= findViewById(R.id.registerBtn);
-        mLoginBtn   = findViewById(R.id.createText);
+        mLoginBtn   = findViewById(R.id.loginBtn);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();

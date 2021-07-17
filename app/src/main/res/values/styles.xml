@@ -5,6 +5,10 @@
         <item name="colorPrimary">@color/colorBackground</item>
         <item name="colorPrimaryDark">@color/colorBackground</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+
+        @color/colorText
+        <item name="android:fontFamily">@font/circular</item>
     </style>
 
     <style name="SplashScreen" parent="Theme.AppCompat.DayNight.NoActionBar"></style>

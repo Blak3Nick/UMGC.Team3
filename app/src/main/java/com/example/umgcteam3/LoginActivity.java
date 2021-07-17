@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         mPassword = findViewById(R.id.password);
         fAuth = FirebaseAuth.getInstance();
         mLoginBtn = findViewById(R.id.loginBtn);
-        mCreateBtn = findViewById(R.id.createText);
+        mCreateBtn = findViewById(R.id.forgotPassword);
         forgotTextLink = findViewById(R.id.forgotPassword);
 
         if(fAuth.getCurrentUser() != null){

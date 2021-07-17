@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<!-- This file contains the code for home workout screen  -->
+<!-- This file contains the code for the dashboard
+        using this custom settings
+
+        android:fontFamily="@font/circular"
+        android:textColor="@color/colorText"
+
+        android:background="@drawable/ic_text_field" [background of user editable fields]
+
+
+        -->
 
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,10 +29,9 @@
         android:layout_height="97dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mantrapic" />
+        app:srcCompat="@drawable/profile_dashboard" />
 
     <ImageView
         android:id="@+id/imageView13"
@@ -31,72 +39,62 @@
         android:layout_height="107dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75"
         app:srcCompat="@drawable/seeprogress" />
 
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="164dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.387"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.46"
-        app:srcCompat="@drawable/mantraoftheday" />
-
     <Button
         android:id="@+id/loginBtn6"
         android:layout_width="53dp"
         android:layout_height="30dp"
-        android:background="@drawable/showbutton"
+        android:background="@drawable/ic_show_button"
+        android:fontFamily="@font/circular"
         android:padding="8dp"
-        android:textColor="@color/colorText"
-        android:textColorHint="#FFFFFF"
-        android:textSize="13sp"
+        android:text="SHOW"
+        android:textColor="@color/colorAccent"
+        android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintHorizontal_bias="0.684"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.473" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/loginBtn23"
         android:layout_width="53dp"
         android:layout_height="30dp"
-        android:background="@drawable/showbutton"
+        android:background="@drawable/ic_show_button"
+        android:fontFamily="@font/circular"
         android:padding="8dp"
-        android:textColor="@color/colorText"
-        android:textColorHint="#FFFFFF"
-        android:textSize="13sp"
+        android:text="SHOW"
+        android:textColor="@color/colorAccent"
+        android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintHorizontal_bias="0.684"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.718" />
+        app:layout_constraintVertical_bias="0.722" />
 
     <Button
         android:id="@+id/loginBtn3"
         android:layout_width="53dp"
         android:layout_height="30dp"
-        android:background="@drawable/startbutton"
+        android:background="@drawable/ic_color_button"
+        android:fontFamily="@font/circular"
         android:padding="8dp"
+        android:text="START"
         android:textColor="@color/colorText"
-        android:textColorHint="#FFFFFF"
-        android:textSize="13sp"
+        android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintHorizontal_bias="0.684"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
-
+        app:layout_constraintVertical_bias="0.301" />
 
     <ImageView
         android:id="@+id/imageView11"
@@ -104,36 +102,11 @@
         android:layout_height="97dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.243"
-        app:srcCompat="@drawable/todaysworkout" />
-
-    <ImageView
-        android:id="@+id/imageView17"
-        android:layout_width="129dp"
-        android:layout_height="27dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.346"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.688"
-        app:srcCompat="@drawable/progress" />
-
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="129dp"
-        android:layout_height="27dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.346"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.215"
-        app:srcCompat="@drawable/todaysworkoutwords" />
-
+        app:layout_constraintVertical_bias="0.252"
+        app:srcCompat="@drawable/todays_workout" />
 
     <ImageView
         android:id="@+id/imageView16"
@@ -144,67 +117,126 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.953"
-        app:srcCompat="@drawable/whitebackground" />
+        app:srcCompat="@drawable/ic_bg" />
 
 
     <Button
         android:id="@+id/loginBtn24"
-        android:layout_width="62dp"
-        android:layout_height="42dp"
-        android:background="@drawable/colorhomeicon"
+        android:layout_width="33dp"
+        android:layout_height="45dp"
+        android:background="@drawable/ic_color_home"
         android:padding="8dp"
         android:textColor="@color/colorText"
         android:textColorHint="#FFFFFF"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926" />
+        app:layout_constraintVertical_bias="0.928" />
 
     <Button
         android:id="@+id/loginBtn25"
-        android:layout_width="29dp"
-        android:layout_height="19dp"
-        android:background="@drawable/gearicon"
+        android:layout_width="47dp"
+        android:layout_height="33dp"
+        android:background="@drawable/ic_no_color_gear"
         android:padding="8dp"
         android:textColor="@color/colorText"
         android:textColorHint="#FFFFFF"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintHorizontal_bias="0.744"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
+        app:layout_constraintVertical_bias="0.942" />
 
     <Button
         android:id="@+id/loginBtn26"
-        android:layout_width="41dp"
-        android:layout_height="19dp"
-        android:background="@drawable/workoutlogo"
+        android:layout_width="47dp"
+        android:layout_height="33dp"
+        android:background="@drawable/ic_gym__3_"
         android:padding="8dp"
         android:textColor="@color/colorText"
         android:textColorHint="#FFFFFF"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
+        app:layout_constraintVertical_bias="0.942" />
 
-    <ImageView
-        android:id="@+id/imageView19"
-        android:layout_width="166dp"
-        android:layout_height="38dp"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="Dashboard"
+        android:textColor="@color/colorText"
+        android:textSize="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.087" />
+
+    <TextView
+        android:id="@+id/workout_dashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="Workout"
+        android:textColor="@color/colorText"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.275"
+        app:layout_constraintStart_toStartOf="@+id/imageView12"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.258" />
+
+    <TextView
+        android:id="@+id/profile_dashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="Profile"
+        android:textColor="@color/colorText"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.324"
+        app:layout_constraintStart_toStartOf="@+id/imageView12"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/progress_dashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="See Progress"
+        android:textColor="@color/colorText"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="@+id/imageView12"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.723" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078"
-        app:srcCompat="@drawable/dashboard" />
+        app:layout_constraintVertical_bias="0.93" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

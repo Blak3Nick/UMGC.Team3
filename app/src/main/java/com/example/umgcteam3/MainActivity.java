@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 //        phone = findViewById(R.id.profilePhone);
         fullName = findViewById(R.id.fullName);
 //        email    = findViewById(R.id.profileEmail);
-        resetPassLocal = findViewById(R.id.change_banner);
+        resetPassLocal = findViewById(R.id.resetPasswordLocal);
 //
         profileImage = findViewById(R.id.profileImage);
         changeProfile = findViewById(R.id.changeProfile);

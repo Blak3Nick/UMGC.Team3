@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
+<!--This file contains the xml code for the registration board
+    using this custom settings
+
+        android:fontFamily="@font/circular"
+        android:textColor="@color/colorText"
+        android:background="@drawable/ic_text_field" [background of user editable fields]
+
+      All objects have been constrained to top/bottom of the screen
+
+  -->
+
+<!-- TODO in this file:
+      1) Confirm Password class [checks both fields
+            for matching characters]
+      2) Already registered? "Login here"
+         which takes user back to home screen for login
+
+-->
+
+
+
+
+<!-- START -->
+
+
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,63 +47,7 @@
 
 
 
-    <!-- ACTION FIELDS  -->
 
-    <!-- username field  -->
-
-    <!-- email field  -->
-
-    <!-- Phone action button   -->
-
-    <!-- Password action button   -->
-
-    <!-- LOGIN HERE - meant to go back to home
-            TODO ITEM
-        -->
-
-
-    <!-- BUTTONS  -->
-
-    <!-- Create Button  -->
-
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="316dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108"
-        app:srcCompat="@drawable/createanaccount" />
-
-
-    <!--
-
-
-    <EditText
-        android:id="@+id/confirmpassword"
-        android:layout_width="292dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/textfield"
-        android:drawablePadding="-15sp"
-        android:ems="14"
-        android:hint="Confirm Password"
-        android:inputType="textPassword"
-        android:padding="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645" />
--->
 
 
     <EditText
@@ -85,21 +56,21 @@
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/textfield"
+        android:background="@drawable/ic_text_field"
         android:drawablePadding="-15sp"
         android:ems="14"
+        android:padding="10dp"
+        android:textColorHint="@color/colorTextBackground"
+        android:fontFamily="@font/circular"
+        android:textSize="14dp"
         android:hint="Username"
         android:inputType="textPersonName"
-        android:padding="10dp"
-        android:textColor="@color/colorText"
-        android:textColorHint="#FFFFFF"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintVertical_bias="0.325" />
 
     <EditText
         android:id="@+id/Email"
@@ -108,21 +79,21 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/textfield"
+        android:background="@drawable/ic_text_field"
         android:drawablePadding="-15sp"
         android:ems="14"
         android:hint="E-Mail"
         android:inputType="textEmailAddress"
         android:padding="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="14sp"
+        android:textColorHint="@color/colorTextBackground"
+        android:fontFamily="@font/circular"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.378" />
+        app:layout_constraintVertical_bias="0.418" />
 
     <EditText
         android:id="@+id/phone"
@@ -130,20 +101,21 @@
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/textfield"
+        android:background="@drawable/ic_text_field"
         android:drawablePadding="-15sp"
         android:ems="14"
+        android:fontFamily="@font/circular"
         android:hint="Phone"
         android:inputType="textPhonetic"
         android:padding="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="14sp"
+        android:textColorHint="@color/colorTextBackground"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.483" />
+        app:layout_constraintVertical_bias="0.532" />
 
     <EditText
         android:id="@+id/password"
@@ -151,20 +123,21 @@
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/textfield"
+        android:background="@drawable/ic_text_field"
         android:drawablePadding="-15sp"
         android:ems="14"
+        android:fontFamily="@font/circular"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="14sp"
+        android:textColorHint="@color/colorTextBackground"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.57" />
+        app:layout_constraintVertical_bias="0.629" />
 
     <Button
         android:id="@+id/registerBtn"
@@ -173,30 +146,62 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/createbutton"
-        android:textSize="13sp"
+        android:background="@drawable/ic_button_background"
+        android:fontFamily="@font/circular"
+        android:padding="8dp"
+        android:text="Create"
+        android:textColor="@color/colorText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767" />
-
+        app:layout_constraintVertical_bias="0.742" />
 
     <TextView
-        android:id="@+id/createText"
-        android:layout_width="293dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/haveaccount"
-        android:drawablePadding="-15sp"
-        android:ems="14"
+        android:id="@+id/create_account_banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create an account"
+        android:textColor="@color/colorText"
+        android:fontFamily="@font/circular"
+        android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872" />
+        app:layout_constraintVertical_bias="0.135" />
+
+    <TextView
+        android:id="@+id/login_here_words"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login Here"
+        android:textColor="#E44454"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.904" />
+
+    <TextView
+        android:id="@+id/have_account_words"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="Already have an account? "
+        android:textColor="@color/colorText"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.866" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- END -->

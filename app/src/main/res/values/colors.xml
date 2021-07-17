@@ -5,13 +5,17 @@
 #000000  => colorBackground  (BLACK)
 #FFFFFF  => colorText        (WHITE)
 #707070	 => colorTextBackground (GRAY)
+
+#E44454  => redAccent
 -->
 
 
 
 <resources>
     <color name="colorBackground">#000000</color>
-    <color name="colorTextBackground">#707070</color>
+    <color name="colorTextBackground">#78849E</color>
     <color name="colorAccent">#F44336</color>
     <color name="colorText">#ffffff</color>
+
+
 </resources>
