@@ -9,7 +9,12 @@
     android:paddingHorizontal="10dp"
     >
     <include layout="@layout/home_workout_settings_bar"/>
-    <include layout="@layout/picture_name"></include>
+
+    <include
+        layout="@layout/picture_name"
+        android:layout_width="363dp"
+        android:layout_height="640dp"
+        tools:layout_editor_absoluteX="-4dp"></include>
 
     <Button
         android:id="@+id/history_button"

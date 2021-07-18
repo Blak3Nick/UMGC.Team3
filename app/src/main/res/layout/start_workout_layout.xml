@@ -118,9 +118,10 @@
         android:layout_below="@id/exercise_name"
         android:layout_marginTop="61dp"
         android:gravity="center"
+        android:fontFamily="@font/circular"
         android:text="Weight"
-        android:textColor="#ffffff"
-        android:textSize="24sp" />
+        android:textColor="@color/colorText"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/weight_number"
@@ -133,7 +134,7 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="number"
-        android:textColor="#ffffff" />
+ />
 
     <TextView
         android:id="@+id/actualSetNumber"
@@ -153,13 +154,14 @@
         android:layout_width="178dp"
         android:layout_height="61dp"
         android:layout_below="@id/exercise_name"
-        android:layout_marginLeft="-362dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginLeft="-410dp"
+        android:layout_marginTop="1dp"
         android:layout_toRightOf="@id/exercise_name"
         android:gravity="center"
+        android:fontFamily="@font/circular"
         android:text="Set #"
-        android:textColor="#ffffff"
-        android:textSize="24sp" />
+        android:textColor="@color/colorText"
+        android:textSize="20dp"/>
 
     <EditText
         android:id="@+id/exercise_name"

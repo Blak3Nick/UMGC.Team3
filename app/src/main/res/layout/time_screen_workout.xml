@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--This file contains the xml code to keep track of the workout
+    using this custom settings
+
+    android:fontFamily="@font/circular"
+    android:textColor="@color/colorText"
+        android:background="@drawable/ic_button_background"
+        android:background="@drawable/ic_gray_button"
+        app:srcCompat="@drawable/time_bg"
+
+
+        *** PLACE HOLDER ***
+                app:srcCompat="@drawable/dropdown_header"
+
+
+
+TODO:  1) Set clock to run when user taps on "START" button.
+       2) Transfer Body Section from user's choice (Upper body, lower body, ABS).
+       3) Transfer Exercise name from list of exercises based on body section.
+       4) Dropdown has been placed as a placeholder - needs to be replaced with proper
+            dropdown.
+    -->
+
+<!-- START -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    >
+
+
+    <TextView
+        android:id="@+id/body_section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="BODY SECTION (Firebase?)"
+        android:textColor="@color/colorText"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.077" />
+
+
+    <TextView
+        android:id="@+id/exercise_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="EXERCISE NAME(Firebase?)"
+        android:textColor="@color/colorTextBackground"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.136" />
+
+    <ImageView
+        android:id="@+id/time_bg"
+        android:layout_width="199sp"
+        android:layout_height="212sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.828"
+        app:srcCompat="@drawable/time_bg" />
+
+    <Button
+        android:id="@+id/start_workout"
+        android:layout_width="134sp"
+        android:layout_height="39sp"
+        android:background="@drawable/ic_gray_button"
+        android:fontFamily="@font/circular"
+        android:padding="8sp"
+        android:text="START"
+        android:textColor="@color/colorText"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.592" />
+
+    <Button
+        android:id="@+id/pause_workout"
+        android:layout_width="107sp"
+        android:layout_height="43sp"
+        android:background="@drawable/ic_gray_button"
+        android:fontFamily="@font/circular"
+        android:padding="8sp"
+        android:text="PAUSE"
+        android:textColor="@color/colorText"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.745" />
+
+    <Button
+        android:id="@+id/end_workout"
+        android:layout_width="134sp"
+        android:layout_height="39sp"
+        android:background="@drawable/ic_button_background"
+        android:fontFamily="@font/circular"
+        android:padding="8dp"
+        android:text="END WORKOUT"
+        android:textColor="@color/colorText"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.908" />
+
+    <EditText
+        android:id="@+id/time_numbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:inputType="time"
+        android:text="01:23"
+        android:textColor="@color/colorText"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.223"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.754" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="119sp"
+        android:layout_height="30sp"
+        android:background="@drawable/ic_text_field"
+        android:drawablePadding="-15sp"
+        android:ems="14"
+        android:fontFamily="@font/circular"
+        android:gravity="center"
+        android:hint="Enter #"
+        android:inputType="textEmailAddress"
+        android:padding="10sp"
+        android:textColor="@color/colorText"
+        android:textColorHint="@color/colorTextBackground"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.263" />
+
+    <TextView
+        android:id="@+id/set_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="Set#:"
+        android:textColor="@color/colorTextBackground"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.275" />
+
+    <ImageView
+        android:id="@+id/dropdown_placeholder"
+        android:layout_width="99sp"
+        android:layout_height="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.264"
+        app:srcCompat="@drawable/dropdown_header" />
+
+    <TextView
+        android:id="@+id/rep_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="RPE:"
+        android:textColor="@color/colorTextBackground"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.649"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.272" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="119sp"
+        android:layout_height="30sp"
+        android:background="@drawable/ic_text_field"
+        android:drawablePadding="-15sp"
+        android:ems="14"
+        android:fontFamily="@font/circular"
+        android:gravity="center"
+        android:hint="Enter #"
+        android:inputType="textEmailAddress"
+        android:padding="10sp"
+        android:textColor="@color/colorText"
+
+        android:textColorHint="@color/colorTextBackground"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.454" />
+
+    <TextView
+        android:id="@+id/reps_words"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="Reps:"
+        android:textColor="@color/colorTextBackground"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.468" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="119sp"
+        android:layout_height="30sp"
+        android:background="@drawable/ic_text_field"
+        android:drawablePadding="-15sp"
+        android:ems="14"
+        android:fontFamily="@font/circular"
+        android:gravity="center"
+        android:hint="Enter #"
+        android:inputType="textEmailAddress"
+        android:padding="10sp"
+        android:textColor="@color/colorText"
+        android:textColorHint="@color/colorTextBackground"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.359" />
+
+    <TextView
+        android:id="@+id/weight_words"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="Weight:"
+        android:textColor="@color/colorTextBackground"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.371" />
+
+
+    <!-- END -->
+</androidx.constraintlayout.widget.ConstraintLayout>

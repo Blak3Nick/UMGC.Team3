@@ -10,8 +10,6 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:icon="@drawable/backicon"
-        android:drawableLeft="@drawable/backicon"
         android:title="@string/action_settings"
         app:showAsAction="ifRoom"/>
 
