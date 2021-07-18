@@ -5,8 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".StatisticsActivity">
-
+    tools:context=".StatisticsActivity"
+    android:paddingHorizontal="10dp"
+    >
+    <include layout="@layout/home_workout_settings_bar"/>
+    <include layout="@layout/picture_name"></include>
 
     <Button
         android:id="@+id/history_button"
@@ -20,10 +23,10 @@
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321" />
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintVertical_bias="0.28" />
 
     <Button
         android:id="@+id/statistics_button"
@@ -39,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321" />
+        app:layout_constraintVertical_bias="0.28" />
 
     <Button
         android:id="@+id/account_button"
@@ -51,106 +54,42 @@
         android:text="Account"
         android:textColor="@color/colorText"
         android:textSize="10dp"
+        android:onClick="goToProfile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.813"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321" />
+        app:layout_constraintVertical_bias="0.28" />
 
-
-    <TextView
-        android:id="@+id/fullName"
-        android:layout_width="263dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:fontFamily="@font/circular"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="Full Name  "
+    <Spinner
+        android:id="@+id/exercise_name_spinner"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
         android:textColor="@color/colorText"
-        android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/colorTextBackground"
+        android:popupBackground="@color/colorTextBackground"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.34"
+        />
 
-    <ImageView
-        android:id="@+id/white_background"
-        android:layout_width="361dp"
-        android:layout_height="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:id="@+id/graph"
+        android:text="GraphView"
+        android:textColor="@color/colorText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.969"
-        app:srcCompat="@drawable/ic_bg" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.75"/>
 
-    <Button
-        android:id="@+id/home_button"
-        android:layout_width="47dp"
-        android:layout_height="33dp"
-        android:background="@drawable/ic_browser"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.211"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.949" />
-
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="46dp"
-        android:layout_height="58dp"
-        android:background="@drawable/ic_colorgearicon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.684"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
-
-    <TextView
-        android:id="@+id/settings_words"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
-        android:fontFamily="@font/circular"
-        android:text="Settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.846"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935"/>
-
-    <Button
-        android:id="@+id/workoutButton"
-        android:layout_width="47dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="45dp"
-        android:background="@drawable/ic_gym__3_"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946"  />
-
-    <ImageView
-        android:id="@+id/photo"
-        android:layout_width="256dp"
-        android:layout_height="139dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026"
-        app:srcCompat="@drawable/ic_profile_pic" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
