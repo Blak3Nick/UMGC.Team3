@@ -35,6 +35,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
+    //class variables for xml fields and Firebase User info
     public static final String TAG = "TAG";
     EditText mFullName,mEmail,mPassword,mConfirmPassword, mPhone;
     Button mRegisterBtn;
@@ -44,11 +45,13 @@ public class RegisterActivity extends AppCompatActivity {
     public static String userID;
     AlertDialog.Builder dialogBuilder;
 
+    //upon starting this class from another class
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        //link class variables to fields in activity_main.xml file
         mFullName   = findViewById(R.id.fullName);
         mEmail      = findViewById(R.id.Email);
         mPassword   = findViewById(R.id.password);
@@ -57,19 +60,15 @@ public class RegisterActivity extends AppCompatActivity {
         mRegisterBtn= findViewById(R.id.registerBtn);
         mLoginBtn   = findViewById(R.id.loginBtn);
 
+        //get firebase instance
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
-//        if(fAuth.getCurrentUser() != null){
-//            userID = fAuth.getCurrentUser().getUid();
-//            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//            finish();
-//        }
-
-
+        //create listener for the register button
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //get all text from text fields and set them to strings
                 System.out.println("Creating account...");;
                 final String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
@@ -77,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String fullName = mFullName.getText().toString();
                 final String phone    = mPhone.getText().toString();
 
+                //check if all required fields are filled in
                 if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email is Required.");
                     return;
@@ -102,18 +102,19 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                //confirm that the password and confirmpassword fields match
                 if (!checkPassword(password, confirmPassword)){
                     mPassword.setError("Passwords must match.");
                     mConfirmPassword.setError("Passwords must match.");
                     return;
                 }
 
-                // register the user in firebase
-
+                //register the user in firebase
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         System.out.println("Creating user...");
+                        //if creating the user was successful, send an email verification and display that an email was sent
                         if(task.isSuccessful()){
                             // send verification link
                             FirebaseUser fuser = fAuth.getCurrentUser();
@@ -122,6 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(RegisterActivity.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
                                 }
+                            //if register was unsuccessful, log the error
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
@@ -129,13 +131,19 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
                             });
 
+                            //display a popup to indicate that a user was created
                             Toast.makeText(RegisterActivity.this, "User Created.", Toast.LENGTH_SHORT).show();
+
+                            //get the userId of newly created user and store the user's details in a collection within Firebase
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fStore.collection("users").document(userID);
                             Map<String,Object> user = new HashMap<>();
                             user.put("fName",fullName);
                             user.put("email",email);
                             user.put("phone",phone);
+
+                            //if storage was successful, log
+                            //if storage was unsuccessful, log
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
@@ -148,6 +156,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 }
                             });
+
+
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                     .setDisplayName(fullName)
                                     .build();
@@ -162,8 +172,11 @@ public class RegisterActivity extends AppCompatActivity {
                                             }
                                         }
                                     });
+
+                            //start the logged-in activity of main screen
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
+                        //if unsuccessful, display why
                         }if(!task.isSuccessful()) {
                             dialogBuilder = new AlertDialog.Builder(RegisterActivity.this);
                             dialogBuilder.setMessage("Email already in use...")
@@ -184,6 +197,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        //set listener for login button that starts the LoginActivity class and goes to the login page
+        //closes this page
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
