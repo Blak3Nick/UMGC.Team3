@@ -267,11 +267,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void viewStatistics(View view){
-        startActivity(new Intent(getApplicationContext(),StatisticsActivity.class));
-        finish();
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
