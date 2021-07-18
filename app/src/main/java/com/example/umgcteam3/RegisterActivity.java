@@ -36,7 +36,7 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
-    EditText mFullName,mEmail,mPassword,mPhone;
+    EditText mFullName,mEmail,mPassword,mConfirmPassword, mPhone;
     Button mRegisterBtn;
     TextView mLoginBtn;
     FirebaseAuth fAuth;
@@ -52,6 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
         mFullName   = findViewById(R.id.fullName);
         mEmail      = findViewById(R.id.Email);
         mPassword   = findViewById(R.id.password);
+        mConfirmPassword   = findViewById(R.id.confirmPassword);
         mPhone      = findViewById(R.id.phone);
         mRegisterBtn= findViewById(R.id.registerBtn);
         mLoginBtn   = findViewById(R.id.loginBtn);
@@ -72,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                 System.out.println("Creating account...");;
                 final String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
+                String confirmPassword = mPassword.getText().toString().trim();
                 final String fullName = mFullName.getText().toString();
                 final String phone    = mPhone.getText().toString();
 
@@ -85,6 +87,11 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                if(TextUtils.isEmpty(confirmPassword)){
+                    mConfirmPassword.setError("Confirm Password Field is Required.");
+                    return;
+                }
+
                 if(TextUtils.isEmpty(fullName)){
                     mFullName.setError("Name is required.");
                     return;
@@ -92,6 +99,12 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(password.length() < 6){
                     mPassword.setError("Password Must be >= 6 Characters");
+                    return;
+                }
+
+                if (!checkPassword(password, confirmPassword)){
+                    mPassword.setError("Passwords must match.");
+                    mConfirmPassword.setError("Passwords must match.");
                     return;
                 }
 
@@ -179,5 +192,12 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private boolean checkPassword(String p, String c){
+        if (p.equals(c)){
+            return true;
+        }
+        return false;
     }
 }

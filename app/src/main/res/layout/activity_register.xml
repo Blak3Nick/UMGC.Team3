@@ -139,6 +139,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.629" />
 
+    <EditText
+        android:layout_width="292dp"
+        android:layout_height="40dp"
+        android:id="@+id/confirmPassword"
+        />
+
     <Button
         android:id="@+id/registerBtn"
         android:layout_width="292dp"
