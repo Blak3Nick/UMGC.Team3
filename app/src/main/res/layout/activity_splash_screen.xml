@@ -25,8 +25,8 @@
     android:theme="@style/Theme.AppCompat.Light">
 
     <ImageView
-        android:layout_width="199dp"
-        android:layout_height="196dp"
+        android:layout_width="199sp"
+        android:layout_height="196sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
         android:text="FIT.IO"
         android:fontFamily="@font/circular"
         android:textColor="@color/colorText"
-        android:textSize="40dp"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
