@@ -314,4 +314,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
         finish();
     }
+
+    public void goToStatistics(View view){
+        startActivity(new Intent(getApplicationContext(),StatisticsActivity.class));
+        finish();
+    }
 }
