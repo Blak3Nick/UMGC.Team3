@@ -24,6 +24,9 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StatisticsActivity extends AppCompatActivity {
     GraphView graph;
     LineGraphSeries<DataPoint> series = new LineGraphSeries<>(getDataPoint());
@@ -35,6 +38,7 @@ public class StatisticsActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     public String userId;
     FirebaseUser user;
+    List<String> spinnerItems;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,7 @@ public class StatisticsActivity extends AppCompatActivity {
         graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        spinnerItems = new ArrayList<>();
 
         try {
             storageReference = FirebaseStorage.getInstance().getReference();
@@ -66,7 +71,25 @@ public class StatisticsActivity extends AppCompatActivity {
             finish();
         }
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.exercise_spinner, android.R.layout.simple_spinner_item);
+        AbdominalExercises[] abdominalArray = AbdominalExercises.values();
+        for (AbdominalExercises item : abdominalArray){
+            String exerciseItem = item.toString().replace("_", " ");
+            spinnerItems.add(exerciseItem);
+        }
+
+        LowerBodyExercise[] lowerArray = LowerBodyExercise.values();
+        for (LowerBodyExercise item : lowerArray){
+            String exerciseItem = item.toString().replace("_", " ");
+            spinnerItems.add(exerciseItem);
+        }
+
+        UpperBodyExercise[] upperArray = UpperBodyExercise.values();
+        for (UpperBodyExercise item : upperArray){
+            String exerciseItem = item.toString().replace("_", " ");
+            spinnerItems.add(exerciseItem);
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spinnerItems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         graph.addSeries(series);
