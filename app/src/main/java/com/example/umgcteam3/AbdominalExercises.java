@@ -2,7 +2,7 @@ package com.example.umgcteam3;
 
 public enum AbdominalExercises {
     Situps,
-    Bycycle_Crunches,
+    Bicycle_Crunches,
     Leg_Lifts,
     Flutter_Kicks
 }
