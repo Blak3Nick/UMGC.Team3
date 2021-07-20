@@ -68,7 +68,7 @@
         app:layout_constraintVertical_bias="0.428" />
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/createAccount"
         android:layout_width="246sp"
         android:layout_height="39sp"
         android:background="@drawable/ic_button_background"

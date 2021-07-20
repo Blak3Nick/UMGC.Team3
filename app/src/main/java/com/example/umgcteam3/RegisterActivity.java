@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
         mConfirmPassword   = findViewById(R.id.confirmPassword);
         mPhone      = findViewById(R.id.phone);
         mRegisterBtn= findViewById(R.id.registerBtn);
-        mLoginBtn   = findViewById(R.id.loginBtn);
+        mLoginBtn   = findViewById(R.id.loginBtnCreatePage);
 
         //get firebase instance
         fAuth = FirebaseAuth.getInstance();

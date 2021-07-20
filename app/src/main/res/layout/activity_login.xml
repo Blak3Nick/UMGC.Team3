@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.695" />
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/createAccount"
         android:layout_width="292sp"
         android:layout_height="40sp"
         android:layout_marginTop="18sp"
@@ -121,6 +121,7 @@
         android:layout_height="25sp"
         android:layout_marginTop="36sp"
         android:fontFamily="@font/circular"
+        android:onClick="registerForAccount"
         android:text="Sign UP!  "
         android:textColor="#E44454"
         android:textSize="17sp"

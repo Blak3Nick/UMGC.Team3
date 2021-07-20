@@ -3,16 +3,6 @@ This class is an activity
  */
 package com.example.umgcteam3;
 
-
-/*
-
-TODO: Add imageView as background
-
-*/
-
-
-
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,12 +21,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-//import com.google.firebase.iid.FirebaseInstanceId;
-
 
 public class LoginActivity extends AppCompatActivity {
     EditText mEmail,mPassword;
-    Button mLoginBtn;
+    Button createAccountButton;
     TextView mCreateBtn,forgotTextLink;
     FirebaseAuth fAuth;
     public static String userID;
@@ -52,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         mEmail = findViewById(R.id.Email);
         mPassword = findViewById(R.id.password);
         fAuth = FirebaseAuth.getInstance();
-        mLoginBtn = findViewById(R.id.loginBtn);
+        createAccountButton = findViewById(R.id.createAccount);
         mCreateBtn = findViewById(R.id.forgotPassword);
         forgotTextLink = findViewById(R.id.forgotPassword);
 
@@ -62,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+        createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = mEmail.getText().toString().trim();
@@ -176,6 +164,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public static void setAbdominalWorkout(Workout abdominalWorkout) {
         AbdominalWorkout = abdominalWorkout;
+    }
+    public void registerForAccount(View view) {
+        startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+        finish();
     }
 
 

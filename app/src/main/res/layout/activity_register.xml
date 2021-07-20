@@ -26,11 +26,10 @@
 <!-- START -->
 
 
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginBtn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
@@ -155,13 +154,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.742" />
 
-    <TextView
+    <Button
         android:id="@+id/create_account_banner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:fontFamily="@font/circular"
         android:text="Create an account"
         android:textColor="@color/colorText"
-        android:fontFamily="@font/circular"
         android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -169,20 +169,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.135" />
-
-    <TextView
-        android:id="@+id/login_here_words"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login Here"
-        android:textColor="#E44454"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
 
     <TextView
         android:id="@+id/have_account_words"
@@ -219,6 +205,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.618" />
+
+    <Button
+        android:id="@+id/loginBtnCreatePage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="151dp"
+        android:layout_marginLeft="151dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="151dp"
+        android:layout_marginRight="151dp"
+        android:background="@color/colorBackground"
+        android:text="Login Here"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/have_account_words" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
