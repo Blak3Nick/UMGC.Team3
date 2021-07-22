@@ -111,6 +111,10 @@ public class StatisticsActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),MainActivity.class));
         finish();
     }
+    public void proceedToWorkout(View view) {
+        startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+        finish();
+    }
 
 
 }

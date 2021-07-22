@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/profile_dashboard"
-        android:onClick="progressView"/>
+        android:onClick="profileView"/>
 
     <ImageView
         android:id="@+id/imageView13"

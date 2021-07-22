@@ -31,8 +31,8 @@ public class DashboardActivity extends AppCompatActivity{
         Intent workoutSelectionPage = new Intent(this, WorkoutSelectionActivity.class);
         startActivity(workoutSelectionPage);
     }
-    public void mantraView(View view) {
-        Intent getDay2Overview = new Intent(this, WorkoutSelectionActivity.class);
+    public void profileView(View view) {
+        Intent getDay2Overview = new Intent(this, MainActivity.class);
         startActivity(getDay2Overview);
     }
     public void progressView(View view) {
