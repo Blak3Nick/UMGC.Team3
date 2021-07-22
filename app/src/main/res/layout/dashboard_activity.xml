@@ -44,7 +44,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75"
-        app:srcCompat="@drawable/seeprogress" />
+        app:srcCompat="@drawable/seeprogress"
+        android:onClick="progressView"/>
 
 
     <Button
