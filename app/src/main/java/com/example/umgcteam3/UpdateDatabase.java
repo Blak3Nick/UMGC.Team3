@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -72,6 +73,11 @@ public class UpdateDatabase extends AsyncTask<Void, Void, String> {
                 Log.w("FAILURE", e.getMessage() );
             }
         });
+
+        DocumentReference documentReference = db.collection("users").document(user_id).collection("CompletedWorkouts").document(exercise_name);
+        documentReference.update("weightUsed", FieldValue.arrayUnion(weight));
+        documentReference.update("dateCompleted", FieldValue.arrayUnion(exDate));
+
 
 
         return null;

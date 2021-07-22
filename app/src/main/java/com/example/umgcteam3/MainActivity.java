@@ -252,6 +252,7 @@ public class MainActivity extends AppCompatActivity {
                         boolean workoutsBuilt = documentSnapshot.getBoolean("workoutsBuilt");
                         if(!workoutsBuilt){
                             buildInitialWorkouts();
+                            System.out.println("Building initial workouts");
                         }
                         else{
                             System.out.println("The user has workouts?  " + workoutsBuilt);

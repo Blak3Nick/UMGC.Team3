@@ -10,11 +10,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 //Assigns a group of exercises to the user initially
 public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
 
+    String userID;
+    ArrayList<String> allExNames = new ArrayList<>();
     String[] upperExercises = new String[UpperBodyExercise.values().length];
     String[] lowerExercises = new String[LowerBodyExercise.values().length];
     String[] absExercises = new String[AbdominalExercises.values().length];
@@ -131,7 +135,27 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
                 });
             }
         }
+        //Build in the initial framework for the completed workouts
+        for (LowerBodyExercise exName: LowerBodyExercise.values()) {
+            String name = exName.toString();
+            allExNames.add(name);
+        }
+        for (AbdominalExercises exName: AbdominalExercises.values()) {
+            String name = exName.toString();
+            allExNames.add(name);
+        }
+        for (UpperBodyExercise exName: UpperBodyExercise.values()) {
+            String name = exName.toString();
+            allExNames.add(name);
+        }
+        userID = fAuth.getCurrentUser().getUid();
+        db = FirebaseFirestore.getInstance();
+        Map<String, Object> data = new HashMap<>();
+        data.put("Built", true);
 
+        for (String exName: allExNames) {
+            db.collection("users").document(userID).collection("CompletedWorkouts").document(exName).set(data, SetOptions.merge());
+        }
         return null;
     }
 }

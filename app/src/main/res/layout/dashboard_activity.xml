@@ -31,7 +31,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/profile_dashboard" />
+        app:srcCompat="@drawable/profile_dashboard"
+        android:onClick="profileView"/>
 
     <ImageView
         android:id="@+id/imageView13"
@@ -43,7 +44,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75"
-        app:srcCompat="@drawable/seeprogress" />
+        app:srcCompat="@drawable/seeprogress"
+        android:onClick="progressView"/>
 
 
     <Button
@@ -106,7 +108,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.253"
-        app:srcCompat="@drawable/todays_workout" />
+        app:srcCompat="@drawable/todays_workout"
+        android:onClick="workoutSelection"/>
 
     <ImageView
         android:id="@+id/white_background"

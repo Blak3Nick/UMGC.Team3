@@ -5,6 +5,7 @@ package com.example.umgcteam3;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,24 +17,26 @@ import android.content.Context;
 
 
 public class DashboardActivity extends AppCompatActivity{
-
+    @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard_activity);
         buildWorkouts();
+        BackgroundStatisticsWorker backgroundStatisticsWorker = new BackgroundStatisticsWorker();
+        backgroundStatisticsWorker.doInBackground();
     }
 
     public void workoutSelection(View view) {
         Intent workoutSelectionPage = new Intent(this, WorkoutSelectionActivity.class);
         startActivity(workoutSelectionPage);
     }
-    public void mantraView(View view) {
-        Intent getDay2Overview = new Intent(this, WorkoutSelectionActivity.class);
+    public void profileView(View view) {
+        Intent getDay2Overview = new Intent(this, MainActivity.class);
         startActivity(getDay2Overview);
     }
     public void progressView(View view) {
-        Intent getDay3Overview = new Intent(this, WorkoutSelectionActivity.class);
+        Intent getDay3Overview = new Intent(this, StatisticsActivity.class);
         startActivity(getDay3Overview);
     }
 
