@@ -25,6 +25,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class StatisticsActivity extends AppCompatActivity {
@@ -39,6 +40,7 @@ public class StatisticsActivity extends AppCompatActivity {
     public String userId;
     FirebaseUser user;
     List<String> spinnerItems;
+    HashMap statisticsData = StatisticsReport.data;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,9 @@ public class StatisticsActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         spinnerItems = new ArrayList<>();
+        List[] barbellData = (List[]) statisticsData.get("Barbell_Bench_Press");
+        List datesData = barbellData[0];
+        System.out.println(datesData.get(0) + " is the dates");
 
         try {
             storageReference = FirebaseStorage.getInstance().getReference();
