@@ -5,7 +5,7 @@
 
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -15,6 +15,12 @@
         tools:context=".RegisterActivity">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
     <TextView
         android:id="@+id/change_pass"
         android:layout_width="wrap_content"
@@ -22,35 +28,27 @@
         android:fontFamily="@font/circular"
         android:text="Reset Password"
         android:textColor="@color/colorText"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.148" />
+        android:textSize="@dimen/_30sdp" />
 
 
     <TextView
         android:id="@+id/create_account_banner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
         android:fontFamily="@font/circular"
         android:gravity="center"
         android:text="We will send you an email to reset your password"
         android:textColor="@color/colorTextBackground"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.285" />
+        android:textSize="@dimen/_15sdp" />
 
     <EditText
         android:id="@+id/resetPassEmail"
-        android:layout_width="292sp"
-        android:layout_height="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_40sdp"
         android:background="@drawable/ic_text_field"
         android:drawablePadding="-15sp"
         android:ems="10"
@@ -59,30 +57,23 @@
         android:padding="10sp"
         android:textColor="@color/colorText"
         android:textColorHint="@color/colorTextBackground"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.428" />
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/createAccount"
-        android:layout_width="246sp"
-        android:layout_height="39sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:gravity="center"
         android:background="@drawable/ic_button_background"
         android:padding="8dp"
         android:text="RESET"
         android:textColor="@color/colorText"
         android:textColorHint="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569" />
+        android:textSize="20sp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</LinearLayout>
