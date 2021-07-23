@@ -6,7 +6,7 @@ import java.util.List;
 
 public class StatisticsReport {
 
-    HashMap<String, List[]> data;
+    public static HashMap<String, List[]> data;
     public StatisticsReport() {
         this.data = new HashMap<>();
 
