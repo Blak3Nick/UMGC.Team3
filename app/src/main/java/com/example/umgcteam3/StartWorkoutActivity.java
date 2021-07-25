@@ -126,7 +126,9 @@ public class StartWorkoutActivity extends AppCompatActivity {
         reloadPage.putExtra("exercise_count", exercise_count);
         reloadPage.putExtra("AllExercises", allExercises);
         reloadPage.putExtra("workoutType", workoutType);
-        sendData();
+
+
+        allExercises = sendData();
         stopThread = true;
         if (exercise_count == last_exercise) {
             Intent loadCompleted = new Intent(this, CompletedWorkoutWorker.class);
@@ -138,7 +140,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void sendData() {
+    public Exercise[] sendData() {
         String ex_name = "" + exercise1.getText();
         String weightString = "" + weightNumber.getText();
         String setString = "" +  setNumberTextDesc.getText();
@@ -168,15 +170,17 @@ public class StartWorkoutActivity extends AppCompatActivity {
             increaseWeight = true;
             UpdateWorkout updateWorkout = new UpdateWorkout();
             System.out.println(workoutType + "is the workout type" + exerciseNumber + "is the exercise number\n\n\n\n\n");
-            updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, true, setNumber, exerciseNumber );
+            allExercises = updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, true, setNumber, exerciseNumber );
         }
         else if(reportedRPE - targetRPE > 1) {
             UpdateWorkout updateWorkout = new UpdateWorkout();
-            updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, false, setNumber, exerciseNumber );
+            allExercises = updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, false, setNumber, exerciseNumber );
         }
 
         UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, 1, ex_name, strDate, false);
         updateDatabase.execute();
+
+        return allExercises;
     }
     public void endWorkout(View view) {
         Intent loadCompleted = new Intent(this, CompletedWorkoutWorker.class);

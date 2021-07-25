@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class UpdateWorkout {
     Exercise[] exercises;
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void updateCurrentWorkout(String workoutType, int exerciseKey, boolean increase, int startingSet, int exerciseNumber){
+    public Exercise[] updateCurrentWorkout(String workoutType, int exerciseKey, boolean increase, int startingSet, int exerciseNumber){
         switch (workoutType){
             case "Abdominals":
                 exercises = BackgroundWorker.abdominalExercises;
@@ -37,6 +37,8 @@ public class UpdateWorkout {
             UpdateCurrentWorkoutPlan updateCurrentWorkoutPlan = new UpdateCurrentWorkoutPlan(set,workoutType, i+1, exerciseNumber);
             updateCurrentWorkoutPlan.doInBackground();
         }
-//        workout.updateExerciseNumbers(exerciseKey, exercise);
+        return exercises;
     }
+
+
 }
