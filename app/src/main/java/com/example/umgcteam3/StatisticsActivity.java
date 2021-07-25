@@ -55,9 +55,9 @@ public class StatisticsActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         spinnerItems = new ArrayList<>();
-        List[] barbellData = (List[]) statisticsData.get("Barbell_Bench_Press");
-        List datesData = barbellData[0];
-        System.out.println(datesData.get(0) + " is the dates");
+//        List[] barbellData = (List[]) statisticsData.get("Barbell_Bench_Press");
+//        List datesData = barbellData[0];
+//        System.out.println(datesData.get(0) + " is the dates");
 
         try {
             storageReference = FirebaseStorage.getInstance().getReference();
@@ -114,6 +114,10 @@ public class StatisticsActivity extends AppCompatActivity {
     public void proceedToWorkout(View view) {
         startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
         finish();
+    }
+    public void returnToDashboard(View view) {
+        Intent dashboard = new Intent(this, DashboardActivity.class);
+        startActivity(dashboard);
     }
 
 

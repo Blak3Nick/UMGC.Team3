@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 //        email    = findViewById(R.id.profileEmail);
         resetPassLocal = findViewById(R.id.resetPasswordLocal);
 //
-        profileImage = findViewById(R.id.profileImage);
+        profileImage = findViewById(R.id.profile_picture);
         changeProfile = findViewById(R.id.changeProfile);
         changProfileImage = findViewById(R.id.changeImageButton);
         changProfileImage.setOnClickListener(new View.OnClickListener() {

@@ -41,5 +41,9 @@ public class HistoryActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
 
     }
+    public void returnToDashboard(View view) {
+        Intent dashboard = new Intent(this, DashboardActivity.class);
+        startActivity(dashboard);
+    }
 
 }
