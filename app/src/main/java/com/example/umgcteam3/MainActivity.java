@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser user;
     ImageView profileImage;
     StorageReference storageReference;
-    static int abs, upper, lower;
-    static int[] numbers = {0,0,0};
+    static long abs, upper, lower;
+    static long[] numbers = {0,0,0};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -331,14 +331,16 @@ public class MainActivity extends AppCompatActivity {
                 if (documentSnapshot != null && documentSnapshot.exists()) {
                     System.out.println("Updating textview");
                     try {
-                        abs = (int) documentSnapshot.get("AbdominalWorkoutTotal");
-                        upper = (int) documentSnapshot.get("UpperBodyWorkoutTotal");
-                        lower = (int) documentSnapshot.get("LowerBodyWorkoutTotal");
+                        abs = (long) documentSnapshot.get("AbdominalWorkoutTotal");
+                        upper = (long) documentSnapshot.get("UpperBodyWorkoutTotal");
+                        lower = (long) documentSnapshot.get("LowerBodyWorkoutTotal");
+                        System.out.println(upper + " is number of upper completed");
                         numbers[0] =abs;
                         numbers[1] = upper;
                         numbers[2] = lower;
 
                     } catch (Exception exception){
+                        System.out.println("Caught exception"  + exception.getMessage());
                     }
 
                 } else {
