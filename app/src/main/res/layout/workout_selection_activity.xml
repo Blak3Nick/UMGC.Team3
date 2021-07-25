@@ -125,6 +125,7 @@
         android:id="@+id/imageView4"
         android:layout_width="301sp"
         android:layout_height="83sp"
+        android:onClick="startLowerBodyWorkout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"

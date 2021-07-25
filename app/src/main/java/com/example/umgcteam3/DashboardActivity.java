@@ -50,11 +50,11 @@ public class DashboardActivity extends AppCompatActivity{
 
     }
     public void buildWorkouts() {
+        System.out.println("Building workouts");
         //Build Workouts button
         //LoginActivity loginActivity = new LoginActivity();
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute();
-
     }
 
 

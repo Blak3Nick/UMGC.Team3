@@ -1,7 +1,9 @@
 package com.example.umgcteam3;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Workout implements Serializable {
@@ -20,6 +22,10 @@ public class Workout implements Serializable {
 
     public Exercise getSpecificExercise(int key) {
         return allExercises.get(key);
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void updateExerciseNumbers(int key, Exercise exercise) {
+        allExercises.replace(key,exercise);
     }
 
 }

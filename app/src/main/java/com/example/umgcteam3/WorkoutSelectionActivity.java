@@ -51,27 +51,30 @@ public class WorkoutSelectionActivity extends Activity {
     }
 
     public void startUpperBodyWorkout(View view) {
-        Intent startUpperWorkout = new Intent(this, StartWorkoutActivity.class);
-        startUpperWorkout.putExtra("count", 0);
-        startUpperWorkout.putExtra("exercise_count", 0);
-        startUpperWorkout.putExtra("AllExercises", BackgroundWorker.upperBodyExercises);
-        startActivity(startUpperWorkout);
+        Intent startWorkout = new Intent(this, StartWorkoutActivity.class);
+        startWorkout.putExtra("count", 0);
+        startWorkout.putExtra("exercise_count", 0);
+        startWorkout.putExtra("AllExercises", BackgroundWorker.upperBodyExercises);
+        startWorkout.putExtra("workoutType", "UpperBody");
+        startActivity(startWorkout);
         finish();
     }
     public void startLowerBodyWorkout(View view) {
-        Intent startUpperWorkout = new Intent(this, StartWorkoutActivity.class);
-        startUpperWorkout.putExtra("count", 0);
-        startUpperWorkout.putExtra("exercise_count", 0);
-        startUpperWorkout.putExtra("AllExercises", BackgroundWorker.lowerBodyExercises);
-        startActivity(startUpperWorkout);
+        Intent startWorkout = new Intent(this, StartWorkoutActivity.class);
+        startWorkout.putExtra("count", 0);
+        startWorkout.putExtra("exercise_count", 0);
+        startWorkout.putExtra("AllExercises", BackgroundWorker.lowerBodyExercises);
+        startWorkout.putExtra("workoutType", "LowerBody");
+        startActivity(startWorkout);
         finish();
     }
     public void startAbsBodyWorkout(View view) {
-        Intent startUpperWorkout = new Intent(this, StartWorkoutActivity.class);
-        startUpperWorkout.putExtra("count", 0);
-        startUpperWorkout.putExtra("exercise_count", 0);
-        startUpperWorkout.putExtra("AllExercises", BackgroundWorker.abdominalExercises);
-        startActivity(startUpperWorkout);
+        Intent startWorkout = new Intent(this, StartWorkoutActivity.class);
+        startWorkout.putExtra("count", 0);
+        startWorkout.putExtra("exercise_count", 0);
+        startWorkout.putExtra("AllExercises", BackgroundWorker.abdominalExercises);
+        startWorkout.putExtra("workoutType", "Abdominals");
+        startActivity(startWorkout);
         finish();
     }
 }
