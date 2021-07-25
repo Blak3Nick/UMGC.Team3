@@ -2,13 +2,11 @@
 
 <!--This file contains the xml code for the workout screen
     using this custom settings
-
     android:fontFamily="@font/circular"
     android:textColor="@color/colorText"
     app:srcCompat="@drawable/abs_image"
     app:srcCompat="@drawable/lower_body_image"
     app:srcCompat="@drawable/upper_body_image"
-
     -->
 <!-- START -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,447 +14,289 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    android:background="@color/colorBackground"
+    >
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/workout_heading_flow"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_55sdp"
-        app:layout_constraintBottom_toTopOf="@id/upper_body_flow"
-        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/far_left_guide"
+    <ImageView
+        android:id="@+id/white_background"
+        android:layout_width="361sp"
+        android:layout_height="64sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread">
-
-        <TextView
-            android:id="@+id/workouts_heading"
-            android:layout_width="166dp"
-            android:layout_height="38dp"
-            android:layout_marginLeft="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_50sdp"
-            android:fontFamily="@font/circular"
-            android:text="Workouts"
-            android:textColor="@color/colorText"
-            android:textSize="35sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.969"
+        app:srcCompat="@drawable/ic_bg" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/home_button"
+        android:layout_width="47sp"
+        android:layout_height="33sp"
+        android:background="@drawable/ic_browser"
+        android:onClick="returnToDashboard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.947" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/upper_body_flow"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_83sdp"
-        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
-        app:layout_constraintStart_toStartOf="@id/far_left_guide"
-        app:layout_constraintTop_toBottomOf="@id/workout_heading_flow"
-        android:layout_marginBottom="@dimen/_20sdp"
-        app:layout_constraintBottom_toTopOf="@id/abs_flow"
-        app:layout_constraintVertical_chainStyle="spread">
+    <Button
+        android:id="@+id/gear_button"
+        android:layout_width="47sp"
+        android:layout_height="33sp"
+        android:background="@drawable/ic_no_color_gear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.853"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.948"  />
 
-        <ImageView
-            android:id="@+id/upper_body_image"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/upper_body_image" />
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="46sp"
+        android:layout_height="58sp"
+        android:background="@drawable/ic_gym__3_"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.391"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.946" />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:fontFamily="@font/circular"
-            android:onClick="startUpperBodyWorkout"
-            android:text="UPPER BODY"
-            android:textColor="@color/colorText"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/equipment_needed1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:fontFamily="@font/dm_sans"
-            android:text="Equipment Needed:"
-            android:textColor="@color/colorTextBackground"
-            android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:layout_marginLeft="@dimen/_30sdp"/>
-
-        <TextView
-            android:id="@+id/barbell2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:fontFamily="@font/dm_sans"
-            android:text="*Barbell"
-            android:textColor="@color/colorTextBackground"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:layout_marginLeft="@dimen/_30sdp"/>
-
-        <TextView
-            android:id="@+id/dumbbell1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:fontFamily="@font/dm_sans"
-            android:text="*Dumbbell"
-            android:textColor="@color/colorTextBackground"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:layout_marginLeft="@dimen/_30sdp"/>
-
-        <Button
-            android:id="@+id/arrow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="startUpperBodyWorkout"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="@drawable/ic_right_arrow"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/abs_flow"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_83sdp"
-        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
-        app:layout_constraintStart_toStartOf="@id/far_left_guide"
-        app:layout_constraintTop_toBottomOf="@id/upper_body_flow"
-        android:layout_marginBottom="@dimen/_20sdp"
-        app:layout_constraintBottom_toTopOf="@id/lower_body_flow"
-        app:layout_constraintVertical_chainStyle="spread">
-
-
-        <ImageView
-            android:id="@+id/abs_image"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/abs_image" />
-
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_50sdp"
-            android:fontFamily="@font/circular"
-            android:onClick="startAbsBodyWorkoutWorkout"
-            android:text="ABS"
-            android:textColor="@color/colorText"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/equipment_needed3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:fontFamily="@font/dm_sans"
-            android:text="Equipment Needed:"
-            android:textColor="@color/colorTextBackground"
-            android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_35sdp"
-            android:layout_marginLeft="@dimen/_50sdp"/>
-
-
-        <TextView
-            android:id="@+id/none_words"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:fontFamily="@font/dm_sans"
-            android:text="*None"
-            android:textColor="@color/colorTextBackground"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_35sdp"
-            android:layout_marginLeft="@dimen/_50sdp"/>
-
-
-        <Button
-            android:id="@+id/arrow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="startAbsBodyWorkoutWorkout"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="@drawable/ic_right_arrow"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/lower_body_flow"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_83sdp"
-        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
-        app:layout_constraintStart_toStartOf="@id/far_left_guide"
-        app:layout_constraintTop_toBottomOf="@id/abs_flow"
-        android:layout_marginBottom="@dimen/_20sdp"
-        app:layout_constraintBottom_toTopOf="@id/lower_white_menu"
-        app:layout_constraintVertical_chainStyle="spread">
-
-
-        <ImageView
-            android:id="@+id/lower_body_image"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/lower_body_image" />
-
-
-
-        <TextView
-            android:id="@+id/lower_body_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:fontFamily="@font/circular"
-            android:onClick="startLowerBodyWorkoutBodyWorkout"
-            android:text="Lower Body"
-            android:textColor="@color/colorText"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/equipment_needed4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:fontFamily="@font/dm_sans"
-            android:text="Equipment Needed:"
-            android:textColor="@color/colorTextBackground"
-            android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_25sdp"
-            android:layout_marginLeft="@dimen/_20sdp"/>
-
-
-        <TextView
-            android:id="@+id/barbell3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:fontFamily="@font/dm_sans"
-            android:text="*Barbell *Gym Equipment"
-            android:textColor="@color/colorTextBackground"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginLeft="@dimen/_25sdp"/>
-
-        <TextView
-            android:id="@+id/dumbbell2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:fontFamily="@font/dm_sans"
-            android:text="*Dumbbell"
-            android:textColor="@color/colorTextBackground"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_45sdp"
-            android:layout_marginLeft="@dimen/_25sdp"/>
-
-
-        <Button
-            android:id="@+id/arrow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="startLowerBodyWorkoutBodyWorkout"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="@drawable/ic_right_arrow"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/lower_white_menu"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
-        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
-        app:layout_constraintStart_toStartOf="@id/far_left_guide"
-        app:layout_constraintTop_toBottomOf="@id/top_horizontal"
-        android:layout_constrainBottom_toBottomOf="parent"
-        app:layout_constraintVertical_chainStyle="packed">
-
-        <ImageView
-            android:id="@+id/white_background"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_35sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_bg" />
-
-
-        <Button
-            android:id="@+id/home_button"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:background="@drawable/ic_browser"
-            android:onClick="returnToDashboard"
-            android:layout_marginTop="@dimen/_7sdp"
-            android:layout_marginLeft="@dimen/_40sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_7sdp"
-            android:layout_marginLeft="@dimen/_110sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/ic_color_workoutlogo"
-            android:rotation="-45" />
-
-
-
-        <Button
-            android:id="@+id/gear_button"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_7sdp"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:layout_marginLeft="@dimen/_175sdp"
-            android:background="@drawable/ic_no_color_gear"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/far_left_guide"
+    <TextView
+        android:id="@+id/settings_words"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.10" />
+        android:layout_marginTop="59sp"
+        android:fontFamily="@font/circular"
+        android:text="WORKOUT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.573"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.918" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.20" />
+        android:fontFamily="@font/circular"
+        android:text="Workouts"
+        android:textColor="@color/colorText"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.067" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="301sp"
+        android:layout_height="83sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.464"
+        app:srcCompat="@drawable/abs_image" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="301sp"
+        android:layout_height="83sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.231"
+        app:srcCompat="@drawable/lower_body_image" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="301sp"
+        android:layout_height="83sp"
+        android:onClick="startLowerBodyWorkout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.69"
+        app:srcCompat="@drawable/upper_body_image" />
+
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.42" />
+        android:fontFamily="@font/circular"
+        android:text="LOWER BODY"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.627" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
+    <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.65" />
+        android:fontFamily="@font/circular"
+        android:text="ABS"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.422" />
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline8"
+    <TextView
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.80" />
+        android:fontFamily="@font/circular"
+        android:text="UPPER BODY"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.209"
+        android:onClick="startUpperBodyWorkout"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/far_right_guide"
+    <TextView
+        android:id="@+id/equipment_needed2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.90" />
+        android:gravity="center"
+        android:text="Equipment Needed:"
+        android:textColor="@color/colorText"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.361"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.456" />
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/bottom_horizontal"
+    <TextView
+        android:id="@+id/dumbbell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="@dimen/_40sdp" />
+        android:gravity="center"
+        android:text="*Dumbbell"
+        android:textColor="@color/colorText"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.707" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/top_horizontal"
+    <TextView
+        android:id="@+id/gym_equipment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="100dp" />
+        android:gravity="center"
+        android:text="*Barbell      *Gym Equipment"
+        android:textColor="@color/colorText"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.688" />
+
+    <TextView
+        android:id="@+id/equipment_needed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Equipment Needed:"
+        android:textColor="@color/colorText"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.294"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.665" />
+
+    <TextView
+        android:id="@+id/gym_equipment2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="*None"
+        android:textColor="@color/colorText"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.486" />
+
+    <TextView
+        android:id="@+id/equipment_needed1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Equipment Needed:"
+        android:textColor="@color/colorText"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.361"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.245" />
+
+    <TextView
+        android:id="@+id/dumbbell2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="*Dumbbell"
+        android:textColor="@color/colorText"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.261"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.292" />
+
+    <TextView
+        android:id="@+id/barbell2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="*Barbell"
+        android:textColor="@color/colorText"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.251"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.272" />
 
     <!-- END -->
 

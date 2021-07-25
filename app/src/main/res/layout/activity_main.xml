@@ -30,6 +30,7 @@
         android:layout_height="27sp"
         android:background="@drawable/ic_text_field"
         android:fontFamily="@font/circular"
+        android:onClick="goToHistory"
         android:padding="8sp"
         android:text="History"
         android:textColor="@color/colorText"

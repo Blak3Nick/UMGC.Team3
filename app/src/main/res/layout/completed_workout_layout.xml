@@ -60,19 +60,20 @@
 
 
     <!--action button for dashboard -->
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_40sdp"
-        android:layout_marginEnd="@dimen/_40sdp"
-        android:layout_marginTop="32sp"
-        android:background="@drawable/ic_button_background"
-        android:padding="8sp"
-        android:text="DASHBOARD"
-        android:textColor="@color/colorText"
-        android:textColorHint="#FFFFFF"
-        android:textSize="@dimen/_17sdp" />
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="32sp"
+            android:layout_marginEnd="@dimen/_40sdp"
+            android:background="@drawable/ic_button_background"
+            android:onClick="returnToDashboard"
+            android:padding="8sp"
+            android:text="DASHBOARD"
+            android:textColor="@color/colorText"
+            android:textColorHint="#FFFFFF"
+            android:textSize="@dimen/_17sdp" />
 
 
     </LinearLayout>

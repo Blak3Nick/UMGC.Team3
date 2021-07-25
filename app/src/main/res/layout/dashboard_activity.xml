@@ -3,13 +3,9 @@
 
 <!-- This file contains the code for the dashboard
         using this custom settings
-
         android:fontFamily="@font/circular"
         android:textColor="@color/colorText"
-
         android:background="@drawable/ic_text_field" [background of user editable fields]
-
-
         -->
 
 
@@ -23,348 +19,216 @@
     tools:context=".RegisterActivity">
 
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/dashboard_workout_flow"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_55sdp"
-        app:layout_constraintBottom_toTopOf="@id/workout_flow"
-        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/far_left_guide"
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="359sp"
+        android:layout_height="97sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread">
+        app:srcCompat="@drawable/profile_dashboard"
+        android:onClick="profileView"/>
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="359sp"
+        android:layout_height="107sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75"
+        app:srcCompat="@drawable/seeprogress"
+        android:onClick="progressView"/>
 
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="166dp"
-            android:layout_height="38dp"
-            android:layout_marginLeft="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_50sdp"
-            android:fontFamily="@font/circular"
-            android:textColor="@color/colorText"
-            android:text="Dashboard"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/loginBtn6"
+        android:layout_width="53sp"
+        android:layout_height="30sp"
+        android:background="@drawable/ic_show_button"
+        android:fontFamily="@font/circular"
+        android:padding="8sp"
+        android:text="SHOW"
+        android:textColor="@color/colorAccent"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.504" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/loginBtn23"
+        android:layout_width="53sp"
+        android:layout_height="30sp"
+        android:background="@drawable/ic_show_button"
+        android:fontFamily="@font/circular"
+        android:padding="8sp"
+        android:text="SHOW"
+        android:textColor="@color/colorAccent"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.721" />
 
+    <Button
+        android:id="@+id/loginBtn3"
+        android:layout_width="53sp"
+        android:layout_height="30sp"
+        android:background="@drawable/ic_color_button"
+        android:fontFamily="@font/circular"
+        android:padding="8sp"
+        android:text="START"
+        android:textColor="@color/colorText"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.295" />
 
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="359sp"
+        android:layout_height="97sp"
+        android:onClick="workoutSelection"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.253"
+        app:srcCompat="@drawable/today_workout" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/workout_flow"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_83sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
-            app:layout_constraintTop_toBottomOf="@id/dashboard_workout_flow"
-            app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
-            app:layout_constraintStart_toStartOf="@id/far_left_guide"
-            app:layout_constraintBottom_toTopOf="profile_flow"
-            app:layout_constraintVertical_chainStyle="spread">
-
-            <ImageView
-                android:id="@+id/today_workout"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                app:srcCompat="@drawable/today_workout" />
-
-            <TextView
-                android:id="@+id/workout_dashboard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginLeft="@dimen/_50sdp"
-                android:fontFamily="@font/circular"
-                android:text="Workout"
-                android:textColor="@color/colorText"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/loginBtn3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:background="@drawable/ic_color_button"
-                android:fontFamily="@font/circular"
-                android:padding="8sp"
-                android:text="START"
-                android:textColor="@color/colorText"
-                android:textSize="10sp" />
-
-
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/white_background"
+        android:layout_width="361sp"
+        android:layout_height="64sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.969"
+        app:srcCompat="@drawable/ic_bg" />
 
 
+    <Button
+        android:id="@+id/loginBtn24"
+        android:layout_width="46sp"
+        android:layout_height="58sp"
+        android:background="@drawable/ic_color_home"
+        android:padding="8sp"
+        android:textColor="@color/colorText"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.946" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/profile_flow"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_83sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
-        app:layout_constraintTop_toBottomOf="@id/workout_flow"
-        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
-        app:layout_constraintStart_toStartOf="@id/far_left_guide"
-        app:layout_constraintBottom_toTopOf="@id/see_progress_flow"
-        app:layout_constraintVertical_chainStyle="spread">
+    <Button
+        android:id="@+id/gear_button"
+        android:layout_width="47sp"
+        android:layout_height="33sp"
+        android:background="@drawable/ic_no_color_gear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.949"
+        android:onClick="profileView"/>
 
+    <Button
+        android:id="@+id/workoutButton"
+        android:layout_width="47sp"
+        android:layout_height="33sp"
+        android:layout_marginTop="45sp"
+        android:background="@drawable/ic_gym__3_"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.944" />
 
-        <ImageView
-            android:id="@+id/profile_dash_pic"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:onClick="profileView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/profile_dashboard" />
-
-        <TextView
-            android:id="@+id/profile_dashboard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:layout_marginLeft="@dimen/_70sdp"
-            android:fontFamily="@font/circular"
-            android:text="Profile"
-            android:textColor="@color/colorText"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/loginBtn6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="@drawable/ic_show_button"
-            android:fontFamily="@font/circular"
-            android:padding="8sp"
-            android:text="SHOW"
-            android:textColor="@color/colorAccent"
-            android:textSize="10sp" />
-
-
-
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/see_progress_flow"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_83sdp"
-        android:layout_marginBottom="@dimen/_30sdp"
-        app:layout_constraintTop_toBottomOf="@id/profile_flow"
-        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
-        app:layout_constraintStart_toStartOf="@id/far_left_guide"
-        app:layout_constraintBottom_toTopOf="@id/lower_white_menu"
-        app:layout_constraintVertical_chainStyle="spread">
-
-        <ImageView
-            android:id="@+id/imageView12"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:srcCompat="@drawable/seeprogress"
-            android:onClick="progressView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/see_progress_words"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:layout_marginLeft="@dimen/_40sdp"
-            android:fontFamily="@font/circular"
-            android:text="See Progress"
-            android:textColor="@color/colorText"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/loginBtn23"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="@drawable/ic_show_button"
-            android:fontFamily="@font/circular"
-            android:padding="8sp"
-            android:text="SHOW"
-            android:textColor="@color/colorAccent"
-            android:textSize="10sp" />
-
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/lower_white_menu"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
-        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
-        app:layout_constraintStart_toStartOf="@id/far_left_guide"
-        app:layout_constraintTop_toBottomOf="@id/top_horizontal"
-        android:layout_constrainBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="@dimen/_175sdp"
-        app:layout_constraintVertical_chainStyle="packed">
-
-        <ImageView
-            android:id="@+id/white_background"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_35sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_bg" />
-
-
-        <Button
-            android:id="@+id/home_button"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:background="@drawable/ic_color_home"
-            android:onClick="returnToDashboard"
-            android:layout_marginTop="@dimen/_7sdp"
-            android:layout_marginLeft="@dimen/_40sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_7sdp"
-            android:layout_marginLeft="@dimen/_110sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/ic_gym__3_" />
-
-
-
-
-        <Button
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_7sdp"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:layout_marginLeft="@dimen/_175sdp"
-            android:background="@drawable/ic_no_color_gear"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/far_left_guide"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.10" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.20" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.42" />
+        android:fontFamily="@font/circular"
+        android:text="Dashboard"
+        android:textColor="@color/colorText"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.087" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.65" />
+    <TextView
+        android:id="@+id/workout_dashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="Workout"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.275"
+        app:layout_constraintStart_toStartOf="@+id/imageView12"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.258" />
+
+    <TextView
+        android:id="@+id/profile_dashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="Profile"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.324"
+        app:layout_constraintStart_toStartOf="@+id/imageView12"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/progress_dashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/circular"
+        android:text="See Progress"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="@+id/imageView12"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.723" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
 
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.80" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/far_right_guide"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.90" />
-
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/bottom_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_end="@dimen/_40sdp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/top_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_end="100dp" />
-
-    <!-- END -->
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

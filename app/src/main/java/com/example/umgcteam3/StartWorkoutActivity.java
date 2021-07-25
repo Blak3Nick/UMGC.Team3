@@ -42,6 +42,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
     private final String EXNUMBERSTRING = "exerciseNumber";
     boolean increaseWeight = false;
     String workoutType;
+    int totalExercises;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         setContentView(R.layout.start_workout_layout);
         count = extras.getInt("count");
+        totalExercises = extras.getInt("TotalExercises");
         exerciseNumber = extras.getInt(EXNUMBERSTRING);
         setNumber = extras.getInt(SETNUMBERSTRING);
         exercise_count = extras.getInt("exercise_count");
@@ -57,7 +59,16 @@ public class StartWorkoutActivity extends AppCompatActivity {
         allExercises = (Exercise[]) extras.get("AllExercises");
         Exercise exercise = allExercises[exercise_count];
         workoutType = extras.getString("workoutType");
-
+        switch (workoutType){
+            case "Abdominals":
+                allExercises = BackgroundWorker.abdominalExercises;
+                break;
+            case "LowerBody":
+                allExercises = BackgroundWorker.lowerBodyExercises;
+                break;
+            case "UpperBody":
+                allExercises = BackgroundWorker.upperBodyExercises;
+        }
         currentSet = exercise.getSet(count);
         exercise1.setText(currentSet.getExerciseName());
 
@@ -126,12 +137,16 @@ public class StartWorkoutActivity extends AppCompatActivity {
         reloadPage.putExtra("exercise_count", exercise_count);
         reloadPage.putExtra("AllExercises", allExercises);
         reloadPage.putExtra("workoutType", workoutType);
+        totalExercises++;
+        reloadPage.putExtra("TotalExercises", totalExercises);
 
 
         allExercises = sendData();
         stopThread = true;
         if (exercise_count == last_exercise) {
             Intent loadCompleted = new Intent(this, CompletedWorkoutWorker.class);
+            loadCompleted.putExtra("TotalExercises", totalExercises);
+            loadCompleted.putExtra("workoutType", workoutType);
             startActivity(loadCompleted);
 
         }else {
@@ -170,20 +185,22 @@ public class StartWorkoutActivity extends AppCompatActivity {
             increaseWeight = true;
             UpdateWorkout updateWorkout = new UpdateWorkout();
             System.out.println(workoutType + "is the workout type" + exerciseNumber + "is the exercise number\n\n\n\n\n");
-            allExercises = updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, true, setNumber, exerciseNumber );
+            allExercises = updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, true, setNumber, exerciseNumber+1 );
         }
         else if(reportedRPE - targetRPE > 1) {
             UpdateWorkout updateWorkout = new UpdateWorkout();
-            allExercises = updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, false, setNumber, exerciseNumber );
+            allExercises = updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, false, setNumber, exerciseNumber+1 );
         }
 
-        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, 1, ex_name, strDate, false);
+        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, 1, ex_name, strDate, false, workoutType);
         updateDatabase.execute();
 
         return allExercises;
     }
     public void endWorkout(View view) {
         Intent loadCompleted = new Intent(this, CompletedWorkoutWorker.class);
+        loadCompleted.putExtra("TotalExercises", totalExercises);
+        loadCompleted.putExtra("workoutType", workoutType);
         startActivity(loadCompleted);
     }
 }

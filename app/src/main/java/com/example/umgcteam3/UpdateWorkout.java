@@ -33,9 +33,20 @@ public class UpdateWorkout {
             }
             set.setWeightUsed(curWeight);
             System.out.println("The current weight is " + curWeight);
-            exerciseNumber++;
             UpdateCurrentWorkoutPlan updateCurrentWorkoutPlan = new UpdateCurrentWorkoutPlan(set,workoutType, i+1, exerciseNumber);
+            System.out.println("The current set is " + i+ " exercise number" + exerciseNumber + "\n\n\n\n\n");
             updateCurrentWorkoutPlan.doInBackground();
+        }
+
+        switch (workoutType){
+            case "Abdominals":
+                BackgroundWorker.setAbdominalExercises(exercises);
+                break;
+            case "LowerBody":
+                BackgroundWorker.setLowerBodyExercises(exercises);
+                break;
+            case "UpperBody":
+                BackgroundWorker.setUpperBodyExercises(exercises);
         }
         return exercises;
     }

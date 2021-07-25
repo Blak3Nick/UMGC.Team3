@@ -56,6 +56,7 @@ public class WorkoutSelectionActivity extends Activity {
         startWorkout.putExtra("exercise_count", 0);
         startWorkout.putExtra("AllExercises", BackgroundWorker.upperBodyExercises);
         startWorkout.putExtra("workoutType", "UpperBody");
+        startWorkout.putExtra("TotalExercises", 0);
         startActivity(startWorkout);
         finish();
     }
@@ -65,6 +66,7 @@ public class WorkoutSelectionActivity extends Activity {
         startWorkout.putExtra("exercise_count", 0);
         startWorkout.putExtra("AllExercises", BackgroundWorker.lowerBodyExercises);
         startWorkout.putExtra("workoutType", "LowerBody");
+        startWorkout.putExtra("TotalExercises", 0);
         startActivity(startWorkout);
         finish();
     }
@@ -74,6 +76,7 @@ public class WorkoutSelectionActivity extends Activity {
         startWorkout.putExtra("exercise_count", 0);
         startWorkout.putExtra("AllExercises", BackgroundWorker.abdominalExercises);
         startWorkout.putExtra("workoutType", "Abdominals");
+        startWorkout.putExtra("TotalExercises", 0);
         startActivity(startWorkout);
         finish();
     }

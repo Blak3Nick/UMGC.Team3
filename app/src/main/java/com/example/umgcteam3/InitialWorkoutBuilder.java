@@ -153,6 +153,8 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
         Map<String, Object> data = new HashMap<>();
         data.put("Built", true);
 
+
+
         for (String exName: allExNames) {
             db.collection("users").document(userID).collection("CompletedWorkouts").document(exName).set(data, SetOptions.merge());
         }
