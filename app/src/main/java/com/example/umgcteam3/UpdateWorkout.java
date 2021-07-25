@@ -7,21 +7,21 @@ import androidx.annotation.RequiresApi;
 import java.util.ArrayList;
 
 public class UpdateWorkout {
-    Workout workout;
+    Exercise[] exercises;
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void updateCurrentWorkout(String workoutType, int exerciseKey, boolean increase, int startingSet, int exerciseNumber){
         switch (workoutType){
             case "Abdominals":
-                workout = LoginActivity.getAbdominalWorkout();
+                exercises = BackgroundWorker.abdominalExercises;
                 break;
             case "LowerBody":
-                workout = LoginActivity.getLowerBodyWorkout();
+                exercises = BackgroundWorker.lowerBodyExercises;
                 break;
             case "UpperBody":
-                workout = LoginActivity.getUpperBodyWorkout();
+                exercises = BackgroundWorker.upperBodyExercises;
         }
         System.out.println("The exercise key is " + exerciseKey + "\n\n\n\n\n");
-        Exercise exercise = workout.getSpecificExercise(exerciseKey);
+        Exercise exercise = exercises[exerciseKey];
         ArrayList<Set> allSets = exercise.getAllSets();
         for (int i = startingSet; i < allSets.size(); i++) {
             Set set = allSets.get(i);
@@ -32,9 +32,11 @@ public class UpdateWorkout {
                 curWeight -= 5;
             }
             set.setWeightUsed(curWeight);
+            System.out.println("The current weight is " + curWeight);
+            exerciseNumber++;
             UpdateCurrentWorkoutPlan updateCurrentWorkoutPlan = new UpdateCurrentWorkoutPlan(set,workoutType, i+1, exerciseNumber);
             updateCurrentWorkoutPlan.doInBackground();
         }
-        workout.updateExerciseNumbers(exerciseKey, exercise);
+//        workout.updateExerciseNumbers(exerciseKey, exercise);
     }
 }

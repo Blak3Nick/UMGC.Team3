@@ -167,6 +167,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
         if (reportedRPE - targetRPE < -1 ) {
             increaseWeight = true;
             UpdateWorkout updateWorkout = new UpdateWorkout();
+            System.out.println(workoutType + "is the workout type" + exerciseNumber + "is the exercise number\n\n\n\n\n");
             updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, true, setNumber, exerciseNumber );
         }
         else if(reportedRPE - targetRPE > 1) {
