@@ -24,6 +24,43 @@
     tools:context=".MainActivity">
 
 
+
+
+    <ImageView
+        android:id="@+id/profile_picture"
+        android:layout_width="256sp"
+        android:layout_height="125sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.075"
+        app:srcCompat="@drawable/ic_profile_pic" />
+
+
+    <TextView
+        android:id="@+id/fullName"
+        android:layout_width="263sp"
+        android:layout_height="43sp"
+        android:layout_marginStart="8sp"
+        android:layout_marginLeft="8sp"
+        android:fontFamily="@font/circular"
+        android:gravity="center"
+        android:padding="8sp"
+        android:text="Full Name  "
+        android:textColor="@color/colorText"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.274" />
+
+
+
+
     <Button
         android:id="@+id/history_button"
         android:layout_width="76sp"
@@ -76,62 +113,10 @@
         app:layout_constraintVertical_bias="0.359" />
 
 
-    <TextView
-        android:id="@+id/fullName"
-        android:layout_width="263sp"
-        android:layout_height="43sp"
-        android:layout_marginStart="8sp"
-        android:layout_marginLeft="8sp"
-        android:fontFamily="@font/circular"
-        android:gravity="center"
-        android:padding="8sp"
-        android:text="Full Name  "
-        android:textColor="@color/colorText"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.274" />
-
-    <ImageView
-        android:id="@+id/white_background"
-        android:layout_width="361sp"
-        android:layout_height="64sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.969"
-        app:srcCompat="@drawable/ic_bg" />
 
 
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="46sp"
-        android:layout_height="58sp"
-        android:background="@drawable/ic_colorgearicon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.713"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946" />
 
-    <Button
-        android:id="@+id/workoutButton"
-        android:layout_width="47sp"
-        android:layout_height="33sp"
-        android:layout_marginTop="45sp"
-        android:background="@drawable/ic_gym__3_"
-        android:onClick="proceedToWorkout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946"/>
+
 
     <TextView
         android:id="@+id/settings_words"
@@ -147,29 +132,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.932"/>
 
-    <Button
-        android:id="@+id/home_button"
-        android:layout_width="47sp"
-        android:layout_height="33sp"
-        android:background="@drawable/ic_browser"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.206"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.949"/>
 
-    <ImageView
-        android:id="@+id/profile_picture"
-        android:layout_width="256sp"
-        android:layout_height="125sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.075"
-        app:srcCompat="@drawable/ic_profile_pic" />
 
     <ImageView
         android:id="@+id/history_upper_body"
@@ -297,5 +260,99 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.782" />
 
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lower_white_menu"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
+        app:layout_constraintStart_toStartOf="@id/far_left_guide"
+        app:layout_constraintTop_toBottomOf="@id/top_horizontal"
+        android:layout_constrainBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="@dimen/_175sdp"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <ImageView
+            android:id="@+id/white_background"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_35sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_bg" />
+
+
+        <Button
+            android:id="@+id/home_button"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/ic_browser"
+            android:onClick="returnToDashboard"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginLeft="@dimen/_40sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <Button
+            android:id="@+id/button5"
+            android:onClick="proceedToWorkout"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginLeft="@dimen/_110sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/ic_gym__3_" />
+
+
+
+
+        <Button
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_175sdp"
+            android:background="@drawable/ic_color_gear"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/far_left_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/far_right_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/_40sdp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="100dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
