@@ -80,5 +80,17 @@ public class WorkoutSelectionActivity extends Activity {
         startActivity(startWorkout);
         finish();
     }
+    public void returnToMain(View view) {
+        Intent mainClass = new Intent(this, MainActivity.class);
+        startActivity(mainClass);
+    }
+    public void returnToDashboard(View view) {
+        Intent dashboard = new Intent(this, DashboardActivity.class);
+        startActivity(dashboard);
+    }
+    public void proceedToWorkout(View view) {
+        startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+
+    }
 }
 

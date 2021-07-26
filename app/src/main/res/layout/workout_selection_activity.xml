@@ -18,54 +18,7 @@
     >
 
 
-    <ImageView
-        android:id="@+id/white_background"
-        android:layout_width="361sp"
-        android:layout_height="64sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.969"
-        app:srcCompat="@drawable/ic_bg" />
 
-
-    <Button
-        android:id="@+id/home_button"
-        android:layout_width="47sp"
-        android:layout_height="33sp"
-        android:background="@drawable/ic_browser"
-        android:onClick="returnToDashboard"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
-
-    <Button
-        android:id="@+id/gear_button"
-        android:layout_width="47sp"
-        android:layout_height="33sp"
-        android:background="@drawable/ic_no_color_gear"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.853"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948"  />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="46sp"
-        android:layout_height="58sp"
-        android:background="@drawable/ic_gym__3_"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.391"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946" />
 
     <TextView
         android:id="@+id/settings_words"
@@ -99,38 +52,38 @@
         android:id="@+id/imageView2"
         android:layout_width="301sp"
         android:layout_height="83sp"
+        android:background="@drawable/abs_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.464"
-        app:srcCompat="@drawable/abs_image" />
+        app:layout_constraintVertical_bias="0.464" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="301sp"
         android:layout_height="83sp"
+        android:background="@drawable/lower_body_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.231"
-        app:srcCompat="@drawable/lower_body_image" />
+        app:layout_constraintVertical_bias="0.231" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="301sp"
         android:layout_height="83sp"
+        android:background="@drawable/upper_body_image"
         android:onClick="startLowerBodyWorkout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.69"
-        app:srcCompat="@drawable/upper_body_image" />
+        app:layout_constraintVertical_bias="0.69" />
 
     <TextView
         android:id="@+id/textView4"
@@ -299,5 +252,132 @@
         app:layout_constraintVertical_bias="0.272" />
 
     <!-- END -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lower_white_menu"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
+        app:layout_constraintStart_toStartOf="@id/far_left_guide"
+        app:layout_constraintTop_toBottomOf="@id/top_horizontal"
+        app:layout_constraintVertical_chainStyle="spread_inside">
+
+        <ImageView
+            android:id="@+id/white_background"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/ic_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_bg" />
+
+
+        <Button
+            android:id="@+id/home_button"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:background="@drawable/ic_browser"
+            android:onClick="returnToDashboard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_110sdp"
+            android:layout_marginLeft="@dimen/_110sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:background="@drawable/ic_gym__3_"
+            android:onClick="proceedToWorkout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_175sdp"
+            android:layout_marginLeft="@dimen/_175sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:background="@drawable/ic_color_gear"
+            android:onClick="returnToMain"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.20" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.42" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.80" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/far_left_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/far_right_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/_10sdp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.91928864" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
