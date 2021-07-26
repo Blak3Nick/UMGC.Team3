@@ -2,6 +2,7 @@ package com.example.umgcteam3;
 
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DateFormat;
@@ -21,6 +23,8 @@ import java.util.HashMap;
 public class StartWorkoutActivity extends AppCompatActivity {
     private volatile boolean stopThread = false;
     int count;
+    int setNumber;
+    int exerciseNumber;
     TextView exercise1;
     TextView weightNumber;
     TextView setNumberTextDesc;
@@ -33,6 +37,12 @@ public class StartWorkoutActivity extends AppCompatActivity {
     private int progressStatus = 0;
     private TextView textView;
     private Handler handler = new Handler();
+    Set currentSet;
+    private final String SETNUMBERSTRING = "setNumber";
+    private final String EXNUMBERSTRING = "exerciseNumber";
+    boolean increaseWeight = false;
+    String workoutType;
+    int totalExercises;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,26 +51,39 @@ public class StartWorkoutActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         setContentView(R.layout.start_workout_layout);
         count = extras.getInt("count");
+        totalExercises = extras.getInt("TotalExercises");
+        exerciseNumber = extras.getInt(EXNUMBERSTRING);
+        setNumber = extras.getInt(SETNUMBERSTRING);
         exercise_count = extras.getInt("exercise_count");
         exercise1 = (TextView) findViewById(R.id.exercise_name);
         allExercises = (Exercise[]) extras.get("AllExercises");
         Exercise exercise = allExercises[exercise_count];
-
-        Set set = exercise.getSet(count);
-        exercise1.setText(set.getExerciseName());
+        workoutType = extras.getString("workoutType");
+        switch (workoutType){
+            case "Abdominals":
+                allExercises = BackgroundWorker.abdominalExercises;
+                break;
+            case "LowerBody":
+                allExercises = BackgroundWorker.lowerBodyExercises;
+                break;
+            case "UpperBody":
+                allExercises = BackgroundWorker.upperBodyExercises;
+        }
+        currentSet = exercise.getSet(count);
+        exercise1.setText(currentSet.getExerciseName());
 
         setNumberTextDesc = (TextView) findViewById(R.id.actualSetNumber);
 
         setNumberTextDesc.setText(Integer.toString(count+1));
 
         weightNumber = findViewById(R.id.weight_number);
-        weightNumber.setText(Integer.toString(set.getWeightUsed()));
+        weightNumber.setText(Integer.toString(currentSet.getWeightUsed()));
 
         repNumber = findViewById(R.id.rep_number);
-        repNumber.setText(Integer.toString(set.getTargetReps()));
+        repNumber.setText(Integer.toString(currentSet.getTargetReps()));
 
         rpeNumber = findViewById(R.id.actualRPENumber);
-        rpeNumber.setText(Integer.toString(set.getTargetRPE()));
+        rpeNumber.setText(Integer.toString(currentSet.getTargetRPE()));
         count++;
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.textViewProgress);
@@ -102,6 +125,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
         final int result = 1;
         startActivity(loadHomePage);
     }
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void updateWorkoutPage(View view) {
         Intent reloadPage = new Intent(this, StartWorkoutActivity.class);
         int last_exercise = 6;
@@ -112,10 +136,17 @@ public class StartWorkoutActivity extends AppCompatActivity {
         reloadPage.putExtra("count", count);
         reloadPage.putExtra("exercise_count", exercise_count);
         reloadPage.putExtra("AllExercises", allExercises);
-        sendData();
+        reloadPage.putExtra("workoutType", workoutType);
+        totalExercises++;
+        reloadPage.putExtra("TotalExercises", totalExercises);
+
+
+        allExercises = sendData();
         stopThread = true;
         if (exercise_count == last_exercise) {
             Intent loadCompleted = new Intent(this, CompletedWorkoutWorker.class);
+            loadCompleted.putExtra("TotalExercises", totalExercises);
+            loadCompleted.putExtra("workoutType", workoutType);
             startActivity(loadCompleted);
 
         }else {
@@ -123,13 +154,14 @@ public class StartWorkoutActivity extends AppCompatActivity {
         }
     }
 
-    public void sendData() {
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Exercise[] sendData() {
         String ex_name = "" + exercise1.getText();
         String weightString = "" + weightNumber.getText();
         String setString = "" +  setNumberTextDesc.getText();
         String stringRepNumber = "" +  repNumber.getText();
         String stringRPENumber = "" +  rpeNumber.getText();
-
+        int reportedRPE = currentSet.getTargetRPE();
         int weight = 0;
         int set = 1;
         int reps = 5;
@@ -139,6 +171,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
             weight = Integer.parseInt(weightString);
             set = Integer.parseInt(setString);
             rpe = Integer.parseInt(stringRPENumber);
+            reportedRPE = Integer.parseInt(rpeNumber.getText().toString());
         } catch (Exception ex) {
             System.out.println("COULD NOT get one of the numbers from get text");
         }
@@ -147,11 +180,27 @@ public class StartWorkoutActivity extends AppCompatActivity {
         String strDate = dateFormat.format(date);
         System.out.println("Date = " + strDate);
 
-        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, 1, ex_name, strDate, false);
+        int targetRPE = currentSet.getTargetRPE();
+        if (reportedRPE - targetRPE < -1 ) {
+            increaseWeight = true;
+            UpdateWorkout updateWorkout = new UpdateWorkout();
+            System.out.println(workoutType + "is the workout type" + exerciseNumber + "is the exercise number\n\n\n\n\n");
+            allExercises = updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, true, setNumber, exerciseNumber+1 );
+        }
+        else if(reportedRPE - targetRPE > 1) {
+            UpdateWorkout updateWorkout = new UpdateWorkout();
+            allExercises = updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, false, setNumber, exerciseNumber+1 );
+        }
+
+        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, 1, ex_name, strDate, false, workoutType);
         updateDatabase.execute();
+
+        return allExercises;
     }
     public void endWorkout(View view) {
         Intent loadCompleted = new Intent(this, CompletedWorkoutWorker.class);
+        loadCompleted.putExtra("TotalExercises", totalExercises);
+        loadCompleted.putExtra("workoutType", workoutType);
         startActivity(loadCompleted);
     }
 }

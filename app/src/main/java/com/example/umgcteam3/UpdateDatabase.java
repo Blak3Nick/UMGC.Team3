@@ -29,8 +29,9 @@ public class UpdateDatabase extends AsyncTask<Void, Void, String> {
     String exercise_name;
     String exDate;
     String setNumber;
+    String workoutType;
     boolean readyToIncrease = false;
-    public UpdateDatabase(Context context, int set, int reps, int rpe, int weight, int day_number,  String exercise_name, String exDate, boolean readyToIncrease) {
+    public UpdateDatabase(Context context, int set, int reps, int rpe, int weight, int day_number,  String exercise_name, String exDate, boolean readyToIncrease, String workoutType) {
         this.context = context;
         this.set = set;
         this.reps = reps;
@@ -41,6 +42,7 @@ public class UpdateDatabase extends AsyncTask<Void, Void, String> {
         this.exDate = exDate;
         this.setNumber = "Set" + set;
         this.readyToIncrease = readyToIncrease;
+        this.workoutType = workoutType;
     }
 
     @Override
@@ -78,8 +80,20 @@ public class UpdateDatabase extends AsyncTask<Void, Void, String> {
         documentReference.update("weightUsed", FieldValue.arrayUnion(weight));
         documentReference.update("dateCompleted", FieldValue.arrayUnion(exDate));
 
+        documentReference = db.collection("users").document(user_id);
+        String workoutUpdate = "";
+        switch (workoutType){
+            case "Abdominals":
+                workoutUpdate = "AbdominalWorkoutTotal";
+                break;
+            case "LowerBody":
+                workoutUpdate = "LowerBodyWorkoutTotal";
+                break;
+            case "UpperBody":
+                workoutUpdate = "UpperBodyWorkoutTotal";
+        }
 
-
+        documentReference.update(workoutUpdate, FieldValue.increment(1));
         return null;
     }
 

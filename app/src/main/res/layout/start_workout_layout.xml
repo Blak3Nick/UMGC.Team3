@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="#1A1423">
+    android:background="@color/colorBackground">
 
     <Button
-        android:id="@+id/button14"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:id="@+id/endWorkoutButton"
+        android:layout_width="180dp"
+        android:layout_height="51dp"
 
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="220dp"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="518dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="80dp"
-        android:background="@drawable/ic_color_history_button"
-        android:onClick="endWorkout" />
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/ic_color_button"
+        android:onClick="endWorkout"
+        android:text="End Workout"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/completeExerciseButton"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     <TextView
         android:id="@+id/textViewProgress"
-        android:layout_width="match_parent"
+        android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rpeTextDesc"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="TextView"
         android:textColor="#ffffff"
         android:textSize="30dp"
         android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/actualRPENumber"
         tools:text="Rest"
         tools:visibility="visible" />
 
@@ -44,137 +47,164 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/completeExerciseButton"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:indeterminate="false"
         android:max="60"
         android:maxHeight="48dp"
         android:minHeight="34dp"
         android:progress="1"
-        android:scaleY="10" />
+        android:scaleY="10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProgress" />
 
     <Button
         android:id="@+id/completeExerciseButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rpeTextDesc"
-        android:layout_marginTop="88dp"
-        android:background="#7D387D"
+        android:layout_width="180dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/ic_gray_button"
         android:onClick="updateWorkoutPage"
-        android:text="Completed" />
+        android:text="Complete Set"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     <EditText
         android:id="@+id/actualRPENumber"
-        android:layout_width="230dp"
-        android:layout_height="63dp"
-        android:layout_below="@id/rep_number"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="-1dp"
-        android:layout_toRightOf="@id/rpeTextDesc"
+        android:layout_width="115dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:gravity="center"
         android:inputType="number"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rpeTextDesc" />
 
     <TextView
         android:id="@+id/rpeTextDesc"
-        android:layout_width="176dp"
+        android:layout_width="wrap_content"
         android:layout_height="63dp"
-        android:layout_below="@id/repTextDesc"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="68dp"
         android:gravity="center"
-        android:text="RPE"
+        android:text="Enter your Rate of Perceived Exertion From 1-10"
         android:textColor="#ffffff"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weight_number" />
 
     <EditText
         android:id="@+id/rep_number"
-        android:layout_width="234dp"
-        android:layout_height="63dp"
-        android:layout_below="@id/weight_number"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="6dp"
-        android:layout_toRightOf="@id/repTextDesc"
+        android:layout_width="115dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:ems="10"
         android:gravity="center"
         android:inputType="number"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repTextDesc" />
 
     <TextView
         android:id="@+id/repTextDesc"
-        android:layout_width="175dp"
-        android:layout_height="66dp"
-        android:layout_below="@id/weightDescription"
-        android:layout_marginTop="5dp"
+        android:layout_width="115dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:gravity="center"
         android:text="Reps"
         android:textColor="#ffffff"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exercise_name" />
 
     <TextView
         android:id="@+id/weightDescription"
-        android:layout_width="176dp"
-        android:layout_height="63dp"
-        android:layout_below="@id/exercise_name"
-        android:layout_marginTop="61dp"
-        android:gravity="center"
+        android:layout_width="115dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/circular"
+        android:gravity="center"
         android:text="Weight"
         android:textColor="@color/colorText"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exercise_name" />
 
     <EditText
         android:id="@+id/weight_number"
-        android:layout_width="231dp"
-        android:layout_height="69dp"
-        android:layout_below="@id/actualSetNumber"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="-1dp"
-        android:layout_toRightOf="@id/weightDescription"
+        android:layout_width="115dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:gravity="center"
         android:inputType="number"
- />
+        android:textColor="@color/colorText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weightDescription" />
 
     <TextView
         android:id="@+id/actualSetNumber"
-        android:layout_width="232dp"
-        android:layout_height="65dp"
-        android:layout_below="@id/repTextDesc"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="-195dp"
-        android:layout_toRightOf="@id/setNumberTextDesc"
+        android:layout_width="115dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
         android:gravity="center"
         android:text="1"
         android:textColor="#ffffff"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/rep_number"
+        app:layout_constraintStart_toEndOf="@+id/weight_number"
+        app:layout_constraintTop_toBottomOf="@+id/setNumberTextDesc" />
 
     <TextView
         android:id="@+id/setNumberTextDesc"
-        android:layout_width="178dp"
-        android:layout_height="61dp"
-        android:layout_below="@id/exercise_name"
-        android:layout_marginLeft="-410dp"
-        android:layout_marginTop="1dp"
-        android:layout_toRightOf="@id/exercise_name"
-        android:gravity="center"
+        android:layout_width="115dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
         android:fontFamily="@font/circular"
+        android:gravity="center"
         android:text="Set #"
         android:textColor="@color/colorText"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/repTextDesc"
+        app:layout_constraintStart_toEndOf="@+id/weightDescription"
+        app:layout_constraintTop_toBottomOf="@+id/exercise_name" />
 
     <EditText
         android:id="@+id/exercise_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/browser_actions_context_menu_max_width"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
         android:capitalize="words"
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
         android:text="exercise 1"
         android:textAllCaps="true"
-        android:textColor="@android:color/holo_purple"
+        android:textColor="@color/colorAccent"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

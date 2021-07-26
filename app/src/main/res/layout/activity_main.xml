@@ -13,8 +13,6 @@
   -->
 
 
-
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -24,262 +22,320 @@
     tools:context=".MainActivity">
 
 
-    <Button
-        android:id="@+id/history_button"
-        android:layout_width="76sp"
-        android:layout_height="27sp"
-        android:background="@drawable/ic_text_field"
-        android:fontFamily="@font/circular"
-        android:padding="8sp"
-        android:text="History"
-        android:textColor="@color/colorText"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.336" />
-
-    <Button
-        android:id="@+id/account_button"
-        android:layout_width="76sp"
-        android:layout_height="27sp"
-        android:background="@drawable/ic_color_history_button"
-        android:fontFamily="@font/circular"
-        android:padding="8sp"
-        android:text="Account"
-        android:textColor="#E44454"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.834"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.336" />
-
-    <Button
-        android:id="@+id/statistics_button"
-        android:layout_width="76sp"
-        android:layout_height="27sp"
-        android:background="@drawable/ic_text_field"
-        android:fontFamily="@font/circular"
-        android:onClick="goToStatistics"
-        android:padding="8sp"
-        android:text="Statistics"
-        android:textColor="@color/colorText"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.336" />
-
-
-    <TextView
-        android:id="@+id/fullName"
-        android:layout_width="263sp"
-        android:layout_height="43sp"
-        android:layout_marginStart="8sp"
-        android:layout_marginLeft="8sp"
-        android:fontFamily="@font/circular"
-        android:gravity="center"
-        android:padding="8sp"
-        android:text="Full Name  "
-        android:textColor="@color/colorText"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253" />
-
-    <Button
-        android:id="@+id/changeProfile"
-        android:layout_width="299sp"
-        android:layout_height="48sp"
-        android:layout_margin="20sp"
-        android:layout_marginStart="8sp"
-        android:layout_marginEnd="8sp"
-        android:background="@drawable/ic_arrow_text_field"
-        android:drawablePadding="-15sp"
-        android:ems="14"
-        android:fontFamily="@font/circular"
-        android:gravity="center_vertical|left|start"
-        android:padding="10sp"
-        android:text="         Change Profile"
-        android:textColor="@color/colorText"
-        android:textColorHint="@color/colorTextBackground"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/logout_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.539" />
-
-    <Button
-        android:id="@+id/resetPasswordLocal"
-        android:layout_width="299sp"
-        android:layout_height="48sp"
-        android:layout_margin="20sp"
-        android:layout_marginStart="8sp"
-        android:layout_marginTop="272sp"
-        android:layout_marginEnd="8sp"
-        android:background="@drawable/ic_arrow_text_field"
-        android:drawablePadding="-15sp"
-        android:ems="14"
-        android:fontFamily="@font/circular"
-        android:gravity="center_vertical|left|start"
-        android:padding="10sp"
-        android:text="         Change Password "
-        android:textColor="@color/colorText"
-        android:textColorHint="@color/colorTextBackground"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/logout_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeProfile"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/deactivate_account"
-        android:layout_width="299sp"
-        android:layout_height="48sp"
-        android:layout_marginStart="8sp"
-        android:layout_marginTop="24sp"
-        android:layout_marginEnd="8sp"
-        android:layout_marginBottom="32sp"
-        android:background="@drawable/ic_arrow_text_field"
-        android:drawablePadding="-15sp"
-        android:ems="14"
-        android:fontFamily="@font/circular"
-        android:gravity="center_vertical|left|start"
-        android:padding="10dp"
-        android:text="         Deactivate Account"
-        android:textColor="@color/colorText"
-        android:textColorHint="@color/colorTextBackground"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/logout_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resetPasswordLocal"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/logout_button"
-        android:layout_width="299sp"
-        android:layout_height="48sp"
-        android:layout_marginStart="8sp"
-        android:layout_marginTop="316sp"
-        android:layout_marginEnd="8sp"
-        android:background="@drawable/ic_color_history_button"
-        android:drawablePadding="-15sp"
-        android:ems="14"
-        android:fontFamily="@font/circular"
-        android:gravity="center"
-        android:onClick="logout"
-        android:padding="10sp"
-        android:text="LOGOUT"
-        android:textColor="#E44454"
-        android:textColorHint="@color/colorTextBackground"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.568" />
-
-    <ImageView
-        android:id="@+id/white_background"
-        android:layout_width="361sp"
-        android:layout_height="64sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.969"
-        app:srcCompat="@drawable/ic_bg" />
-
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="46sp"
-        android:layout_height="58sp"
-        android:background="@drawable/ic_colorgearicon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.713"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946" />
-
-    <Button
-        android:id="@+id/workoutButton"
-        android:layout_width="47sp"
-        android:layout_height="33sp"
-        android:layout_marginTop="45sp"
-        android:background="@drawable/ic_gym__3_"
-        android:onClick="proceedToWorkout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946" />
-
-    <Button
-        android:id="@+id/home_button"
-        android:layout_width="47sp"
-        android:layout_height="33sp"
-        android:background="@drawable/ic_browser"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.206"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.949" />
-
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="256sp"
-        android:layout_height="125sp"
-        android:layout_marginTop="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_profile_pic" />
-
-    <Button
-        android:id="@+id/changeImageButton"
-        android:layout_width="34sp"
-        android:layout_height="32sp"
-        android:background="@drawable/ic_edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.185" />
-
-    <TextView
-        android:id="@+id/settings_words"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profile_picture_flow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="59sp"
-        android:fontFamily="@font/circular"
-        android:text="SETTINGS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@id/settings_buttons_flow"
+        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
+        app:layout_constraintStart_toStartOf="@id/far_left_guide"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintVertical_chainStyle="spread_inside">
+
+
+        <ImageView
+            android:id="@+id/profile_picture"
+            android:layout_width="289dp"
+            android:layout_height="137dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_profile_pic" />
+
+
+        <Button
+            android:id="@+id/changeImageButton"
+            android:layout_width="34sp"
+            android:layout_height="32sp"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_70sdp"
+            android:background="@drawable/ic_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.648"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/fullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/circular"
+            android:gravity="center"
+            android:padding="8sp"
+            android:text="Full Name  "
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_picture" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settings_buttons_flow"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        app:layout_constraintBottom_toTopOf="@id/profile_buttons_flow"
+        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/far_left_guide"
+        app:layout_constraintTop_toBottomOf="@id/profile_picture_flow"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <Button
+            android:id="@+id/history_button"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/ic_color_history_button"
+            android:fontFamily="@font/circular"
+            android:onClick="goToHistory"
+            android:padding="8sp"
+            android:text="History"
+            android:textColor="#E44454"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/statistics_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/statistics_button"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_90sdp"
+            android:layout_marginRight="@dimen/_90sdp"
+            android:background="@drawable/ic_text_field"
+            android:fontFamily="@font/circular"
+            android:onClick="goToStatistics"
+            android:padding="8sp"
+            android:text="Statistics"
+            android:textColor="@color/colorText"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/account_button"
+            app:layout_constraintRight_toLeftOf="@+id/history_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/account_button"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_170sdp"
+            android:layout_marginRight="@dimen/_170sdp"
+            android:background="@drawable/ic_text_field"
+            android:fontFamily="@font/circular"
+            android:padding="8sp"
+            android:text="Account"
+            android:textColor="@color/colorText"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/statistics_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profile_buttons_flow"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_240sdp"
+        app:layout_constraintBottom_toTopOf="@+id/lower_white_menu"
+        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/far_left_guide"
+        app:layout_constraintTop_toBottomOf="@id/settings_buttons_flow"
+        app:layout_constraintVertical_chainStyle="spread_inside">
+
+        <Button
+            android:id="@+id/changeProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/ic_arrow_text_field"
+            android:drawablePadding="-15sp"
+            android:ems="14"
+            android:fontFamily="@font/circular"
+            android:padding="10sp"
+            android:text="Change Profile"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorTextBackground"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/resetPasswordLocal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <Button
+            android:id="@+id/resetPasswordLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/ic_arrow_text_field"
+            android:drawablePadding="-15sp"
+            android:ems="14"
+            android:fontFamily="@font/circular"
+            android:padding="10sp"
+            android:text="Change Password "
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorTextBackground"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/deactivate_account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/changeProfile"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            tools:layout_editor_absoluteX="-16dp" />
+
+        <Button
+            android:id="@+id/deactivate_account"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/ic_arrow_text_field"
+            android:drawablePadding="-15sp"
+            android:ems="14"
+            android:fontFamily="@font/circular"
+            android:padding="10sp"
+            android:text="Deactivate Account"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorTextBackground"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/logout_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/resetPasswordLocal" />
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:background="@drawable/ic_color_button"
+            android:drawablePadding="-15sp"
+            android:ems="14"
+            android:fontFamily="@font/circular"
+            android:gravity="center"
+            android:onClick="logout"
+            android:padding="10sp"
+            android:text="LOGOUT"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorTextBackground"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/deactivate_account"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lower_white_menu"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintEnd_toEndOf="@+id/far_right_guide"
+        app:layout_constraintStart_toStartOf="@id/far_left_guide"
+        app:layout_constraintTop_toBottomOf="@id/top_horizontal"
+        app:layout_constraintVertical_chainStyle="spread_inside">
+
+        <ImageView
+            android:id="@+id/white_background"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_bg" />
+
+
+        <Button
+            android:id="@+id/home_button"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:background="@drawable/ic_browser"
+            android:onClick="returnToDashboard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_110sdp"
+            android:layout_marginLeft="@dimen/_110sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:background="@drawable/ic_gym__3_"
+            android:onClick="proceedToWorkout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_175sdp"
+            android:layout_marginLeft="@dimen/_175sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:background="@drawable/ic_color_gear"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/far_left_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/far_right_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/_10sdp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="60dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

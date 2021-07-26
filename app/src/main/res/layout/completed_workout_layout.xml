@@ -13,7 +13,7 @@
 
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
@@ -22,53 +22,21 @@
     android:background="#000000">
 
 
-    <!-- running logo (same as splash screen) -->
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="143sp"
-        android:layout_height="138sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.448"
-        app:srcCompat="@drawable/ic_vector_object" />
-
-
-
-    <!--action button for dashboard -->
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="166sp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_button_background"
-        android:padding="8sp"
-        android:text="DASHBOARD"
-        android:textColor="@color/colorText"
-        android:textColorHint="#FFFFFF"
-        android:textSize="17dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.652" />
-
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
     <TextView
         android:id="@+id/woohoo_words"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/circular"
+        android:layout_marginBottom="32sp"
         android:text="WOOHOOO!!"
         android:textColor="@color/colorText"
-        android:textSize="45sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.197" />
+        android:textSize="@dimen/_30sdp"  />
 
     <TextView
         android:id="@+id/workout_complete_layout"
@@ -78,14 +46,35 @@
         android:gravity="center"
         android:text="Workout Complete"
         android:textColor="@color/colorTextBackground"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268" />
+        android:textSize="@dimen/_25sdp" />
 
-    <!-- graphic for dashboard button -->
+    <!-- running logo (same as splash screen) -->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_40sdp"
+        app:srcCompat="@drawable/ic_vector_object" />
+
+
+
+    <!--action button for dashboard -->
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="32sp"
+            android:layout_marginEnd="@dimen/_40sdp"
+            android:background="@drawable/ic_button_background"
+            android:onClick="returnToDashboard"
+            android:padding="8sp"
+            android:text="DASHBOARD"
+            android:textColor="@color/colorText"
+            android:textColorHint="#FFFFFF"
+            android:textSize="@dimen/_17sdp" />
+
+
+    </LinearLayout>
+</LinearLayout>

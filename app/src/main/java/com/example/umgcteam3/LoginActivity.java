@@ -47,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
         if(fAuth.getCurrentUser() != null){
             userID = fAuth.getCurrentUser().getUid();
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
         }
 
         createAccountButton.setOnClickListener(new View.OnClickListener() {
@@ -167,7 +166,6 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void registerForAccount(View view) {
         startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
-        finish();
     }
 
 

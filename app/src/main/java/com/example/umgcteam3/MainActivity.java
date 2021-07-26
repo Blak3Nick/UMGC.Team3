@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser user;
     ImageView profileImage;
     StorageReference storageReference;
-
+    static long abs, upper, lower;
+    static long[] numbers = {0,0,0};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 //        email    = findViewById(R.id.profileEmail);
         resetPassLocal = findViewById(R.id.resetPasswordLocal);
 //
-        profileImage = findViewById(R.id.profileImage);
+        profileImage = findViewById(R.id.profile_picture);
         changeProfile = findViewById(R.id.changeProfile);
         changProfileImage = findViewById(R.id.changeImageButton);
         changProfileImage.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             userId = fAuth.getCurrentUser().getUid();
             user = fAuth.getCurrentUser();
+            populateHistory();
             checkUserInfo();
         } catch (Exception e){
             Log.d("TrytoGetUser: ", e.getMessage());
@@ -194,7 +196,24 @@ public class MainActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Map<String, Boolean> workout = new HashMap<>();
         workout.put("workoutsBuilt", true);
+
         db.collection("users").document(userId).set(workout, SetOptions.merge())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("SUCCESS", "Written to the database");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w("FAILURE", e.getMessage() );
+            }
+        });
+        Map<String, Integer> workoutTotals = new HashMap<>();
+        workoutTotals.put("AbdominalWorkoutTotal", 0);
+        workoutTotals.put("UpperBodyWorkoutTotal", 0);
+        workoutTotals.put("LowerBodyWorkoutTotal", 0);
+        db.collection("users").document(userId).set(workoutTotals, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -299,6 +318,37 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    public void populateHistory() {
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        String user_id = fAuth.getCurrentUser().getUid();
+
+        DocumentReference documentReference = db.collection("users").document(user_id);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot != null && documentSnapshot.exists()) {
+                    System.out.println("Updating textview");
+                    try {
+                        abs = (long) documentSnapshot.get("AbdominalWorkoutTotal");
+                        upper = (long) documentSnapshot.get("UpperBodyWorkoutTotal");
+                        lower = (long) documentSnapshot.get("LowerBodyWorkoutTotal");
+                        System.out.println(upper + " is number of upper completed");
+                        numbers[0] =abs;
+                        numbers[1] = upper;
+                        numbers[2] = lower;
+
+                    } catch (Exception exception){
+                        System.out.println("Caught exception"  + exception.getMessage());
+                    }
+
+                } else {
+                    Log.d("tag", "onEvent: Document does not exist");
+                }
+            }
+        });
+    }
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();//logout
@@ -308,11 +358,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void proceedToWorkout(View view) {
         startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
-        finish();
+
     }
 
     public void goToStatistics(View view){
         startActivity(new Intent(getApplicationContext(),StatisticsActivity.class));
-        finish();
+
+    }
+    public void goToHistory(View view){
+        Intent history = new Intent(this, HistoryActivity.class);
+        history.putExtra("numbersHistory", numbers);
+        startActivity(history);
     }
 }

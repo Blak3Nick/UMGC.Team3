@@ -80,5 +80,17 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
     }
+
+    public static void setUpperBodyExercises(Exercise[] upperBodyExercises) {
+        BackgroundWorker.upperBodyExercises = upperBodyExercises;
+    }
+
+    public static void setLowerBodyExercises(Exercise[] lowerBodyExercises) {
+        BackgroundWorker.lowerBodyExercises = lowerBodyExercises;
+    }
+
+    public static void setAbdominalExercises(Exercise[] abdominalExercises) {
+        BackgroundWorker.abdominalExercises = abdominalExercises;
+    }
 }
 
