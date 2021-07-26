@@ -1,0 +1,52 @@
+Index: app/src/main/java/com/example/umgcteam3/ExerciseNames.java
+===================================================================
+--- app/src/main/java/com/example/umgcteam3/ExerciseNames.java	(revision 1e924c9a4132e9f15267b0530f406a7710844eb8)
++++ app/src/main/java/com/example/umgcteam3/ExerciseNames.java	(revision 1e924c9a4132e9f15267b0530f406a7710844eb8)
+@@ -1,12 +0,0 @@
+-package com.example.umgcteam3;
+-
+-//defines what each exercise is so that there are no typos in the database
+-public enum ExerciseNames {
+-    Squat,
+-    Bench,
+-    Deadlift,
+-    Overhead_Press,
+-    Curl,
+-    Leg_Press,
+-    Barbell_Row
+-}
+Index: app/src/main/res/menu/menu_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><menu xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    tools:context=\"com.example.umgcteam3.MainActivity\">\r\n\r\n    <!-- Added the back icon on right corner\r\n         TODO - change to left corner instead of right.\r\n         -->\r\n\r\n    <item\r\n        android:id=\"@+id/action_settings\"\r\n        android:orderInCategory=\"100\"\r\n        android:icon=\"@drawable/backicon\"\r\n        android:drawableLeft=\"@drawable/backicon\"\r\n        android:title=\"@string/action_settings\"\r\n        app:showAsAction=\"ifRoom\"/>\r\n\r\n\r\n    -->\r\n</menu>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/menu/menu_main.xml	(revision 1e924c9a4132e9f15267b0530f406a7710844eb8)
++++ app/src/main/res/menu/menu_main.xml	(date 1626618307830)
+@@ -10,8 +10,6 @@
+     <item
+         android:id="@+id/action_settings"
+         android:orderInCategory="100"
+-        android:icon="@drawable/backicon"
+-        android:drawableLeft="@drawable/backicon"
+         android:title="@string/action_settings"
+         app:showAsAction="ifRoom"/>
+ 
+Index: app/src/main/res/layout/home_workout_settings_bar.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    >\r\n\r\n    <ImageView\r\n        android:id=\"@+id/white_background\"\r\n        android:layout_width=\"361dp\"\r\n        android:layout_height=\"64dp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.969\"\r\n        app:srcCompat=\"@drawable/ic_bg\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/settingsButton\"\r\n        android:layout_width=\"46dp\"\r\n        android:layout_height=\"58dp\"\r\n        android:background=\"@drawable/ic_colorgearicon\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.684\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.947\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/workoutButton\"\r\n        android:layout_width=\"47dp\"\r\n        android:layout_height=\"33dp\"\r\n        android:layout_marginTop=\"45dp\"\r\n        android:background=\"@drawable/ic_gym__3_\"\r\n        android:onClick=\"proceedToWorkout\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.458\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.946\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/home_button\"\r\n        android:layout_width=\"47dp\"\r\n        android:layout_height=\"33dp\"\r\n        android:background=\"@drawable/ic_browser\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.206\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.949\" />\r\n\r\n\r\n    <TextView\r\n        android:id=\"@+id/settings_words\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"59dp\"\r\n        android:fontFamily=\"@font/circular\"\r\n        android:text=\"Settings\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.846\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.935\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/home_workout_settings_bar.xml	(revision 1e924c9a4132e9f15267b0530f406a7710844eb8)
++++ app/src/main/res/layout/home_workout_settings_bar.xml	(date 1626618443276)
+@@ -4,6 +4,7 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
++    tools:context=".MainActivity"
+     >
+ 
+     <ImageView

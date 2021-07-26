@@ -76,6 +76,7 @@ public class StatisticsActivity extends AppCompatActivity {
             finish();
         }
 
+        spinnerItems.add("Select an exercise...");
         AbdominalExercises[] abdominalArray = AbdominalExercises.values();
         for (AbdominalExercises item : abdominalArray){
             String exerciseItem = item.toString().replace("_", " ");
