@@ -4,6 +4,7 @@ package com.example.umgcteam3;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -21,6 +22,7 @@ public class DashboardActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         setContentView(R.layout.dashboard_activity);
         buildWorkouts();
         BackgroundStatisticsWorker backgroundStatisticsWorker = new BackgroundStatisticsWorker();
@@ -32,14 +34,17 @@ public class DashboardActivity extends AppCompatActivity{
         startActivity(workoutSelectionPage);
     }
     public void profileView(View view) {
-        Intent getDay2Overview = new Intent(this, MainActivity.class);
-        startActivity(getDay2Overview);
+        Intent profileClass = new Intent(this, MainActivity.class);
+        startActivity(profileClass);
     }
     public void progressView(View view) {
-        Intent getDay3Overview = new Intent(this, StatisticsActivity.class);
-        startActivity(getDay3Overview);
+        Intent progressClass = new Intent(this, StatisticsActivity.class);
+        startActivity(progressClass);
     }
-
+    public void returnToMain(View view) {
+        Intent mainClass = new Intent(this, MainActivity.class);
+        startActivity(mainClass);
+    }
 
 
     public void buildWorkouts(View view) {
@@ -90,6 +95,9 @@ public class DashboardActivity extends AppCompatActivity{
     public void onStop() {
         super.onStop();
         hideProgressBar();
+    }
+    public void returnToDashboard(View view) {
+
     }
 
 
