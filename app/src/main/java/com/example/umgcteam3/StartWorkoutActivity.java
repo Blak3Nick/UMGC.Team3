@@ -192,7 +192,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
             allExercises = updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, false, setNumber, exerciseNumber+1 );
         }
 
-        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, 1, ex_name, strDate, false, workoutType);
+        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight,  ex_name, strDate,  workoutType);
         updateDatabase.execute();
 
         return allExercises;

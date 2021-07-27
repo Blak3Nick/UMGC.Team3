@@ -24,24 +24,20 @@ public class UpdateDatabase extends AsyncTask<Void, Void, String> {
     int reps;
     int rpe;
     int weight;
-    int day_number;
     String user_id;
     String exercise_name;
     String exDate;
     String setNumber;
     String workoutType;
-    boolean readyToIncrease = false;
-    public UpdateDatabase(Context context, int set, int reps, int rpe, int weight, int day_number,  String exercise_name, String exDate, boolean readyToIncrease, String workoutType) {
+    public UpdateDatabase(Context context, int set, int reps, int rpe, int weight,   String exercise_name, String exDate,  String workoutType) {
         this.context = context;
         this.set = set;
         this.reps = reps;
         this.rpe = rpe;
         this.weight = weight;
-        this.day_number = day_number;
         this.exercise_name = exercise_name;
         this.exDate = exDate;
         this.setNumber = "Set" + set;
-        this.readyToIncrease = readyToIncrease;
         this.workoutType = workoutType;
     }
 
@@ -59,22 +55,14 @@ public class UpdateDatabase extends AsyncTask<Void, Void, String> {
         completedSet.put("Reps", reps);
         completedSet.put("WeightUsed", weight);
         completedSet.put("RPE", rpe);
-        completedSet.put("DayNumber", day_number);
-        completedSet.put("Increase?", readyToIncrease);
-
-        db.collection("users").document(user_id).collection("CompletedWorkouts").document(exercise_name).collection("AllSets").document(exDate).collection(setNumber)
-                .document(setNumber+"Details").set(completedSet, SetOptions.merge())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("SUCCESS", "Written to the database");
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.w("FAILURE", e.getMessage() );
+        try {
+            Map previous = BackgroundWorker.completedExercises.get(exercise_name);
+            if( (Integer) previous.get("WeightUsed") < (Integer) completedSet.get("WeightUsed")) {
+                BackgroundWorker.completedExercises.put(exercise_name, completedSet);
             }
-        });
+        } catch (NullPointerException nullPointerException) {
+            BackgroundWorker.completedExercises.put(exercise_name, completedSet);
+        }
 
         DocumentReference documentReference = db.collection("users").document(user_id).collection("CompletedWorkouts").document(exercise_name);
         documentReference.update("weightUsed", FieldValue.arrayUnion(weight));

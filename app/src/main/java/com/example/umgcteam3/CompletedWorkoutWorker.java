@@ -18,6 +18,8 @@ public class CompletedWorkoutWorker extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.completed_workout_layout);
+        LogCompletedWorkout logCompletedWorkout = new LogCompletedWorkout("2021-07-27");
+        logCompletedWorkout.doInBackground();
     }
 
     public void returnToDashboard(View view) {

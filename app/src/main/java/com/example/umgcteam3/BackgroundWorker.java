@@ -11,6 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
+import java.util.Map;
 
 // Gets the workout data from the Firestore Database
 public class BackgroundWorker extends AsyncTask<Void, Void, String> {
@@ -24,6 +25,7 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
     public static Exercise[] upperBodyExercises = new Exercise[UpperBodyExercise.values().length];
     public static Exercise[] lowerBodyExercises = new Exercise[LowerBodyExercise.values().length];
     public static Exercise[] abdominalExercises = new Exercise[AbdominalExercises.values().length];
+    public static Map<String, Map> completedExercises = new HashMap<>();
 
     @Override
     protected String doInBackground(Void... voids) {
