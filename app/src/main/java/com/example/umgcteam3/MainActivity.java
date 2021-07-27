@@ -367,7 +367,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void goToHistory(View view){
         Intent history = new Intent(this, HistoryActivity.class);
-        history.putExtra("numbersHistory", numbers);
         startActivity(history);
     }
 }

@@ -22,15 +22,16 @@
         android:layout_height="27sp"
         android:background="@drawable/ic_text_field"
         android:fontFamily="@font/circular"
+        android:onClick="goToHistory"
         android:padding="8sp"
         android:text="History"
         android:textColor="@color/colorText"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintVertical_bias="0.28" />
 
     <Button

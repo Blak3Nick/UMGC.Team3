@@ -8,13 +8,27 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class HistoryActivity extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+public class HistoryActivity extends AppCompatActivity {
+    TextView fullName;
+    FirebaseUser user;
+    FirebaseAuth fAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history);
         System.out.println("In history creation");
+        try {
+            fullName = findViewById(R.id.fullName);
+            fAuth = FirebaseAuth.getInstance();
+            user = fAuth.getCurrentUser();
+            fullName.setText(user.getDisplayName());
+        } catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+
         updateUI();
     }
     private void updateUI(){
@@ -45,5 +59,12 @@ public class HistoryActivity extends AppCompatActivity {
         Intent dashboard = new Intent(this, DashboardActivity.class);
         startActivity(dashboard);
     }
+    public void goToProfile(View view){
+        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        finish();
+    }
+    public void goToStatistics(View view){
+        startActivity(new Intent(getApplicationContext(),StatisticsActivity.class));
 
+    }
 }

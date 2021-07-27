@@ -99,6 +99,9 @@ public class DashboardActivity extends AppCompatActivity{
     public void returnToDashboard(View view) {
 
     }
+    public void proceedToWorkout(View view) {
+
+    }
 
 
 }

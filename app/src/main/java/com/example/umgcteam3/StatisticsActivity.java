@@ -119,6 +119,10 @@ public class StatisticsActivity extends AppCompatActivity {
         Intent dashboard = new Intent(this, DashboardActivity.class);
         startActivity(dashboard);
     }
+    public void goToHistory(View view){
+        Intent history = new Intent(this, HistoryActivity.class);
+        startActivity(history);
+    }
 
 
 }
