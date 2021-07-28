@@ -369,4 +369,8 @@ public class MainActivity extends AppCompatActivity {
         Intent history = new Intent(this, HistoryActivity.class);
         startActivity(history);
     }
+    public void returnToDashboard(View view) {
+        Intent dashboard = new Intent(this, DashboardActivity.class);
+        startActivity(dashboard);
+    }
 }
