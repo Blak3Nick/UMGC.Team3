@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-//Could be used to overview progress from the completed workout
+//Creates a completion screen for the user with a Dashboard button to return
 public class CompletedWorkoutWorker extends AppCompatActivity {
 
     @Override
