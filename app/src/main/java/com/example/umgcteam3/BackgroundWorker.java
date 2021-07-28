@@ -94,5 +94,9 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
     public static void setAbdominalExercises(Exercise[] abdominalExercises) {
         BackgroundWorker.abdominalExercises = abdominalExercises;
     }
+    private void insertDummyDataForStatistics(String userID) {
+
+    }
+
 }
 

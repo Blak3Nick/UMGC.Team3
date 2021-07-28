@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
+import androidx.annotation.WorkerThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -18,12 +19,11 @@ public class CompletedWorkoutWorker extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.completed_workout_layout);
-        LogCompletedWorkout logCompletedWorkout = new LogCompletedWorkout("2021-07-27");
-        logCompletedWorkout.doInBackground();
     }
 
     public void returnToDashboard(View view) {
         Intent dashboard = new Intent(this, DashboardActivity.class);
         startActivity(dashboard);
     }
+
 }
