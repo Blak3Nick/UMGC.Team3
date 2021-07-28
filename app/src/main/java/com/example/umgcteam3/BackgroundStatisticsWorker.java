@@ -51,9 +51,8 @@ public class BackgroundStatisticsWorker extends AsyncTask<Void, Void, String> {
                        DocumentSnapshot document = task.getResult();
                        Object allData= document.getData();
                        try {
-                           List weightUsed = (List<Object>) document.get("weightUsed");
-                           List dates = (List<Object>) document.get("dateCompleted");
-                           statisticsReport.addData(exName, dates, weightUsed);
+                          List<String> dates = (List<String>) document.get("dateCompleted");
+                          buildReport(dates, exName);
                        } catch (Exception exc) {
                            System.out.println(exc.getMessage());
                        }
@@ -63,6 +62,27 @@ public class BackgroundStatisticsWorker extends AsyncTask<Void, Void, String> {
                });
         }
         return "Finished";
+    }
+    private void buildReport(List<String> dates, String exName) {
+        List weights = new ArrayList();
+        for (String date: dates ) {
+            db.collection("users").document(userID).collection("CompletedWorkouts").document(exName)
+                    .collection("AllCompleted").document(date).get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            DocumentSnapshot document = task.getResult();
+                            try {
+                                Object weightUsed = document.get("WeightUsed");
+                                weights.add(weightUsed);
+                            } catch (Exception exc) {
+                                System.out.println(exc.getMessage());
+                            }
+                            //statisticsReport.addData(exName, );
+                        }
+                    });
+        }
+        statisticsReport.addData(exName, dates, weights);
     }
 
     @Override

@@ -11,7 +11,7 @@ public class StatisticsReport {
         this.data = new HashMap<>();
 
     }
-    public void addData(String exName, List<Object> dates, List<Object> weights){
+    public void addData(String exName, List<String> dates, List<Object> weights){
         List[] lists = new List[2];
         lists[0] = dates;
         lists[1] = weights;
