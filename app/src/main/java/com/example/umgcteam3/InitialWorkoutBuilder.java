@@ -157,6 +157,7 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
 
         for (String exName: allExNames) {
             db.collection("users").document(userID).collection("CompletedWorkouts").document(exName).set(data, SetOptions.merge());
+            db.collection("users").document(userID).collection("CompletedWorkouts").document(exName).update("dateCompleted", FieldValue.arrayUnion());
         }
         return null;
     }

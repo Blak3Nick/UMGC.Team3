@@ -52,7 +52,7 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
         getWorkout("Abdominals", abdominalExercises.length, abdominalExercises);
         getWorkout("LowerBody", lowerBodyExercises.length, lowerBodyExercises);
         //uncomment the line below to insert historical dummy data for statistics
-        //insertDummyDataForStatistics();
+        insertDummyDataForStatistics();
         return null;
     }
     private void getWorkout(String workoutType, int numberOfExercises, Exercise[] workout) {
