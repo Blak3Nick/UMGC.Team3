@@ -55,13 +55,13 @@ public class StatisticsActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         spinnerItems = new ArrayList<>();
-        List[] barbellData = (List[]) statisticsData.get("Barbell_Bench_Press");
-        List datesData = barbellData[0];
-        List weightsData = barbellData[1];
-        for (int i =0; i < datesData.size(); i++){
-            System.out.println("The data is as follows: Date " + datesData.get(i) + "\n"
-            + "Weight: " + weightsData.get(i));
-        }
+//        List[] barbellData = (List[]) statisticsData.get("Barbell_Bench_Press");
+//        List datesData = barbellData[0];
+//        List weightsData = barbellData[1];
+//        for (int i =0; i < datesData.size(); i++){
+//            System.out.println("The data is as follows: Date " + datesData.get(i) + "\n"
+//            + "Weight: " + weightsData.get(i));
+//        }
 
         try {
             storageReference = FirebaseStorage.getInstance().getReference();
