@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
 
 public class MainActivity extends AppCompatActivity {
     private static final int GALLERY_INTENT_CODE = 1023 ;
-    TextView fullName,email,phone;
+    TextView fullName,email,phone, changeProfile;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     public String userId;
-    Button resendCode, resetPassLocal, changeProfile, changProfileImage;
+    Button resendCode, resetPassLocal, changProfileImage;
     FirebaseUser user;
     ImageView profileImage;
     StorageReference storageReference;
@@ -94,8 +94,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d("TrytoGetProfilePic: ", "\n\n\nCould not get Profile pic\n\n\n");
         }
 
-//        resendCode = findViewById(R.id.resendCode);
-//        verifyMsg = findViewById(R.id.verifyMsg);
 
         try{
             userId = fAuth.getCurrentUser().getUid();
@@ -117,27 +115,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        if(!user.isEmailVerified()){
-            //resendCode.setVisibility(View.VISIBLE);
-
-//            resendCode.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(final View v) {
-//
-//                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                        @Override
-//                        public void onSuccess(Void aVoid) {
-//                            Toast.makeText(v.getContext(), "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            Log.d("tag", "onFailure: Email not sent " + e.getMessage());
-//                        }
-//                    });
-//                }
-//            });
-        }
 
         resetPassLocal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,12 +157,7 @@ public class MainActivity extends AppCompatActivity {
         changeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                // open gallery
-//                Intent i = new Intent(v.getContext(),EditProfile.class);
-//                i.putExtra("fullName",fullName.getText().toString());
-//                i.putExtra("email",email.getText().toString());
-//                i.putExtra("phone",phone.getText().toString());
-//                startActivity(i);
+                changeProfileInfo(v);
             }
         });
     }
@@ -373,4 +345,9 @@ public class MainActivity extends AppCompatActivity {
         Intent dashboard = new Intent(this, DashboardActivity.class);
         startActivity(dashboard);
     }
+    public void changeProfileInfo(View view) {
+        Intent profile = new Intent(this, ProfileUpdate.class);
+        startActivity(profile);
+    }
+
 }

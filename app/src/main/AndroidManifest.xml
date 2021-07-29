@@ -34,6 +34,7 @@ the attributes within application set values for components within the applicati
         <activity android:name=".CompletedWorkoutWorker" />
         <activity android:name=".StatisticsActivity" />
         <activity android:name=".HistoryActivity" />
+        <activity android:name=".ProfileUpdate" />
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!--This file contains the xml code for the registration board
+    using this custom settings
+
+        android:fontFamily="@font/circular"
+        android:textColor="@color/colorText"
+        android:background="@drawable/ic_text_field" [background of user editable fields]
+
+      All objects have been constrained to top/bottom of the screen
+
+  -->
+
+<!-- START -->
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginBtn"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".ProfileUpdate">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/create_account_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:background="@color/colorBackground"
+            android:fontFamily="@font/circular"
+            android:gravity="center"
+            android:text="Update Account Info"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/_30sdp" />
+
+        <EditText
+            android:id="@+id/fullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@drawable/ic_text_field"
+            android:drawablePadding="-15sp"
+            android:ems="14"
+            android:fontFamily="@font/circular"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:padding="@dimen/_10sdp"
+            android:textColorHint="@color/colorTextBackground"
+            android:textSize="14sp" />
+
+
+        <EditText
+            android:id="@+id/Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/ic_text_field"
+            android:drawablePadding="-15sp"
+            android:ems="14"
+            android:fontFamily="@font/circular"
+            android:hint="E-Mail"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/_10sdp"
+            android:textColorHint="@color/colorTextBackground"
+            android:textSize="14dp"/>
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/ic_text_field"
+            android:drawablePadding="-15sp"
+            android:ems="14"
+            android:fontFamily="@font/circular"
+            android:hint="Phone"
+            android:inputType="textPhonetic"
+            android:padding="@dimen/_10sdp"
+            android:textColorHint="@color/colorTextBackground"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/ic_text_field"
+            android:drawablePadding="-15sp"
+            android:ems="14"
+            android:fontFamily="@font/circular"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="@dimen/_10sdp"
+            android:textColorHint="@color/colorTextBackground"
+            android:textSize="14sp"/>
+
+
+        <EditText
+            android:id="@+id/confirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/ic_text_field"
+            android:drawablePadding="-15sp"
+            android:ems="14"
+            android:fontFamily="@font/circular"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:padding="10sp"
+            android:textColorHint="@color/colorTextBackground"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/registerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="32sp"
+            android:layout_marginEnd="@dimen/_40sdp"
+            android:background="@drawable/ic_button_background"
+            android:fontFamily="@font/circular"
+            android:padding="@dimen/_10sdp"
+            android:text="Update"
+            android:textColor="@color/colorText" />
+
+        <Button
+            android:id="@+id/returnBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="32sp"
+            android:layout_marginEnd="@dimen/_40sdp"
+            android:background="@drawable/ic_button_background"
+            android:fontFamily="@font/circular"
+            android:onClick="returnToMain"
+            android:padding="@dimen/_10sdp"
+            android:text="Cancel"
+            android:textColor="@color/colorText" />
+        <!-- END -->
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
