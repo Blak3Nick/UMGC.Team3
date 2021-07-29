@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
 
 public class MainActivity extends AppCompatActivity {
     private static final int GALLERY_INTENT_CODE = 1023 ;
-    TextView fullName,email,phone, changeProfile;
+    TextView fullName,email,phone, changeProfile, deactivateAccount;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     public String userId;
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         profileImage = findViewById(R.id.profile_picture);
         changeProfile = findViewById(R.id.changeProfile);
         changProfileImage = findViewById(R.id.changeImageButton);
+        deactivateAccount = findViewById(R.id.deactivate_account);
         changProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,7 +114,41 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
+        deactivateAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final EditText resetPassword = new EditText(v.getContext());
+                final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
+                passwordResetDialog.setTitle("Delete Account?");
+                passwordResetDialog.setMessage("This cannot be undone.");
+                passwordResetDialog.setView(resetPassword);
 
+                passwordResetDialog.setPositiveButton("Delete Account?", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        user.delete()
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Log.d("DELETED", "User account deleted.");
+                                            returnToAccountCreation(getCurrentFocus());
+                                        }
+                                    }
+                                });
+                    }
+                });
+
+                passwordResetDialog.setNegativeButton("Don't Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // close
+                    }
+                });
+                passwordResetDialog.create().show();
+            }
+        });
 
 
         resetPassLocal.setOnClickListener(new View.OnClickListener() {
@@ -348,6 +383,10 @@ public class MainActivity extends AppCompatActivity {
     public void changeProfileInfo(View view) {
         Intent profile = new Intent(this, ProfileUpdate.class);
         startActivity(profile);
+    }
+    public void returnToAccountCreation(View view) {
+        Intent create = new Intent(this, RegisterActivity.class);
+        startActivity(create);
     }
 
 }
