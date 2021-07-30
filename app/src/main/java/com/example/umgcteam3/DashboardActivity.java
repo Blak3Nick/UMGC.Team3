@@ -25,8 +25,6 @@ public class DashboardActivity extends AppCompatActivity{
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         setContentView(R.layout.dashboard_activity);
         buildWorkouts();
-        BackgroundStatisticsWorker backgroundStatisticsWorker = new BackgroundStatisticsWorker();
-        backgroundStatisticsWorker.doInBackground();
     }
 
     public void workoutSelection(View view) {
@@ -97,6 +95,9 @@ public class DashboardActivity extends AppCompatActivity{
         hideProgressBar();
     }
     public void returnToDashboard(View view) {
+
+    }
+    public void proceedToWorkout(View view) {
 
     }
 

@@ -7,11 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
+import androidx.annotation.WorkerThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-//Could be used to overview progress from the completed workout
+//Creates a completion screen for the user with a Dashboard button to return
 public class CompletedWorkoutWorker extends AppCompatActivity {
 
     @Override
@@ -24,4 +25,5 @@ public class CompletedWorkoutWorker extends AppCompatActivity {
         Intent dashboard = new Intent(this, DashboardActivity.class);
         startActivity(dashboard);
     }
+
 }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.annotation.WorkerThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DateFormat;
@@ -43,6 +44,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
     boolean increaseWeight = false;
     String workoutType;
     int totalExercises;
+    String strDate = "0000-00-00";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -144,10 +146,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
         allExercises = sendData();
         stopThread = true;
         if (exercise_count == last_exercise) {
-            Intent loadCompleted = new Intent(this, CompletedWorkoutWorker.class);
-            loadCompleted.putExtra("TotalExercises", totalExercises);
-            loadCompleted.putExtra("workoutType", workoutType);
-            startActivity(loadCompleted);
+            endWorkout(this.getCurrentFocus());
 
         }else {
             startActivity(reloadPage);
@@ -177,14 +176,12 @@ public class StartWorkoutActivity extends AppCompatActivity {
         }
         Date date = Calendar.getInstance().getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String strDate = dateFormat.format(date);
-        System.out.println("Date = " + strDate);
+        strDate = dateFormat.format(date);
 
         int targetRPE = currentSet.getTargetRPE();
         if (reportedRPE - targetRPE < -1 ) {
             increaseWeight = true;
             UpdateWorkout updateWorkout = new UpdateWorkout();
-            System.out.println(workoutType + "is the workout type" + exerciseNumber + "is the exercise number\n\n\n\n\n");
             allExercises = updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, true, setNumber, exerciseNumber+1 );
         }
         else if(reportedRPE - targetRPE > 1) {
@@ -192,15 +189,21 @@ public class StartWorkoutActivity extends AppCompatActivity {
             allExercises = updateWorkout.updateCurrentWorkout(workoutType, exerciseNumber, false, setNumber, exerciseNumber+1 );
         }
 
-        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight, 1, ex_name, strDate, false, workoutType);
+        UpdateDatabase updateDatabase = new UpdateDatabase(this, set, reps, rpe, weight,  ex_name, strDate,  workoutType);
         updateDatabase.execute();
 
         return allExercises;
     }
     public void endWorkout(View view) {
+        updateProgress(strDate);
         Intent loadCompleted = new Intent(this, CompletedWorkoutWorker.class);
         loadCompleted.putExtra("TotalExercises", totalExercises);
         loadCompleted.putExtra("workoutType", workoutType);
         startActivity(loadCompleted);
+    }
+    @WorkerThread
+    protected void updateProgress(String exDate){
+        LogCompletedWorkout logCompletedWorkout = new LogCompletedWorkout(exDate);
+        logCompletedWorkout.doInBackground();
     }
 }

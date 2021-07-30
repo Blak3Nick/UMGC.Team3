@@ -173,6 +173,7 @@
             android:drawablePadding="-15sp"
             android:ems="14"
             android:fontFamily="@font/circular"
+            android:onClick="changeProfileInfo"
             android:padding="10sp"
             android:text="Change Profile"
             android:textColor="@color/colorText"

@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
 
 public class MainActivity extends AppCompatActivity {
     private static final int GALLERY_INTENT_CODE = 1023 ;
-    TextView fullName,email,phone;
+    TextView fullName,email,phone, changeProfile, deactivateAccount;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     public String userId;
-    Button resendCode, resetPassLocal, changeProfile, changProfileImage;
+    Button resendCode, resetPassLocal, changProfileImage;
     FirebaseUser user;
     ImageView profileImage;
     StorageReference storageReference;
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         profileImage = findViewById(R.id.profile_picture);
         changeProfile = findViewById(R.id.changeProfile);
         changProfileImage = findViewById(R.id.changeImageButton);
+        deactivateAccount = findViewById(R.id.deactivate_account);
         changProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,8 +95,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d("TrytoGetProfilePic: ", "\n\n\nCould not get Profile pic\n\n\n");
         }
 
-//        resendCode = findViewById(R.id.resendCode);
-//        verifyMsg = findViewById(R.id.verifyMsg);
 
         try{
             userId = fAuth.getCurrentUser().getUid();
@@ -115,29 +114,42 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
+        deactivateAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final EditText resetPassword = new EditText(v.getContext());
+                final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
+                passwordResetDialog.setTitle("Delete Account?");
+                passwordResetDialog.setMessage("This cannot be undone.");
+                passwordResetDialog.setView(resetPassword);
 
+                passwordResetDialog.setPositiveButton("Delete Account?", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        user.delete()
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Log.d("DELETED", "User account deleted.");
+                                            returnToAccountCreation(getCurrentFocus());
+                                        }
+                                    }
+                                });
+                    }
+                });
 
-        if(!user.isEmailVerified()){
-            //resendCode.setVisibility(View.VISIBLE);
+                passwordResetDialog.setNegativeButton("Don't Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // close
+                    }
+                });
+                passwordResetDialog.create().show();
+            }
+        });
 
-//            resendCode.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(final View v) {
-//
-//                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                        @Override
-//                        public void onSuccess(Void aVoid) {
-//                            Toast.makeText(v.getContext(), "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            Log.d("tag", "onFailure: Email not sent " + e.getMessage());
-//                        }
-//                    });
-//                }
-//            });
-        }
 
         resetPassLocal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,12 +192,7 @@ public class MainActivity extends AppCompatActivity {
         changeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                // open gallery
-//                Intent i = new Intent(v.getContext(),EditProfile.class);
-//                i.putExtra("fullName",fullName.getText().toString());
-//                i.putExtra("email",email.getText().toString());
-//                i.putExtra("phone",phone.getText().toString());
-//                startActivity(i);
+                changeProfileInfo(v);
             }
         });
     }
@@ -367,7 +374,19 @@ public class MainActivity extends AppCompatActivity {
     }
     public void goToHistory(View view){
         Intent history = new Intent(this, HistoryActivity.class);
-        history.putExtra("numbersHistory", numbers);
         startActivity(history);
     }
+    public void returnToDashboard(View view) {
+        Intent dashboard = new Intent(this, DashboardActivity.class);
+        startActivity(dashboard);
+    }
+    public void changeProfileInfo(View view) {
+        Intent profile = new Intent(this, ProfileUpdate.class);
+        startActivity(profile);
+    }
+    public void returnToAccountCreation(View view) {
+        Intent create = new Intent(this, RegisterActivity.class);
+        startActivity(create);
+    }
+
 }

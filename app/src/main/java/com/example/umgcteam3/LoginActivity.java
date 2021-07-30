@@ -3,6 +3,7 @@ This class is an activity
  */
 package com.example.umgcteam3;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private static Workout AbdominalWorkout;
     AlertDialog.Builder dialogBuilder;
 
+    @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
 
         if(fAuth.getCurrentUser() != null){
             userID = fAuth.getCurrentUser().getUid();
+            BackgroundStatisticsWorker backgroundStatisticsWorker = new BackgroundStatisticsWorker();
+            backgroundStatisticsWorker.doInBackground();
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
 

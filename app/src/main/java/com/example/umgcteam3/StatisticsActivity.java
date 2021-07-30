@@ -57,7 +57,11 @@ public class StatisticsActivity extends AppCompatActivity {
         spinnerItems = new ArrayList<>();
 //        List[] barbellData = (List[]) statisticsData.get("Barbell_Bench_Press");
 //        List datesData = barbellData[0];
-//        System.out.println(datesData.get(0) + " is the dates");
+//        List weightsData = barbellData[1];
+//        for (int i =0; i < datesData.size(); i++){
+//            System.out.println("The data is as follows: Date " + datesData.get(i) + "\n"
+//            + "Weight: " + weightsData.get(i));
+//        }
 
         try {
             storageReference = FirebaseStorage.getInstance().getReference();
@@ -119,6 +123,10 @@ public class StatisticsActivity extends AppCompatActivity {
     public void returnToDashboard(View view) {
         Intent dashboard = new Intent(this, DashboardActivity.class);
         startActivity(dashboard);
+    }
+    public void goToHistory(View view){
+        Intent history = new Intent(this, HistoryActivity.class);
+        startActivity(history);
     }
 
 

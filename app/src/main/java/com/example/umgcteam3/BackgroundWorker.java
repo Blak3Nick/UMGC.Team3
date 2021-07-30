@@ -5,12 +5,19 @@ import android.os.AsyncTask;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
+
 import java.util.HashMap;
+import java.util.Map;
 
 // Gets the workout data from the Firestore Database
 public class BackgroundWorker extends AsyncTask<Void, Void, String> {
@@ -24,6 +31,7 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
     public static Exercise[] upperBodyExercises = new Exercise[UpperBodyExercise.values().length];
     public static Exercise[] lowerBodyExercises = new Exercise[LowerBodyExercise.values().length];
     public static Exercise[] abdominalExercises = new Exercise[AbdominalExercises.values().length];
+    public static Map<String, Map> completedExercises = new HashMap<>();
 
     @Override
     protected String doInBackground(Void... voids) {
@@ -43,6 +51,8 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
         getWorkout("UpperBody", upperBodyExercises.length, upperBodyExercises);
         getWorkout("Abdominals", abdominalExercises.length, abdominalExercises);
         getWorkout("LowerBody", lowerBodyExercises.length, lowerBodyExercises);
+        //uncomment the line below to insert historical dummy data for statistics
+        insertDummyDataForStatistics();
         return null;
     }
     private void getWorkout(String workoutType, int numberOfExercises, Exercise[] workout) {
@@ -92,5 +102,61 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
     public static void setAbdominalExercises(Exercise[] abdominalExercises) {
         BackgroundWorker.abdominalExercises = abdominalExercises;
     }
+    private void insertDummyDataForStatistics() {
+        for (LowerBodyExercise lowerBodyExercise: LowerBodyExercise.values()){
+            String exName = lowerBodyExercise.toString();
+            writeDummyData(exName);
+        }
+        for (UpperBodyExercise upperBodyExercise: UpperBodyExercise.values()) {
+            String exName = upperBodyExercise.toString();
+            writeDummyData(exName);
+        }
+        for (AbdominalExercises abdominalExercise : AbdominalExercises.values()) {
+            String exName = abdominalExercise.toString();
+            writeDummyData(exName);
+        }
+    }
+    private void writeDummyData(String exName) {
+        String[] dummyDates = {"2021-07-01", "2021-07-02", "2021-07-03", "2021-07-04",
+                "2021-07-05", "2021-07-06", "2021-07-07", "2021-07-08", "2021-07-09",
+                "2021-07-10"};
+        Map<String, Map> completedSets = new HashMap<>();
+        int[] dummyWeights = {130, 135, 140, 145, 135, 140, 150, 160, 170, 175};
+        int RPE = 5;
+        int Reps = 8;
+        int SetNumber = 1;
+        int i =0;
+        for (String dummyDate: dummyDates) {
+            String DateCompleted = dummyDate;
+            if (i>9){
+                i =0;
+            }
+            int WeightUsed = dummyWeights[i++];
+            Map set = new HashMap();
+            set.put("DateCompleted", DateCompleted);
+            set.put("RPE", RPE);
+            set.put("Reps", Reps);
+            set.put("WeightUsed", WeightUsed);
+            db.collection("users").document(userID).collection("CompletedWorkouts")
+                    .document(exName).collection("AllCompleted")
+                    .document(dummyDate)
+                    .set(set, SetOptions.merge())
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d("SUCCESS", "Written to the database");
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.w("FAILURE", e.getMessage() );
+                }
+            });
+            DocumentReference documentReference = db.collection("users").document(userID)
+                    .collection("CompletedWorkouts").document(exName);
+            documentReference.update("dateCompleted", FieldValue.arrayUnion(dummyDate));
+        }
+    }
+
 }
 

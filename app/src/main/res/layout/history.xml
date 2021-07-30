@@ -90,40 +90,41 @@
             android:layout_marginEnd="@dimen/_10sdp" />
 
 
-
         <Button
             android:id="@+id/statistics_button"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_90sdp"
             android:layout_marginRight="@dimen/_90sdp"
-            app:layout_constraintLeft_toRightOf="@+id/account_button"
-            app:layout_constraintRight_toLeftOf="@+id/history_button"
             android:background="@drawable/ic_text_field"
             android:fontFamily="@font/circular"
+            android:onClick="goToStatistics"
             android:padding="8sp"
             android:text="Statistics"
             android:textColor="@color/colorText"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="@dimen/_90sdp" />
+            app:layout_constraintLeft_toRightOf="@+id/account_button"
+            app:layout_constraintRight_toLeftOf="@+id/history_button"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <Button
             android:id="@+id/account_button"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_170sdp"
             android:layout_marginRight="@dimen/_170sdp"
-            app:layout_constraintLeft_toRightOf="@+id/statistics_button"
             android:background="@drawable/ic_text_field"
             android:fontFamily="@font/circular"
+            android:onClick="goToProfile"
             android:padding="8sp"
             android:text="Account"
             android:textColor="@color/colorText"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="@dimen/_170sdp" />
+            app:layout_constraintLeft_toRightOf="@+id/statistics_button"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
 
