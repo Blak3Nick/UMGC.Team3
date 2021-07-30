@@ -90,7 +90,6 @@ public class WorkoutSelectionActivity extends Activity {
     }
     public void proceedToWorkout(View view) {
         startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
-
     }
 }
 
