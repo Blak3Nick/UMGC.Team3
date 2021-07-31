@@ -164,6 +164,4 @@ public class StatisticsActivity extends AppCompatActivity implements AdapterView
         Intent history = new Intent(this, HistoryActivity.class);
         startActivity(history);
     }
-
-
 }
