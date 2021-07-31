@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private static Workout LowerBodyWorkout;
     private static Workout AbdominalWorkout;
     AlertDialog.Builder dialogBuilder;
+    static BackgroundStatisticsWorker backgroundStatisticsWorker = new BackgroundStatisticsWorker();
 
     @SuppressLint("WrongThread")
     @Override
@@ -48,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
 
         if(fAuth.getCurrentUser() != null){
             userID = fAuth.getCurrentUser().getUid();
-            BackgroundStatisticsWorker backgroundStatisticsWorker = new BackgroundStatisticsWorker();
             backgroundStatisticsWorker.doInBackground();
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }

@@ -36,6 +36,7 @@ public class DashboardActivity extends AppCompatActivity{
         startActivity(profileClass);
     }
     public void progressView(View view) {
+        MainActivity.backgroundStatisticsWorker.doInBackground();
         Intent progressClass = new Intent(this, StatisticsActivity.class);
         startActivity(progressClass);
     }
@@ -44,14 +45,12 @@ public class DashboardActivity extends AppCompatActivity{
         startActivity(mainClass);
     }
 
-
     public void buildWorkouts(View view) {
         //Build Workouts button
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute();
-
-
     }
+
     public void buildWorkouts() {
         System.out.println("Building workouts");
         //Build Workouts button
@@ -59,7 +58,6 @@ public class DashboardActivity extends AppCompatActivity{
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute();
     }
-
 
 //Firebase boilerplate
 
@@ -95,10 +93,11 @@ public class DashboardActivity extends AppCompatActivity{
         hideProgressBar();
     }
     public void returnToDashboard(View view) {
-
+        //empty to make button unclickable
     }
-    public void proceedToWorkout(View view) {
 
+    public void proceedToWorkout(View view) {
+        //empty to make button unclickable
     }
 
 

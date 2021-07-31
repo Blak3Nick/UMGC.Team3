@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     StorageReference storageReference;
     static long abs, upper, lower;
     static long[] numbers = {0,0,0};
+    static BackgroundStatisticsWorker backgroundStatisticsWorker = LoginActivity.backgroundStatisticsWorker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -370,8 +371,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToStatistics(View view){
         startActivity(new Intent(getApplicationContext(),StatisticsActivity.class));
-
     }
+
     public void goToHistory(View view){
         Intent history = new Intent(this, HistoryActivity.class);
         startActivity(history);
