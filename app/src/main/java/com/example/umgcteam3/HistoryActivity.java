@@ -64,7 +64,7 @@ public class HistoryActivity extends AppCompatActivity {
         finish();
     }
     public void goToStatistics(View view){
+        MainActivity.backgroundStatisticsWorker.doInBackground();
         startActivity(new Intent(getApplicationContext(),StatisticsActivity.class));
-
     }
 }
