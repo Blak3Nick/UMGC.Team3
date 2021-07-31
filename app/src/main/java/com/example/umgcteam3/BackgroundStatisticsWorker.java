@@ -23,9 +23,7 @@ public class BackgroundStatisticsWorker extends AsyncTask<Void, Void, String> {
     ArrayList<String> allExNames = new ArrayList<>();
     StatisticsReport statisticsReport;
 
-
-    @Override
-    protected String doInBackground(Void... voids) {
+    public BackgroundStatisticsWorker(){
         for (LowerBodyExercise exName: LowerBodyExercise.values()) {
             String name = exName.toString();
             allExNames.add(name);
@@ -38,6 +36,10 @@ public class BackgroundStatisticsWorker extends AsyncTask<Void, Void, String> {
             String name = exName.toString();
             allExNames.add(name);
         }
+    }
+
+    @Override
+    protected String doInBackground(Void... voids) {
         statisticsReport = new StatisticsReport();
         userID = fAuth.getCurrentUser().getUid();
         db = FirebaseFirestore.getInstance();
