@@ -79,7 +79,7 @@
             android:layout_height="@dimen/_30sdp"
             android:layout_marginRight="@dimen/_10sdp"
             app:layout_constraintRight_toLeftOf="@+id/statistics_button"
-            android:background="@drawable/ic_color_history_button"
+            android:background="@drawable/ic_color_page_button"
             android:fontFamily="@font/circular"
             android:padding="8sp"
             android:text="History"
