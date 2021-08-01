@@ -68,10 +68,10 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //get all text from text fields and set them to strings
-                System.out.println("Creating account...");;
+                System.out.println("Creating account...");
                 final String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
-                String confirmPassword = mPassword.getText().toString().trim();
+                String confirmPassword = mConfirmPassword.getText().toString().trim();
                 final String fullName = mFullName.getText().toString();
                 final String phone    = mPhone.getText().toString();
 
@@ -209,9 +209,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private boolean checkPassword(String p, String c){
-        if (p.equals(c)){
-            return true;
-        }
-        return false;
+        return p.equals(c);
     }
 }

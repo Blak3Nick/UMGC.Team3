@@ -12,7 +12,7 @@
 
     <include
         layout="@layout/picture_name"
-        android:layout_width="363dp"
+        android:layout_width="match_parent"
         android:layout_height="640dp"
         tools:layout_editor_absoluteX="-4dp"></include>
 
@@ -38,7 +38,7 @@
         android:id="@+id/statistics_button"
         android:layout_width="76sp"
         android:layout_height="27sp"
-        android:background="@drawable/ic_color_history_button"
+        android:background="@drawable/ic_color_page_button"
         android:fontFamily="@font/circular"
         android:padding="8sp"
         android:text="Statistics"

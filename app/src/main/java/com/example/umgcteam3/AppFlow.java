@@ -9,8 +9,6 @@ import android.os.PersistableBundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.umgcteam3.LoginActivity;
-
 public class AppFlow extends AppCompatActivity {
 
     @Override

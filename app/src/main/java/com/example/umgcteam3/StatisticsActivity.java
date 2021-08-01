@@ -2,7 +2,6 @@ package com.example.umgcteam3;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +13,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,7 +34,6 @@ import java.util.stream.Collectors;
 public class StatisticsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     GraphView graph;
     LineGraphSeries<DataPoint> series;
-    private Spinner spinner;
     TextView fullName;
     ImageView profileImage;
     StorageReference storageReference;
@@ -54,7 +51,7 @@ public class StatisticsActivity extends AppCompatActivity implements AdapterView
         fullName = findViewById(R.id.fullName);
         profileImage = findViewById(R.id.profileImage);
 
-        spinner = findViewById(R.id.exercise_name_spinner);
+        Spinner spinner = findViewById(R.id.exercise_name_spinner);
         spinner.setOnItemSelectedListener(this);
         spinnerItems = new ArrayList<>();
         spinnerItems.add("Select an exercise...");
@@ -80,7 +77,7 @@ public class StatisticsActivity extends AppCompatActivity implements AdapterView
                     spinnerItems.add(lists.getKey().replace("_", " "));
                 }
             }
-            adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spinnerItems);
+            adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spinnerItems);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
         } else {
@@ -93,12 +90,7 @@ public class StatisticsActivity extends AppCompatActivity implements AdapterView
             user = fAuth.getCurrentUser();
             fullName.setText(user.getDisplayName());
             StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
-            profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri).into(profileImage);
-                }
-            });
+            profileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImage));
         } catch (Exception e) {
             Log.d("StatisticsActivity: ", e.getMessage());
             finish();
@@ -120,8 +112,8 @@ public class StatisticsActivity extends AppCompatActivity implements AdapterView
 
         System.out.println("Max: " + max);
         for (int i = 0; i < list[0].size() ; i++){
-            List<Object> weightData = list[1];
-            series.appendData(new DataPoint(i, Integer.valueOf(String.valueOf(weightData.get(i)))), true, 30);
+            List weightData = list[1];
+            series.appendData(new DataPoint(i, Integer.parseInt(String.valueOf(weightData.get(i)))), true, 30);
         }
     }
 
