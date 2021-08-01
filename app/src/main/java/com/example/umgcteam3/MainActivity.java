@@ -282,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
                             System.out.println("Building initial workouts");
                         }
                         else{
-                            System.out.println("The user has workouts?  " + workoutsBuilt);
+                            System.out.println("The user has workouts");
                         }
                     } catch (NullPointerException exception){
                         buildInitialWorkouts();

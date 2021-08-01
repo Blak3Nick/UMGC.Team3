@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,7 +23,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -67,7 +65,7 @@ public class ProfileUpdate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //get all text from text fields and set them to strings
-                System.out.println("Updating account...");;
+                System.out.println("Updating account...");
                 final String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
                 String confirmPassword = mPassword.getText().toString().trim();
@@ -199,11 +197,9 @@ public class ProfileUpdate extends AppCompatActivity {
     }
 
     private boolean checkPassword(String p, String c){
-        if (p.equals(c)){
-            return true;
-        }
-        return false;
+        return p.equals(c);
     }
+
     public void returnToMain(View view) {
         Intent mainClass = new Intent(this, MainActivity.class);
         startActivity(mainClass);

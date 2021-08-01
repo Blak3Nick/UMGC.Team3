@@ -1,5 +1,4 @@
 package com.example.umgcteam3;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -127,13 +126,12 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
         int SetNumber = 1;
         int i =0;
         for (String dummyDate: dummyDates) {
-            String DateCompleted = dummyDate;
             if (i>9){
                 i =0;
             }
             int WeightUsed = dummyWeights[i++];
             Map set = new HashMap();
-            set.put("DateCompleted", DateCompleted);
+            set.put("DateCompleted", dummyDate);
             set.put("RPE", RPE);
             set.put("Reps", Reps);
             set.put("WeightUsed", WeightUsed);

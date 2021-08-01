@@ -1,6 +1,5 @@
 package com.example.umgcteam3;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import androidx.annotation.NonNull;
