@@ -170,7 +170,7 @@
             android:layout_marginStart="@dimen/_60sdp"
             android:layout_marginEnd="@dimen/_60sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:background="@drawable/ic_color_history_button"
+            android:background="@drawable/ic_color_page_button"
             android:text="Login Here"
             android:textColor="@color/colorAccent"  />
 
