@@ -24,6 +24,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -76,6 +77,7 @@ public class StatisticsActivity extends AppCompatActivity implements AdapterView
                 if (arrayList[0] != null && arrayList[1] != null){
                     spinnerItems.add(lists.getKey().replace("_", " "));
                 }
+                //System.out.println(lists.getKey() + ": " + Arrays.deepToString(lists.getValue()));
             }
             adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spinnerItems);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -100,8 +102,10 @@ public class StatisticsActivity extends AppCompatActivity implements AdapterView
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void processExerciseData(String exercise){
+        //System.out.println(exercise);
         List[] list = statisticsData.get(exercise);
-        List<Integer> weights = list[1].stream().mapToInt(num -> Integer.parseInt(num.toString())).boxed().collect(Collectors.toList());
+        //System.out.println(Arrays.deepToString(list));
+        List<Integer> weights = list[1].stream().mapToInt(num -> Integer.valueOf(num.toString())).boxed().collect(Collectors.toList());
         int max = Collections.max(weights);
         int min = Collections.min(weights);
 
