@@ -3,14 +3,21 @@ package com.example.umgcteam3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class HistoryActivity extends AppCompatActivity {
+    StorageReference storageReference;
+    String userId;
+    ImageView profileImage;
     TextView fullName;
     FirebaseUser user;
     FirebaseAuth fAuth;
@@ -21,9 +28,14 @@ public class HistoryActivity extends AppCompatActivity {
         System.out.println("In history creation");
         try {
             fullName = findViewById(R.id.fullName);
+            profileImage = findViewById(R.id.profile_picture);
             fAuth = FirebaseAuth.getInstance();
             user = fAuth.getCurrentUser();
             fullName.setText(user.getDisplayName());
+            storageReference = FirebaseStorage.getInstance().getReference();
+            userId = fAuth.getCurrentUser().getUid();
+            StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
+            profileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImage));
         } catch (Exception exception){
             System.out.println(exception.getMessage());
         }
