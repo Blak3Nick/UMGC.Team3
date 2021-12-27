@@ -147,6 +147,18 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
             String name = exName.toString();
             allExNames.add(name);
         }
+        for (UpperMainExercise exName: UpperMainExercise.values()) {
+            String name = exName.toString();
+            allExNames.add(name);
+        }
+        for (LowerMainExercises exName: LowerMainExercises.values()) {
+            String name = exName.toString();
+            allExNames.add(name);
+        }
+        for (ExplosiveFirstExercise exName: ExplosiveFirstExercise.values()) {
+            String name = exName.toString();
+            allExNames.add(name);
+        }
         userID = fAuth.getCurrentUser().getUid();
         db = FirebaseFirestore.getInstance();
         Map<String, Object> data = new HashMap<>();
@@ -157,6 +169,9 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
         for (String exName: allExNames) {
             db.collection("users").document(userID).collection("CompletedWorkouts").document(exName).set(data, SetOptions.merge());
             db.collection("users").document(userID).collection("CompletedWorkouts").document(exName).update("dateCompleted", FieldValue.arrayUnion());
+            Map initialMaxes = new HashMap();
+            initialMaxes.put(exName, 5);
+            db.collection("users").document(userID).collection("Maxes").document("AllMaxes").set(initialMaxes, SetOptions.merge() );
         }
         return null;
     }

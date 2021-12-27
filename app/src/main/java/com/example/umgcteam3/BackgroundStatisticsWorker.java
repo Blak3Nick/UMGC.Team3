@@ -56,7 +56,7 @@ public class BackgroundStatisticsWorker extends AsyncTask<Void, Void, String> {
                        } catch (Exception exc) {
                            System.out.println(exc.getMessage());
                        }
-                       Log.d("myTag", allData.toString());
+//                       Log.d("myTag", allData.toString());
                        //statisticsReport.addData(exName, );
                    }
                });
@@ -73,7 +73,7 @@ public class BackgroundStatisticsWorker extends AsyncTask<Void, Void, String> {
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             DocumentSnapshot document = task.getResult();
                             try {
-                                Object weightUsed = document.get("WeightUsed");
+                                Long weightUsed = (Long) document.get("WeightUsed");
                                 weights.add(weightUsed);
                             } catch (Exception exc) {
                                 System.out.println(exc.getMessage());

@@ -50,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         if(fAuth.getCurrentUser() != null){
             userID = fAuth.getCurrentUser().getUid();
             backgroundStatisticsWorker.doInBackground();
+            BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+            backgroundWorker.doInBackground();
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
 

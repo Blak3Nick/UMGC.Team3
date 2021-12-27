@@ -44,7 +44,7 @@ public class HistoryActivity extends AppCompatActivity {
     }
     private void updateUI(){
         System.out.println("Updating history");
-        TextView upperTotal = (TextView) findViewById(R.id.upperExercises);
+        TextView upperTotal = findViewById(R.id.upperExercises);
         TextView lowerTotal = (TextView) findViewById(R.id.lowerExercises);
         TextView abTotal = (TextView) findViewById(R.id.abExercises);
         Bundle extras = getIntent().getExtras();

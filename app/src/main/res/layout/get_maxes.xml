@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This file contains the code for the reset password screen  -->
+
+
+
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        tools:context=".RegisterActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/change_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/circular"
+            android:text="Enter your estimated 1-rep max for the lift below"
+            android:textColor="@color/colorText"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/create_account_banner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/circular"
+            android:gravity="center"
+            android:text="Squat"
+            android:textColor="@color/colorTextBackground"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/enterMax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:background="@drawable/ic_text_field"
+            android:drawablePadding="-15sp"
+            android:ems="10"
+            android:hint="Enter your max"
+            android:inputType="number"
+            android:padding="10sp"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorTextBackground"/>
+
+
+
+    <Button
+        android:id="@+id/createAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:gravity="center"
+        android:background="@drawable/ic_button_background"
+        android:padding="8dp"
+        android:text="Submit max"
+        android:textColor="@color/colorText"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp" />
+
+
+    </LinearLayout>
+</LinearLayout>

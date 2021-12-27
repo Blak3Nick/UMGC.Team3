@@ -1,28 +1,29 @@
 package com.example.umgcteam3;
 
-public enum LowerBodyExercise {
-    Leg_Press {
+public enum UpperMainExercise {
+    Barbell_Bench_Press {
         @Override
         public String toString() {
-            return "Leg Press";
+            return "Barbell Bench Press";
         }
     },
-    Leg_Curl {
+    Close_Grip_Bench_Press {
         @Override
         public String toString() {
-            return "Leg Curl";
+            return "Close Grip Bench Press";
         }
     },
-    Leg_Extension {
+    Dumbbell_Bench_Press {
         @Override
         public String toString() {
-            return "Leg Extension";
+            return "Dumbbell Bench Press";
         }
     },
-    Calf_Raises {
+    Barbell_Row {
         @Override
         public String toString() {
-            return "Calf Raises";
+            return "Dumbbell Bench Press";
         }
     }
 }
+

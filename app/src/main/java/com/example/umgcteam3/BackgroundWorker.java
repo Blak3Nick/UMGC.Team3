@@ -3,6 +3,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import androidx.annotation.NonNull;
+import androidx.annotation.WorkerThread;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,6 +35,7 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
     public static Map<String, Map> completedExercises = new HashMap<>();
 
     @Override
+    @WorkerThread
     protected String doInBackground(Void... voids) {
         userID = fAuth.getCurrentUser().getUid();
         for (int i = 0; i < upperBodyExercises.length; i++) {
@@ -51,7 +54,8 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
         getWorkout("Abdominals", abdominalExercises.length, abdominalExercises);
         getWorkout("LowerBody", lowerBodyExercises.length, lowerBodyExercises);
         //uncomment the line below to insert historical dummy data for statistics
-        insertDummyDataForStatistics();
+        //insertDummyDataForStatistics();
+        System.out.println("Added all the workouts\n\n\n\n\n");
         return null;
     }
     private void getWorkout(String workoutType, int numberOfExercises, Exercise[] workout) {
