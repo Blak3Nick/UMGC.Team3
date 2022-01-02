@@ -69,6 +69,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
             case "UpperBody":
                 allExercises = BackgroundWorker.upperBodyExercises;
         }
+        System.out.println(count + " is the count");
         currentSet = exercise.getSet(count);
         exercise1.setText(currentSet.getExerciseName());
 

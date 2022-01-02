@@ -75,6 +75,7 @@ public class WorkoutSelectionActivity extends Activity {
         startWorkout.putExtra("count", 0);
         startWorkout.putExtra("exercise_count", 0);
         startWorkout.putExtra("AllExercises", BackgroundWorker.abdominalExercises);
+        System.out.println(BackgroundWorker.abdominalExercises[3].getSet(5) + " Flutter Kicks");
         startWorkout.putExtra("workoutType", "Abdominals");
         startWorkout.putExtra("TotalExercises", 0);
         startActivity(startWorkout);

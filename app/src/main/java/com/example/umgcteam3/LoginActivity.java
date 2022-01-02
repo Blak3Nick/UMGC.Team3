@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         mEmail = findViewById(R.id.Email);
         mPassword = findViewById(R.id.password);
         fAuth = FirebaseAuth.getInstance();
-        createAccountButton = findViewById(R.id.createAccount);
+        createAccountButton = findViewById(R.id.submitMaxButton);
         mCreateBtn = findViewById(R.id.forgotPassword);
         forgotTextLink = findViewById(R.id.forgotPassword);
 

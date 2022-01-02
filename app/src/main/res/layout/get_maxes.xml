@@ -32,7 +32,7 @@
 
 
         <TextView
-            android:id="@+id/create_account_banner"
+            android:id="@+id/exerciseNameForMax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20sdp"
@@ -61,7 +61,7 @@
 
 
     <Button
-        android:id="@+id/createAccount"
+        android:id="@+id/submitMaxButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
