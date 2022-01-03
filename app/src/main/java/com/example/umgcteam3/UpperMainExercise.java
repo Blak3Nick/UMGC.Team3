@@ -24,6 +24,7 @@ public enum UpperMainExercise {
         public String toString() {
             return "Dumbbell Bench Press";
         }
-    }
+    };
+
 }
 

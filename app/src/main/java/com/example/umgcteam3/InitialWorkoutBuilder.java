@@ -22,7 +22,11 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
     String[] lowerExercises = new String[LowerBodyExercise.values().length];
     String[] absExercises = new String[AbdominalExercises.values().length];
     String user_id;
-    public InitialWorkoutBuilder() {
+    int[] maxes;
+    public InitialWorkoutBuilder(int[] maxes) {
+        //"Back Squat", "Deadlift", "Barbell Bench Press", "Overhead Press", "Barbell Curl", "Barbell Row" user maxes supplied
+
+        this.maxes = maxes;
        int i =0;
         for (UpperBodyExercise a: UpperBodyExercise.values()) {
             upperExercises[i++] = a.toString();
@@ -57,6 +61,8 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
             newWorkout.put("ExerciseName", upperExercises[j-1]);
             for (int i = 1; i < 6; i++) {
                 newWorkout.put("SetNumber", i);
+                int weight = (int) ((int)  maxes[2] * (i *.10 + .4));
+                newWorkout.put("WeightUsed", weight);
                 db.collection("users").document(user_id).collection("CurrentWorkoutPlan").document("UpperBody").collection("Exercise_"+j+"_All_Sets")
                         .document("Ex_"+j+"_All_Sets").collection("AllSets")
                         .document("Set"+i).set(newWorkout, SetOptions.merge())

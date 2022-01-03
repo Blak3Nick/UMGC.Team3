@@ -86,7 +86,12 @@ public class BackgroundStatisticsWorker extends AsyncTask<Void, Void, String> {
                                 System.out.println(exc.getMessage());
                             }
                         }
-                    });
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    System.out.println("Report Building failed.");
+                }
+            });
         }
         statisticsReport.addData(exName, dates, weights);
     }

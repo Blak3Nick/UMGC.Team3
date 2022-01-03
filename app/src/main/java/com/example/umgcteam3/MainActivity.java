@@ -199,40 +199,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buildInitialWorkouts(){
-        InitialWorkoutBuilder workoutBuilder = new InitialWorkoutBuilder();
-        workoutBuilder.doInBackground();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Map<String, Boolean> workout = new HashMap<>();
-        workout.put("workoutsBuilt", true);
-
-        db.collection("users").document(userId).set(workout, SetOptions.merge())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("SUCCESS", "Written to the database");
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.w("FAILURE", e.getMessage() );
-            }
-        });
-        Map<String, Integer> workoutTotals = new HashMap<>();
-        workoutTotals.put("AbdominalWorkoutTotal", 0);
-        workoutTotals.put("UpperBodyWorkoutTotal", 0);
-        workoutTotals.put("LowerBodyWorkoutTotal", 0);
-        db.collection("users").document(userId).set(workoutTotals, SetOptions.merge())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("SUCCESS", "Written to the database");
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.w("FAILURE", e.getMessage() );
-            }
-        });
+        System.out.println("Building initial workouts...\n\n\n\n");
+        Intent get_maxes = new Intent(this, GetMaxesWorker.class);
+        get_maxes.putExtra("counter", 0);
+        get_maxes.putExtra("userid", userId);
+        startActivity(get_maxes);
     }
 
     private void updateDisplayName() {
