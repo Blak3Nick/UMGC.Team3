@@ -28,34 +28,52 @@ public class WorkoutOneStrengthBaseDayOne {
         int targetRPE = 5;
         int targetReps = 5;
         int weightUsed = -1;
-        int setNumber =1;
         int totalSets = 5;
 
 
-        //Build First Exercise-- Default is bodyweight exercise
+        //Build First Exercise-- Default is body-weight exercise
         for (int i = 1; i < 6; i++) {
             Set set = new Set(exerciseCategory,exerciseName,precedence,restPeriod, targetRPE, targetReps, weightUsed,i, totalSets);
             firstExercise.addSet(set);
         }
-
+        //Second Exercise--
         exerciseCategory = "LowerMainExercisePush";
         LowerMainExercisesPush exercisesPush = LowerMainExercisesPush.getRandomExercise();
         exerciseName = exercisesPush.toString();
         double exFactor = exercisesPush.getFactor();
         double startingFactor = .60;
+        double increaseFactor = .05;
         SharedPreferences sharedPref = context.getSharedPreferences(GetMaxesWorker.SHARED_PREFS, Context.MODE_PRIVATE);
         int max = sharedPref.getInt("Back Squat", 0);
-        for (int i = 1; i < 6; i++) {
-            double newFactor = (i*.05) + startingFactor;
+        addSets(secondExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 2, 90, 5, 5,5 );
+        //Third Exercise
+        startingFactor = .5;
+        exerciseCategory = "LowerBodyAssistancePush";
+        LowerBodyAssistancePush assistancePush = LowerBodyAssistancePush.getRandomExercise();
+        exerciseName = assistancePush.toString();
+        exFactor = assistancePush.getFactor();
+        addSets(thirdExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 3, 60, 4, 8,5 );
+        //Fourth Exercise
+        exerciseCategory = "LowerBodyAssistancePull";
+        LowerBodyAssistancePull lowerBodyAssistancePull = LowerBodyAssistancePull.getRandomExercise();
+        exerciseName = lowerBodyAssistancePull.toString();
+        exFactor = lowerBodyAssistancePull.getFactor();
+        addSets(fourthExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 4, 60, 4, 8,5 );
+        //Fifth Exercise
+
+
+
+    }
+    private void addSets(Exercise exercise, String exerciseCategory, String exName, double exFactor, double startingFactor,
+                         double increaseFactor, int max, int precedence, int restPeriod, int targetRPE, int targetReps, int totalSets) {
+        for (int i = 1; i < totalSets+1; i++) {
+            double newFactor = (i* increaseFactor) + startingFactor;
             double number = newFactor * exFactor * max;
-            weightUsed = (int) (5*(Math.round(number/5)));
-            System.out.println("The exercise is    " + exerciseName);
-            System.out.println("The weight used is    " + weightUsed );
-            Set set = new Set(exerciseCategory,exerciseName,precedence,restPeriod, targetRPE, targetReps, weightUsed,i, totalSets);
-            secondExercise.addSet(set);
+            int weightUsed = (int) (5*(Math.round(number/5)));
+            Set set = new Set(exerciseCategory,exName,precedence,restPeriod, targetRPE, targetReps, weightUsed,i, totalSets);
+            exercise.addSet(set);
+            targetRPE++;
         }
-
-
     }
 
 
