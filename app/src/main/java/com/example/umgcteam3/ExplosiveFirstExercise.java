@@ -1,13 +1,9 @@
 package com.example.umgcteam3;
 
+import java.util.Random;
+
 public enum ExplosiveFirstExercise {
 
-    Dumbbell_Hang_Clean {
-        @Override
-        public String toString() {
-            return "Dumbbell Hang CLean";
-        }
-    },
     Burpees {
         @Override
         public String toString() {
@@ -37,5 +33,10 @@ public enum ExplosiveFirstExercise {
         public String toString() {
             return "Lateral Jump Burpees";
         }
+    };
+
+    public static ExplosiveFirstExercise getRandomExercise(){
+        Random random = new Random();
+        return values()[random.nextInt(values().length)];
     }
 }

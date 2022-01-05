@@ -157,7 +157,7 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
             String name = exName.toString();
             allExNames.add(name);
         }
-        for (LowerMainExercises exName: LowerMainExercises.values()) {
+        for (LowerMainExercisesPush exName: LowerMainExercisesPush.values()) {
             String name = exName.toString();
             allExNames.add(name);
         }

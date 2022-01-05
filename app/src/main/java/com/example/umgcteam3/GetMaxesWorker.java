@@ -1,6 +1,9 @@
 package com.example.umgcteam3;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,6 +34,8 @@ public class GetMaxesWorker extends AppCompatActivity {
     TextView exercise;
     int[] userMaxes = new int[6];
     String userId;
+    public final static String SHARED_PREFS = "shared prefs";
+    public final static String BACK_SQUAT = "Back Squat";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,10 @@ public class GetMaxesWorker extends AppCompatActivity {
                     max = Integer.parseInt(enterMax.getText().toString());
                     System.out.println("the max entered was: " + max);
                     userMaxes[counter] = max;
+                    SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putInt(initialMaxes[counter], max);
+                    editor.apply();
                     counter++;
                     if(counter>=userMaxes.length){
                         buildWorkouts();
@@ -73,6 +83,7 @@ public class GetMaxesWorker extends AppCompatActivity {
     void buildWorkouts(){
         InitialWorkoutBuilder workoutBuilder = new InitialWorkoutBuilder(userMaxes);
         workoutBuilder.doInBackground();
+        WorkoutOneStrengthBaseDayOne workoutOneStrengthBaseDayOne = new WorkoutOneStrengthBaseDayOne(this);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Map<String, Boolean> workout = new HashMap<>();
         workout.put("workoutsBuilt", true);
