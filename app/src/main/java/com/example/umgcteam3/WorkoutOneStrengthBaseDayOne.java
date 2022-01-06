@@ -6,8 +6,13 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-public class WorkoutOneStrengthBaseDayOne {
+import java.util.ArrayList;
+import java.util.Collections;
 
+public class WorkoutOneStrengthBaseDayOne {
+    int size = LowerBodyAssistancePush.values().length;
+    int[] lowerBodyAssistancePushNumbers = UniqueRandomNumbers.getRandomNumbers(size, 2);
+    int lowerPushCounter = 0;
     Exercise firstExercise = new Exercise(1);
     Exercise secondExercise = new Exercise(2);
     Exercise thirdExercise = new Exercise(3);
@@ -49,7 +54,7 @@ public class WorkoutOneStrengthBaseDayOne {
         //Third Exercise
         startingFactor = .5;
         exerciseCategory = "LowerBodyAssistancePush";
-        LowerBodyAssistancePush assistancePush = LowerBodyAssistancePush.getRandomExercise();
+        LowerBodyAssistancePush assistancePush = LowerBodyAssistancePush.getSpecificExercise(lowerBodyAssistancePushNumbers[lowerPushCounter++]);
         exerciseName = assistancePush.toString();
         exFactor = assistancePush.getFactor();
         addSets(thirdExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 3, 60, 4, 8,5 );
@@ -60,6 +65,17 @@ public class WorkoutOneStrengthBaseDayOne {
         exFactor = lowerBodyAssistancePull.getFactor();
         addSets(fourthExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 4, 60, 4, 8,5 );
         //Fifth Exercise
+        exerciseCategory = "LowerBodyAssistancePush";
+        assistancePush = LowerBodyAssistancePush.getSpecificExercise(lowerBodyAssistancePushNumbers[lowerPushCounter++]);
+        exerciseName = assistancePush.toString();
+        exFactor = assistancePush.getFactor();
+        addSets(fifthExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 3, 60, 4, 8,5 );
+        //Sixth Exercise
+        exerciseCategory = "LowerBodyAssistancePull";
+        lowerBodyAssistancePull = LowerBodyAssistancePull.getRandomExercise();
+        exerciseName = lowerBodyAssistancePull.toString();
+        exFactor = lowerBodyAssistancePull.getFactor();
+        addSets(sixthExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 4, 60, 4, 8,5 );
 
 
 
@@ -75,6 +91,8 @@ public class WorkoutOneStrengthBaseDayOne {
             targetRPE++;
         }
     }
+
+
 
 
 

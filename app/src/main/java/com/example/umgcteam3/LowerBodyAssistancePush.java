@@ -13,11 +13,14 @@ public enum LowerBodyAssistancePush {
 
     private static final Map<String, LowerBodyAssistancePush> BY_LABEL = new HashMap<>();
     private static final Map<Double, LowerBodyAssistancePush> BY_FACTOR = new HashMap<>();
+    private static final LowerBodyAssistancePush[] listOfExercise = new LowerBodyAssistancePush[values().length];
 
     static {
+        int i =0;
         for (LowerBodyAssistancePush e : values()) {
             BY_LABEL.put(e.label, e);
             BY_FACTOR.put(e.factor, e);
+            listOfExercise[i++] = e;
         }
     }
 
@@ -32,6 +35,9 @@ public enum LowerBodyAssistancePush {
         Random random = new Random();
         return values()[random.nextInt(values().length)];
     }
+    public static LowerBodyAssistancePush[] getAllExercises() {
+        return listOfExercise;
+    }
     @Override
     public String toString() {
         return this.label;
@@ -39,5 +45,10 @@ public enum LowerBodyAssistancePush {
 
     public double getFactor() {
         return this.factor;
+    }
+
+
+    public static LowerBodyAssistancePush getSpecificExercise(int i){
+        return listOfExercise[i];
     }
 }
