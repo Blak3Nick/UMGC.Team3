@@ -13,11 +13,14 @@ public enum LowerBodyAssistancePull {
 
     private static final Map<String, LowerBodyAssistancePull> BY_LABEL = new HashMap<>();
     private static final Map<Double, LowerBodyAssistancePull> BY_FACTOR = new HashMap<>();
+    private static final LowerBodyAssistancePull[] listOfExercise = new LowerBodyAssistancePull[values().length];
 
     static {
+        int i =0;
         for (LowerBodyAssistancePull e : values()) {
             BY_LABEL.put(e.label, e);
             BY_FACTOR.put(e.factor, e);
+            listOfExercise[i++] = e;
         }
     }
 
@@ -39,5 +42,8 @@ public enum LowerBodyAssistancePull {
 
     public double getFactor() {
         return this.factor;
+    }
+    public static LowerBodyAssistancePull getSpecificExercise(int i){
+        return listOfExercise[i];
     }
 }

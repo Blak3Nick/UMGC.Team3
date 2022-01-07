@@ -2,6 +2,7 @@ package com.example.umgcteam3;
 
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class Set implements Serializable {
     private String ExerciseCategory;
@@ -13,6 +14,7 @@ public class Set implements Serializable {
     private int WeightUsed;
     private int SetNumber;
     private int TotalSets;
+    private HashMap<String, Object> setMap = new HashMap();
 
     public Set() {
     }
@@ -27,6 +29,16 @@ public class Set implements Serializable {
         WeightUsed = weightUsed;
         SetNumber = setNumber;
         TotalSets = totalSets;
+        setMap.put("ExerciseCategory", exerciseCategory);
+        setMap.put("ExerciseName", exerciseName);
+        setMap.put("Precedence", precedence);
+        setMap.put("RestPeriod", restPeriod);
+        setMap.put("TargetRPE", targetRPE);
+        setMap.put("TargetReps", targetReps);
+        setMap.put("WeightUsed", weightUsed);
+        setMap.put("SetNumber", setNumber);
+        setMap.put("TotalSets", totalSets);
+
     }
 
     public String getExerciseCategory() {
@@ -99,6 +111,10 @@ public class Set implements Serializable {
 
     public void setTotalSets(int totalSets) {
         TotalSets = totalSets;
+    }
+
+    public HashMap<String, Object> getSetMap() {
+        return setMap;
     }
 }
 

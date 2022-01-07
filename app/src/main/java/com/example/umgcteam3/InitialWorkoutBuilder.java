@@ -22,8 +22,9 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
     String[] lowerExercises = new String[LowerBodyExercise.values().length];
     String[] absExercises = new String[AbdominalExercises.values().length];
     String user_id;
+    Exercise[] allExercises;
     int[] maxes;
-    public InitialWorkoutBuilder(int[] maxes) {
+    public InitialWorkoutBuilder(int[] maxes, Exercise[] allExercises) {
         //"Back Squat", "Deadlift", "Barbell Bench Press", "Overhead Press", "Barbell Curl", "Barbell Row" user maxes supplied
 
         this.maxes = maxes;
@@ -39,6 +40,7 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
         for (AbdominalExercises c: AbdominalExercises.values()) {
             absExercises[i++] = c.toString();
         }
+        this.allExercises = allExercises;
     }
 
     @Override
@@ -56,6 +58,28 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
         newWorkout.put("WeightUsed", 135);
         newWorkout.put("TotalSets", 5);
         newWorkout.put("SetNumber", 1);
+
+        for(int l = 0; l<allExercises.length; l++){
+            ArrayList<Set> allSets = allExercises[l].getAllSets();
+            int exTracker = l+1;
+            for (int i = 1; i < allSets.size()+1; i++) {
+                Set set = allSets.get(i-1);
+                db.collection("users").document(user_id).collection("CurrentWorkoutPlan").document("Day_1")
+                        .collection("Exercise"+exTracker).document("Ex" + exTracker + "AllSets").collection("AllSets")
+                        .document("Set" + i).set(set.getSetMap(), SetOptions.merge())
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("SUCCESS", "Wrote a new set to the database");
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("FAILURE", e.getMessage() );
+                    }
+                });
+            }
+        }
 
          for (int j = 1; j < upperExercises.length+1; j++) {
             newWorkout.put("ExerciseName", upperExercises[j-1]);

@@ -12,7 +12,10 @@ import java.util.Collections;
 public class WorkoutOneStrengthBaseDayOne {
     int size = LowerBodyAssistancePush.values().length;
     int[] lowerBodyAssistancePushNumbers = UniqueRandomNumbers.getRandomNumbers(size, 2);
+    int pullSize = LowerBodyAssistancePull.values().length;
+    int[] lowerBodyAssistancePullNumbers = UniqueRandomNumbers.getRandomNumbers(pullSize, 2);
     int lowerPushCounter = 0;
+    int lowerPullCounter =0;
     Exercise firstExercise = new Exercise(1);
     Exercise secondExercise = new Exercise(2);
     Exercise thirdExercise = new Exercise(3);
@@ -21,6 +24,7 @@ public class WorkoutOneStrengthBaseDayOne {
     Exercise sixthExercise = new Exercise(6);
     Exercise seventhExercise = new Exercise(7);
     Exercise eighthExercise = new Exercise(8);
+    Exercise[] allExercises = new Exercise[8];
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -41,6 +45,7 @@ public class WorkoutOneStrengthBaseDayOne {
             Set set = new Set(exerciseCategory,exerciseName,precedence,restPeriod, targetRPE, targetReps, weightUsed,i, totalSets);
             firstExercise.addSet(set);
         }
+        allExercises[0] = firstExercise;
         //Second Exercise--
         exerciseCategory = "LowerMainExercisePush";
         LowerMainExercisesPush exercisesPush = LowerMainExercisesPush.getRandomExercise();
@@ -51,6 +56,7 @@ public class WorkoutOneStrengthBaseDayOne {
         SharedPreferences sharedPref = context.getSharedPreferences(GetMaxesWorker.SHARED_PREFS, Context.MODE_PRIVATE);
         int max = sharedPref.getInt("Back Squat", 0);
         addSets(secondExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 2, 90, 5, 5,5 );
+        allExercises[1] = secondExercise;
         //Third Exercise
         startingFactor = .5;
         exerciseCategory = "LowerBodyAssistancePush";
@@ -58,24 +64,50 @@ public class WorkoutOneStrengthBaseDayOne {
         exerciseName = assistancePush.toString();
         exFactor = assistancePush.getFactor();
         addSets(thirdExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 3, 60, 4, 8,5 );
+        allExercises[2] = thirdExercise;
         //Fourth Exercise
         exerciseCategory = "LowerBodyAssistancePull";
-        LowerBodyAssistancePull lowerBodyAssistancePull = LowerBodyAssistancePull.getRandomExercise();
+        LowerBodyAssistancePull lowerBodyAssistancePull = LowerBodyAssistancePull.getSpecificExercise(lowerBodyAssistancePullNumbers[lowerPullCounter++]);
         exerciseName = lowerBodyAssistancePull.toString();
         exFactor = lowerBodyAssistancePull.getFactor();
         addSets(fourthExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 4, 60, 4, 8,5 );
+        allExercises[3] = fourthExercise;
         //Fifth Exercise
         exerciseCategory = "LowerBodyAssistancePush";
         assistancePush = LowerBodyAssistancePush.getSpecificExercise(lowerBodyAssistancePushNumbers[lowerPushCounter++]);
         exerciseName = assistancePush.toString();
         exFactor = assistancePush.getFactor();
-        addSets(fifthExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 3, 60, 4, 8,5 );
+        addSets(fifthExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 5, 60, 4, 8,5 );
+        allExercises[4] = fifthExercise;
         //Sixth Exercise
         exerciseCategory = "LowerBodyAssistancePull";
-        lowerBodyAssistancePull = LowerBodyAssistancePull.getRandomExercise();
+        lowerBodyAssistancePull = LowerBodyAssistancePull.getSpecificExercise(lowerBodyAssistancePullNumbers[lowerPullCounter++]);
         exerciseName = lowerBodyAssistancePull.toString();
         exFactor = lowerBodyAssistancePull.getFactor();
-        addSets(sixthExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 4, 60, 4, 8,5 );
+        addSets(sixthExercise, exerciseCategory, exerciseName, exFactor, startingFactor, increaseFactor, max, 6, 60, 4, 8,5 );
+        allExercises[5] = sixthExercise;
+        //Seventh Exercise
+        exerciseCategory = "HipExercise";
+        HipExercise hipExercise = HipExercise.getRandomExercise();
+        exerciseName = hipExercise.toString();
+        for (int i = 1; i < 6; i++) {
+            Set set = new Set(exerciseCategory,exerciseName,7,30, 5, 20, -1,i, 5);
+            seventhExercise.addSet(set);
+        }
+        allExercises[6] = seventhExercise;
+        //Eighth Exercise
+        exerciseCategory = "AbdominalExercises";
+        AbdominalExercises abdominalExercises = AbdominalExercises.getRandomExercise();
+        exerciseName = abdominalExercises.toString();
+        for (int i = 1; i < 6; i++) {
+            Set set = new Set(exerciseCategory,exerciseName,8,30, 5, 15, -1,i, 5);
+            eighthExercise.addSet(set);
+        }
+        allExercises[7] = eighthExercise;
+        int[] maxes = {500,400, 300, 200, 200};
+        InitialWorkoutBuilder workoutBuilder = new InitialWorkoutBuilder(maxes, allExercises);
+        workoutBuilder.doInBackground();
+
 
 
 

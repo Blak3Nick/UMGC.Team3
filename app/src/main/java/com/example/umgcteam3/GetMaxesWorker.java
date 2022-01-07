@@ -81,8 +81,6 @@ public class GetMaxesWorker extends AppCompatActivity {
     }
 
     void buildWorkouts(){
-        InitialWorkoutBuilder workoutBuilder = new InitialWorkoutBuilder(userMaxes);
-        workoutBuilder.doInBackground();
         WorkoutOneStrengthBaseDayOne workoutOneStrengthBaseDayOne = new WorkoutOneStrengthBaseDayOne(this);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Map<String, Boolean> workout = new HashMap<>();
