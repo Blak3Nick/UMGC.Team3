@@ -88,6 +88,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
         count++;
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.textViewProgress);
+        progressBar.setMax(currentSet.getRestPeriod());
         new Thread(new Runnable() {
             @Override
             public void run() {
