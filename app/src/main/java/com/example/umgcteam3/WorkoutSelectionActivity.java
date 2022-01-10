@@ -15,6 +15,7 @@ public class WorkoutSelectionActivity extends Activity {
     private static Workout UpperBodyWorkout;
     private static Workout LowerBodyWorkout;
     private static Workout AbdominalWorkout;
+    private static Workout Day1Workout;
     HashMap<Integer, Exercise> allExercises;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -25,6 +26,8 @@ public class WorkoutSelectionActivity extends Activity {
         UpperBodyWorkout = new Workout();
         LowerBodyWorkout = new Workout();
         AbdominalWorkout = new Workout();
+        Day1Workout = new Workout();
+
         allExercises =  UpperBodyWorkout.getAllExercises();
         for (Exercise ex: BackgroundWorker.upperBodyExercises
         ) {
@@ -37,6 +40,9 @@ public class WorkoutSelectionActivity extends Activity {
         for (Exercise ex: BackgroundWorker.abdominalExercises
         ) {
             AbdominalWorkout.addExercise(ex);
+        }
+        for (Exercise exercise: BackgroundWorker.day_1_exercises){
+            Day1Workout.addExercise(exercise);
         }
         LoginActivity.setUpperBodyWorkout(UpperBodyWorkout);
         LoginActivity.setLowerBodyWorkout(LowerBodyWorkout);
@@ -74,9 +80,8 @@ public class WorkoutSelectionActivity extends Activity {
         Intent startWorkout = new Intent(this, StartWorkoutActivity.class);
         startWorkout.putExtra("count", 0);
         startWorkout.putExtra("exercise_count", 0);
-        startWorkout.putExtra("AllExercises", BackgroundWorker.abdominalExercises);
-        System.out.println(BackgroundWorker.abdominalExercises[3].getSet(5) + " Flutter Kicks");
-        startWorkout.putExtra("workoutType", "Abdominals");
+        startWorkout.putExtra("AllExercises", BackgroundWorker.day_1_exercises);
+        startWorkout.putExtra("workoutType", "Day1");
         startWorkout.putExtra("TotalExercises", 0);
         startActivity(startWorkout);
         finish();

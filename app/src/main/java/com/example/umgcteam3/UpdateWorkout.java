@@ -19,6 +19,8 @@ public class UpdateWorkout {
                 break;
             case "UpperBody":
                 exercises = BackgroundWorker.upperBodyExercises;
+            case "Day1":
+                exercises = BackgroundWorker.day_1_exercises;
         }
         System.out.println("The exercise key is " + exerciseKey + "\n\n\n\n\n");
         Exercise exercise = exercises[exerciseKey];

@@ -76,7 +76,7 @@ public class UpdateDatabase extends AsyncTask<Void, Void, String> {
                 workoutUpdate = "UpperBodyWorkoutTotal";
         }
 
-        documentReference.update(workoutUpdate, FieldValue.increment(1));
+        //documentReference.update(workoutUpdate, FieldValue.increment(1));
         return null;
     }
 

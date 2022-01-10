@@ -59,6 +59,8 @@ public class InitialWorkoutBuilder extends AsyncTask<Void, Void, String> {
         newWorkout.put("TotalSets", 5);
         newWorkout.put("SetNumber", 1);
 
+
+        //Build Day 1 Workout
         for(int l = 0; l<allExercises.length; l++){
             ArrayList<Set> allSets = allExercises[l].getAllSets();
             int exTracker = l+1;

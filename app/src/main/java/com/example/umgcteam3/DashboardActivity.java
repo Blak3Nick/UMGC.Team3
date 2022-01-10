@@ -59,7 +59,7 @@ public class DashboardActivity extends AppCompatActivity{
         backgroundWorker.execute();
     }
 
-//Firebase boilerplate
+
 
     @VisibleForTesting
     public ProgressBar mProgressBar;

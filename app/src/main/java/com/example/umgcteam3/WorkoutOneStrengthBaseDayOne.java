@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class WorkoutOneStrengthBaseDayOne {
+    public static int totalExercises = 8;
     int size = LowerBodyAssistancePush.values().length;
     int[] lowerBodyAssistancePushNumbers = UniqueRandomNumbers.getRandomNumbers(size, 2);
     int pullSize = LowerBodyAssistancePull.values().length;

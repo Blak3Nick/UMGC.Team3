@@ -114,6 +114,23 @@ public class GetMaxesWorker extends AppCompatActivity {
                 Log.w("FAILURE", e.getMessage() );
             }
         });
+        Map<String, Integer> maxMap = new HashMap<>();
+        int i =0;
+        for (int max: userMaxes){
+            maxMap.put(initialMaxes[i++], max);
+        }
+        db.collection("users").document(userId).collection("Maxes").document("AllMaxes").set(maxMap, SetOptions.merge())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d("SUCCESS", "WROTE NEW MAXES");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w("FAILURE", e.getMessage());
+            }
+        });
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 

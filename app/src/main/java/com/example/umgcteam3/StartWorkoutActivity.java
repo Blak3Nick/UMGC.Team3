@@ -43,6 +43,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
     String workoutType;
     int totalExercises;
     String strDate = "0000-00-00";
+    int last_exercise;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,6 +69,9 @@ public class StartWorkoutActivity extends AppCompatActivity {
                 break;
             case "UpperBody":
                 allExercises = BackgroundWorker.upperBodyExercises;
+            case "Day1":
+                allExercises = BackgroundWorker.day_1_exercises;
+                last_exercise = WorkoutOneStrengthBaseDayOne.totalExercises;
         }
         System.out.println(count + " is the count");
         currentSet = exercise.getSet(count);
@@ -130,7 +134,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void updateWorkoutPage(View view) {
         Intent reloadPage = new Intent(this, StartWorkoutActivity.class);
-        int last_exercise = 6;
+
         if(count == 5 ) {
             exercise_count++;
             count =0;

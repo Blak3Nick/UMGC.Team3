@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 30
@@ -16,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.umgcteam3"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -47,6 +48,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:20.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.jjoe64:graphview:4.2.2'
+    implementation 'com.google.firebase:firebase-crashlytics:18.2.6'
+    implementation 'com.google.firebase:firebase-analytics:20.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

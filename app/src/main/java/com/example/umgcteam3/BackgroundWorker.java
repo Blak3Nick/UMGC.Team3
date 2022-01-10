@@ -17,6 +17,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +33,7 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
     public static Exercise[] upperBodyExercises = new Exercise[UpperBodyExercise.values().length];
     public static Exercise[] lowerBodyExercises = new Exercise[LowerBodyExercise.values().length];
     public static Exercise[] abdominalExercises = new Exercise[AbdominalExercises.values().length];
+    public static Exercise[] day_1_exercises = new Exercise[WorkoutOneStrengthBaseDayOne.totalExercises];
     public static Map<String, Map> completedExercises = new HashMap<>();
 
     @Override
@@ -50,9 +52,14 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
             Exercise exercise = new Exercise(i+1);
             abdominalExercises[i] = exercise;
         }
+        for (int i = 0; i < day_1_exercises.length; i++) {
+            Exercise exercise = new Exercise(i+1);
+            day_1_exercises[i] = exercise;
+        }
         getWorkout("UpperBody", upperBodyExercises.length, upperBodyExercises);
         getWorkout("Abdominals", abdominalExercises.length, abdominalExercises);
         getWorkout("LowerBody", lowerBodyExercises.length, lowerBodyExercises);
+        getWorkoutForDay("Day_1", day_1_exercises.length, day_1_exercises);
         //uncomment the line below to insert historical dummy data for statistics
         //insertDummyDataForStatistics();
         System.out.println("Added all the workouts\n\n\n\n\n");
@@ -65,6 +72,28 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
             final String secondExPath = "Ex_" + j + "_All_Sets";
             final int finalJ = j -1;
             db.collection("users").document(userID).collection("CurrentWorkoutPlan").document(workoutType).collection(firstExPath)
+                    .document(secondExPath).collection("AllSets").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()){
+                        for (QueryDocumentSnapshot document: task.getResult()) {
+                            Set set = document.toObject(Set.class);
+                            workout[finalJ].addSet(set);
+                        }
+                    } else {
+                        Log.d("ERROR", "Error getting documents", task.getException());
+                    }
+                }
+            });
+        }
+    }
+    private void getWorkoutForDay(String workout_day, int numberOfExercises, Exercise[] workout) {
+        db = FirebaseFirestore.getInstance();
+        for(int j=1; j<numberOfExercises; j++) {
+            String firstExPath = "Exercise" + j;
+            final String secondExPath = "Ex" + j + "AllSets";
+            final int finalJ = j -1;
+            db.collection("users").document(userID).collection("CurrentWorkoutPlan").document(workout_day).collection(firstExPath)
                     .document(secondExPath).collection("AllSets").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -104,6 +133,9 @@ public class BackgroundWorker extends AsyncTask<Void, Void, String> {
 
     public static void setAbdominalExercises(Exercise[] abdominalExercises) {
         BackgroundWorker.abdominalExercises = abdominalExercises;
+    }
+    public static void setDay_1_exercises(Exercise[] day_1_exercises){
+        BackgroundWorker.day_1_exercises = day_1_exercises;
     }
     private void insertDummyDataForStatistics() {
         for (LowerBodyExercise lowerBodyExercise: LowerBodyExercise.values()){
